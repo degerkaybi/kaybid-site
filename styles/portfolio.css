@@ -359,6 +359,11 @@ html:has(.pf-home-hero) { scroll-behavior: smooth; }
 .pf-instagram-embed .instagram-media { width: 100% !important; min-width: 0 !important; max-width: 540px; margin: 0 auto !important; padding: 1.5rem; border: 1px solid var(--pf-line); background: var(--pf-surface); }
 .pf-instagram-embed iframe { max-width: 100% !important; }
 .pf-instagram-link { display: inline-block; margin-top: .65rem; color: var(--pf-muted) !important; font-size: .75rem; }
+.pf-instagram-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(8px,1.2vw,16px); margin: 2rem 0; }
+/* Instagram lays its picture out 16:9 below a 54px profile header; the frame shows just that picture. */
+.pf-instagram-frame { position: relative; aspect-ratio: 16 / 9; overflow: hidden; container-type: inline-size; background: var(--pf-image-bg); }
+.pf-instagram-frame iframe { position: absolute; left: 0; top: -54px; width: calc(100% + 8px); height: calc(56.25cqw + 300px); border: 0; }
+@media (max-width: 700px) { .pf-instagram-grid { grid-template-columns: 1fr; } }
 .pf-columns:has(.pf-instagram-embed) { grid-template-columns: repeat(auto-fit,minmax(min(100%,320px),1fr)); }
 .pf-map iframe { width: 100%; min-height: 480px; border: 0; }
 .pf-sound iframe { width: 100%; min-height: 180px; border: 0; }

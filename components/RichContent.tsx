@@ -82,6 +82,17 @@ function instagramPostPermalink(url: string): string | null {
   }
 }
 
+// A row of Instagram posts: every column holds one post link and nothing else.
+function instagramRow(block: NotionBlock): string[] {
+  if (block.type !== 'column_list' || !block.children?.length) return []
+  const links = block.children.map(column => {
+    const items = (column.children || []).filter(item => !(item.type === 'paragraph' && !plainText((item.paragraph as { rich_text?: RichPart[] } | undefined)?.rich_text)))
+    const url = items.length === 1 && (items[0].type === 'embed' || items[0].type === 'link_preview') ? (items[0][items[0].type] as { url?: string } | undefined)?.url : undefined
+    return url ? instagramPostPermalink(url) : null
+  })
+  return links.every(Boolean) ? links as string[] : []
+}
+
 // A callout made only of page mentions (e.g. "Eidōla / Browse All Eidōla") is navigation, not a note.
 function pageCrumbs(block: NotionBlock) {
   const parts = [block, ...(block.children || [])].flatMap(item => ((item[item.type] as { rich_text?: RichPart[] } | undefined)?.rich_text) || [])
@@ -309,6 +320,18 @@ export default function RichContent({ blocks, inColumn = false, zoomable = false
         ? <ImageStack key={`${block.id}-stack`} items={slides} />
         : <figure className="pf-figure pf-video-portrait" key={block.id}><PortraitVideo id={videoSlide.id} title={videoSlide.title} aspect={aspect} /></figure>)
       index++
+      continue
+    }
+    if (!inColumn && instagramRow(block).length > 0) {
+      // Rows of posts (and the blank lines between them) become one unbroken grid of carousels.
+      const posts: string[] = []
+      let end = index
+      while (end < blocks.length && (instagramRow(blocks[end]).length > 0 || isEmptyParagraph(blocks[end]))) {
+        posts.push(...instagramRow(blocks[end]))
+        end++
+      }
+      content.push(<div className="pf-instagram-grid" key={block.id}>{posts.map(post => <InstagramPostEmbed key={post} permalink={post} bare />)}</div>)
+      index = end
       continue
     }
     const link = platformLink(block)

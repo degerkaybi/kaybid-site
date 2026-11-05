@@ -8,8 +8,11 @@ declare global {
   }
 }
 
-export default function InstagramPostEmbed({ permalink, showLink = true }: { permalink: string; showLink?: boolean }) {
+type Props = { permalink: string; showLink?: boolean; bare?: boolean }
+
+export default function InstagramPostEmbed({ permalink, showLink = true, bare = false }: Props) {
   useEffect(() => {
+    if (bare) return
     const processEmbeds = () => window.instgrm?.Embeds.process()
     let script = document.getElementById('instagram-embed-script') as HTMLScriptElement | null
 
@@ -24,7 +27,16 @@ export default function InstagramPostEmbed({ permalink, showLink = true }: { per
     script.addEventListener('load', processEmbeds)
     processEmbeds()
     return () => script?.removeEventListener('load', processEmbeds)
-  }, [permalink])
+  }, [permalink, bare])
+
+  // Bare: only the picture carousel. Instagram's own embed is cropped in CSS so the profile header and footer fall outside the frame.
+  if (bare) {
+    return (
+      <div className="pf-instagram-frame">
+        <iframe src={`${permalink}embed/`} title="Instagram carousel" loading="lazy" scrolling="no" allowFullScreen />
+      </div>
+    )
+  }
 
   return (
     <div className="pf-embed pf-instagram-embed">

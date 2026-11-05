@@ -13,6 +13,20 @@ import { getSilentSteps } from '@/lib/silent-steps'
 import { textLang } from '@/lib/locale'
 
 const pandaId = '22a39248-8fe5-80c8-aae6-fcdebd717fb8'
+const facesId = '22a39248-8fe5-8050-8c6f-d28fd81cb677'
+
+const blockText = (block: NotionBlock) => (((block[block.type] as { rich_text?: { plain_text?: string }[] } | undefined)?.rich_text) || []).map(part => part.plain_text || '').join('').trim()
+
+// Faces opens straight into its Instagram carousels: no lead picture, and no copied site menu or empty tail at the end.
+function facesBlocks(blocks: NotionBlock[]) {
+  const lead = blocks.findIndex(block => block.type === 'image')
+  // A lone Instagram embed is set as a one-post row so it gets the same bare carousel frame as the rest.
+  const kept = blocks
+    .filter((block, index) => index !== lead && !(block.type === 'paragraph' && /^Home\s*\|\s*About/.test(blockText(block))))
+    .map((block): NotionBlock => block.type === 'embed' ? { id: `${block.id}-row`, type: 'column_list', children: [{ id: `${block.id}-column`, type: 'column', children: [block] }] } : block)
+  while (kept.length && (kept[kept.length - 1].type === 'divider' || (kept[kept.length - 1].type === 'paragraph' && !blockText(kept[kept.length - 1])))) kept.pop()
+  return kept
+}
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -45,7 +59,8 @@ export default async function WorkPage({ params }: Props) {
   const plainHeader = work.page.parentId === voltaId && hasImage(work.page.blocks)
   // Panda opens straight into its text and film, without the cover animation and the lead-in excerpt above them.
   const bare = work.page.id === pandaId
-  const contentBlocks = gallery?.blocks || lead?.blocks || work.page.blocks
+  const faces = work.page.id === facesId
+  const contentBlocks = gallery?.blocks || lead?.blocks || (faces ? facesBlocks(work.page.blocks) : work.page.blocks)
   // ...and the film moves to the top.
   const video = bare ? contentBlocks.find(block => block.type === 'video') : undefined
   const blocks = video ? [video, ...contentBlocks.filter(block => block !== video)] : contentBlocks
@@ -59,7 +74,7 @@ export default async function WorkPage({ params }: Props) {
       </header>
       {silentSteps && <SubNav label="Silent Steps sections" current="series" tabs={[{ key: 'series', label: 'Silent Steps', href: work.href }, { key: 'story', label: 'More about the series', href: `${work.href}/story` }]} />}
       {work.page.id === eidolaId ? <EidolaLanding work={work} /> : silentSteps ? <SilentStepsContent content={silentSteps} /> : <>
-        {gallery ? <div className="pf-gallery"><ImageStack items={gallery.images} /></div> : !plainHeader && !bare && !isAddedWork(work.page.id) && (lead?.image || work.pageImage) && <div className="pf-detail-cover"><img src={lead?.image || work.pageImage || ''} alt={work.page.title} /></div>}
+        {gallery ? <div className="pf-gallery"><ImageStack items={gallery.images} /></div> : !plainHeader && !bare && !faces && !isAddedWork(work.page.id) && (lead?.image || work.pageImage) && <div className="pf-detail-cover"><img src={lead?.image || work.pageImage || ''} alt={work.page.title} /></div>}
         {work.excerpt && !gallery && !bare && <p className="pf-detail-lead">{work.excerpt}</p>}
         <div className="pf-detail-content"><RichContent blocks={blocks} showcase={work.page.id === voltaId} /></div>
       </>}
