@@ -225,6 +225,8 @@ html:has(.pf-home-hero) { scroll-behavior: smooth; }
 .pf-work-row-main { display: flex; flex-direction: column; gap: .2rem; min-width: 0; }
 .pf-work-row-title { font-size: clamp(1.05rem,1.3vw,1.45rem); line-height: 1.15; }
 .pf-card-title-note { color: var(--pf-muted); }
+/* In the page title the note sits on the heading's own block, so it takes the heading's colour. */
+.pf-detail-header h1 .pf-card-title-note { color: inherit; }
 .pf-work-row-series, .pf-work-row-tags, .pf-work-row-year { color: var(--pf-muted); font-size: .75rem; letter-spacing: .08em; }
 .pf-work-row-tags { text-transform: uppercase; letter-spacing: .1em; }
 .pf-work-row-year { text-align: right; }
@@ -577,8 +579,7 @@ html:has(.pf-home-hero) { scroll-behavior: smooth; }
 .pf-chip { display: inline-flex; align-items: center; gap: .7rem; padding: .6rem 1rem; border: 1px solid var(--pf-ink); font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; transition: background .2s, color .2s; }
 .pf-chip:hover { background: var(--pf-ink); color: var(--pf-on-ink); }
 .pf-rich-content > .pf-links, .pf-rich-content > .pf-actions { max-width: 780px; margin-left: auto; margin-right: auto; }
-.pf-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin: 3rem 0; }
-.pf-actions > .pf-child-page { margin: 0; }
+.pf-actions { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 1rem; margin: 3rem 0; }.pf-actions > .pf-child-page { margin: 0; }
 .pf-rich-content:not(.is-portrait) > .pf-block-heading.is-text { max-width: 780px; margin: 2rem auto 1.2rem; }
 .pf-hover-gif img.pf-hover-gif-play { position: absolute; inset: 0; visibility: hidden; }
 .pf-hover-gif img.pf-hover-gif-play[data-ready="true"] { visibility: visible; }

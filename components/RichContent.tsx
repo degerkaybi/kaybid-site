@@ -266,6 +266,29 @@ function platformLink(block: NotionBlock): { href: string; label: string } | nul
   }
 }
 
+// Volta: the two text pages sit under the intro text, right above the Instagram button; the "Listen" links move below the song catalogue.
+function arrangeShowcase(blocks: NotionBlock[]) {
+  const isPage = (block: NotionBlock) => block.type === 'child_page'
+  const catalogueStart = blocks.findIndex((block, index) => isPage(block) && !isPage(blocks[index - 1] || ({} as NotionBlock)) && blocks.slice(index).findIndex(item => !isPage(item)) > 2)
+  if (catalogueStart < 0) return blocks
+  const listenAt = blocks.findIndex(block => block.type === 'paragraph' && /^\W*Listen all paintings/i.test(plainText((block.paragraph as { rich_text?: RichPart[] } | undefined)?.rich_text)))
+  let listenEnd = listenAt + 1
+  while (listenAt >= 0 && listenEnd < blocks.length && platformLink(blocks[listenEnd])) listenEnd++
+  const listen = listenAt >= 0 ? blocks.slice(listenAt, listenEnd) : []
+  const pages = blocks.slice(0, catalogueStart).filter(isPage)
+  const rest = blocks.filter((block, index) => !listen.includes(block) && !(index < catalogueStart && isPage(block)))
+  const bookmark = rest.findIndex(block => block.type === 'bookmark')
+  if (bookmark >= 0) rest.splice(bookmark, 0, ...pages)
+  else rest.unshift(...pages)
+  const catalogueEnd = rest.findIndex((block, index) => isPage(block) && !isPage(rest[index - 1] || ({} as NotionBlock)) && rest.slice(index).findIndex(item => !isPage(item)) > 2)
+  if (catalogueEnd >= 0) {
+    let end = catalogueEnd
+    while (end < rest.length && isPage(rest[end])) end++
+    rest.splice(end, 0, ...listen)
+  } else rest.push(...listen)
+  return rest
+}
+
 // Volta: rows of image-only columns under "- GALLERY" become one slider.
 function galleryImages(blocks: NotionBlock[]) {
   if (!blocks.length || !blocks.every(block => block.type === 'column_list')) return []
@@ -283,7 +306,8 @@ export function splitGallery(blocks: NotionBlock[]): { images: Slide[]; blocks: 
   return { images: galleryImages(holder.children || []), blocks: blocks.filter(block => block !== holder) }
 }
 
-export default function RichContent({ blocks, inColumn = false, zoomable = false, portrait = false, hideCrumbs = false, showcase = false }: { blocks: NotionBlock[]; inColumn?: boolean; zoomable?: boolean; portrait?: boolean; hideCrumbs?: boolean; showcase?: boolean }) {
+export default function RichContent({ blocks: source, inColumn = false, zoomable = false, portrait = false, hideCrumbs = false, showcase = false }: { blocks: NotionBlock[]; inColumn?: boolean; zoomable?: boolean; portrait?: boolean; hideCrumbs?: boolean; showcase?: boolean }) {
+  const blocks = showcase && !inColumn ? arrangeShowcase(source) : source
   const content: React.ReactNode[] = []
   const cards = inColumn ? [] : blocks.flatMap(eidolonColumns)
   let gridPlaced = false
@@ -307,7 +331,6 @@ export default function RichContent({ blocks, inColumn = false, zoomable = false
   // Video first; the picture that used to open the slider now closes it.
   const slides = useStack ? [...(videoSlide ? [videoSlide] : []), ...images.slice(1), ...images.slice(0, 1)] : []
   const stackAt = !useStack ? -1 : videoSlide ? firstVideo : blocks.findIndex(block => stackImages(block).length > 0)
-  const deferred: React.ReactNode[] = []
   for (let index = 0; index < blocks.length;) {
     const block = blocks[index]
     if (portrait && !inColumn && (isEmptyParagraph(block) || block === credit || isImagePair(block) || (hideCrumbs && block.type === 'callout' && pageCrumbs(block).length > 0))) {
@@ -349,13 +372,12 @@ export default function RichContent({ blocks, inColumn = false, zoomable = false
       if (end - index > 2) {
         const pages = blocks.slice(index, end).flatMap(item => getPage(item.id) || [])
         content.push(<div className="pf-work-grid pf-catalogue" key={block.id}>{pages.map(item => <WorkCard key={item.id} work={{ id: item.id, title: item.title.trim(), href: getPageHref(item), image: getPageImage(item, true), tags: [], year: null, series: null }} />)}</div>)
-        if (deferred.length > 0) content.push(<div className="pf-actions" key={`${block.id}-actions`}>{deferred.splice(0)}</div>)
         index = end
         continue
       }
-      // The odd one or two sub-pages (concept text, etc.) wait until after the catalogue.
-      deferred.push(<Block key={block.id} block={block} zoomable={zoomable} />)
-      index++
+      // The odd one or two sub-pages (concept text, etc.) stay where they are, as buttons.
+      content.push(<div className="pf-actions" key={block.id}>{blocks.slice(index, end).map(item => <Block key={item.id} block={item} zoomable={zoomable} />)}</div>)
+      index = end
       continue
     }
     if (useStack && stackImages(block).length > 0) {
@@ -383,6 +405,5 @@ export default function RichContent({ blocks, inColumn = false, zoomable = false
     content.push(<Block key={block.id} block={block} inColumn={inColumn} zoomable={zoomable} />)
     index++
   }
-  if (deferred.length > 0) content.push(<div className="pf-actions" key="deferred-actions">{deferred}</div>)
   return <div className={`pf-rich-content${portrait && !inColumn ? ' is-portrait' : ''}`}>{content}</div>
 }
