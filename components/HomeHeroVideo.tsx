@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { ChevronDown, X } from 'lucide-react'
 import Link from 'next/link'
+import DocumentaryPlayer from '@/components/DocumentaryPlayer'
 
 const videoId = 'lyU31zPyY6I'
 const startTime = 28
@@ -54,12 +55,15 @@ export default function HomeHeroVideo() {
   return (
     <section className="pf-home-hero" aria-labelledby="home-hero-title" onPointerMove={moveLens} onPointerLeave={hideLens}>
       <div className="pf-home-hero-media" aria-hidden="true" ref={media}>
-        <iframe
-          src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&start=${startTime}&rel=0&modestbranding=1&playsinline=1`}
-          title="Silent Steps documentary background"
-          allow="autoplay; encrypted-media"
-          tabIndex={-1}
-        />
+        {/* Unmounted while the full documentary is open so the hidden copy is not playing for nothing. */}
+        {!isOpen && (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&start=${startTime}&rel=0&modestbranding=1&playsinline=1`}
+            title="Silent Steps documentary background"
+            allow="autoplay; encrypted-media"
+            tabIndex={-1}
+          />
+        )}
         <div className="pf-home-hero-blur" />
       </div>
 
@@ -85,12 +89,7 @@ export default function HomeHeroVideo() {
         <div className="pf-video-modal" role="dialog" aria-modal="true" aria-label="Kaybid full documentary" onClick={() => setIsOpen(false)}>
           <div className="pf-video-modal-content" onClick={event => event.stopPropagation()}>
             <button type="button" className="pf-video-modal-close" onClick={() => setIsOpen(false)} aria-label="Close video"><X size={28} aria-hidden="true" /></button>
-            <iframe
-              src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&controls=1&start=${startTime}&rel=0&playsinline=1`}
-              title="Kaybid full documentary"
-              allow="autoplay; encrypted-media; picture-in-picture"
-              allowFullScreen
-            />
+            <DocumentaryPlayer videoId={videoId} startTime={startTime} title="Kaybid full documentary" />
           </div>
         </div>
       )}

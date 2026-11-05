@@ -107,6 +107,19 @@
 .pf-video-modal { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 3vw; background: rgba(0,0,0,.86); }
 .pf-video-modal-content { position: relative; width: min(1200px,100%); aspect-ratio: 16/9; background: #000; box-shadow: 0 24px 80px rgba(0,0,0,.5); }
 .pf-video-modal-content iframe { width: 100%; height: 100%; border: 0; }
+.pf-doc-player { position: absolute; inset: 0; background: #000; }
+.pf-doc-player:fullscreen { width: 100vw; height: 100vh; }
+.pf-doc-player-frame, .pf-doc-player-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.pf-doc-player-shield { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: transparent; cursor: pointer; }
+/* Solid bands hide YouTube's title bar and its link / "More videos" buttons. */
+.pf-doc-player-edge { position: absolute; left: 0; right: 0; pointer-events: none; }
+.pf-doc-player-edge.is-top { top: 0; height: 14%; background: linear-gradient(#000 0,#000 60%,transparent); }
+.pf-doc-player-edge.is-bottom { bottom: 0; height: 22%; background: linear-gradient(transparent,#000 40%,#000); }
+.pf-doc-player-controls { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: .8rem; padding: .6rem clamp(12px,2vw,24px) .9rem; color: #fff; }
+.pf-doc-player-controls button { display: grid; place-items: center; width: 36px; height: 36px; padding: 0; border: 0; background: none; color: #fff; cursor: pointer; }
+.pf-doc-player-controls button:hover { color: var(--pf-accent); }
+.pf-doc-player-time { min-width: 3ch; font-size: .78rem; font-variant-numeric: tabular-nums; }
+.pf-doc-player-controls input[type="range"] { flex: 1; min-width: 0; accent-color: var(--pf-accent); cursor: pointer; }
 .pf-video-modal-close { position: absolute; top: -42px; right: 0; z-index: 1; border: 0; background: none; color: #fff; font-size: 2rem; line-height: 1; cursor: pointer; }
 
 main:has(.pf-home-hero) { padding-top: 0; }
