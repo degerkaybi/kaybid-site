@@ -673,8 +673,9 @@ html:has(.pf-home-hero) { scroll-behavior: smooth; }
 .pf-desk-open { display: inline-block; font-size: .75rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
 .pf-desk-resize { position: absolute; right: 0; bottom: 0; width: 18px; height: 18px; cursor: nwse-resize; touch-action: none; background: linear-gradient(135deg, transparent 50%, #fff 50%, #fff 56%, transparent 56%, transparent 68%, #fff 68%, #fff 74%, transparent 74%); }
 
-.pf-desk-dock { position: absolute; left: 50%; bottom: clamp(14px,2.4vw,28px); z-index: 2000; transform: translateX(-50%); width: max-content; max-width: calc(100% - 28px); height: 48px; display: flex; align-items: center; justify-content: safe center; gap: clamp(.6rem,1.4vw,1.4rem); padding: 0 clamp(14px,2vw,26px); overflow-x: auto; scrollbar-width: none; background: var(--pf-dock-bg); border: 1px solid var(--pf-line); box-shadow: 0 10px 30px rgba(0,0,0,.25); backdrop-filter: blur(16px); }
-.pf-desk-dock::-webkit-scrollbar { display: none; }
+.pf-desk-dock { position: absolute; left: 50%; bottom: clamp(14px,2.4vw,28px); z-index: 2000; transform: translateX(-50%); width: max-content; max-width: calc(100% - 28px); height: 48px; display: flex; align-items: center; justify-content: safe center; gap: clamp(.6rem,1.4vw,1.4rem); padding: 0 clamp(14px,2vw,26px); overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; touch-action: pan-x; scrollbar-width: thin; scrollbar-color: var(--pf-ink) transparent; background: var(--pf-dock-bg); border: 1px solid var(--pf-line); box-shadow: 0 10px 30px rgba(0,0,0,.25); backdrop-filter: blur(16px); }
+.pf-desk-dock::-webkit-scrollbar { height: 4px; }
+.pf-desk-dock::-webkit-scrollbar-thumb { background: var(--pf-ink); }
 .pf-desk-dock button { flex: none; border: 0; border-bottom: 1px solid transparent; background: none; padding: .55rem .1rem; font-size: .75rem; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; color: var(--pf-muted); cursor: pointer; transition: color .2s, border-color .2s; }
 .pf-desk-dock button:hover { color: var(--pf-ink); }
 .pf-desk-dock button.is-active { color: var(--pf-ink); border-color: var(--pf-accent); }

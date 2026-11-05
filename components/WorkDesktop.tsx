@@ -75,6 +75,7 @@ function arrange(works: DesktopWork[]): { x: number; y: number }[] {
 
 export default function WorkDesktop({ works, filters }: { works: DesktopWork[]; filters: string[] }) {
   const stageRef = useRef<HTMLDivElement>(null)
+  const dockRef = useRef<HTMLElement>(null)
   const topZ = useRef(1000)
   const iconZ = useRef(1)
   const moved = useRef(false)
@@ -113,6 +114,24 @@ export default function WorkDesktop({ works, filters }: { works: DesktopWork[]; 
   }, [])
 
   useEffect(() => () => clearTimeout(arrangeTimer.current), [])
+
+  // A mouse wheel only scrolls vertically, so map it onto the dock's horizontal overflow.
+  useEffect(() => {
+    const dock = dockRef.current
+    if (!dock) return
+    const onWheel = (event: WheelEvent) => {
+      if (dock.scrollWidth <= dock.clientWidth || Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return
+      event.preventDefault()
+      dock.scrollLeft += event.deltaY
+    }
+    dock.addEventListener('wheel', onWheel, { passive: false })
+    return () => dock.removeEventListener('wheel', onWheel)
+  }, [])
+
+  // Keep the active filter visible when the dock is narrower than its content.
+  useEffect(() => {
+    dockRef.current?.querySelector<HTMLElement>('button.is-active')?.scrollIntoView({ inline: 'nearest', block: 'nearest' })
+  }, [active])
 
   const toggleTidy = () => {
     clearTimeout(arrangeTimer.current)
@@ -328,7 +347,7 @@ export default function WorkDesktop({ works, filters }: { works: DesktopWork[]; 
         })}
       </div>
 
-      <nav className="pf-desk-dock" aria-label="Filter works">
+      <nav className="pf-desk-dock" aria-label="Filter works" ref={dockRef}>
         <button type="button" className={!active ? 'is-active' : ''} aria-pressed={!active} onClick={() => chooseFilter(null)}>All</button>
         {filters.map(filter => (
           <button
