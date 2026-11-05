@@ -77,6 +77,9 @@
 .pf-skip-link { position: absolute; left: 1rem; top: -5rem; z-index: 100; padding: .7rem 1rem; background: var(--pf-ink); color: var(--pf-on-ink) !important; }
 .pf-skip-link:focus { top: .7rem; }
 
+/* The header is sticky (in flow), so the legacy 80px offset on main only adds a blank band under it. */
+.pf-site main { padding-top: 0; }
+
 .pf-header { position: sticky; top: 0; z-index: 50; height: 72px; background: var(--pf-header-bg); border-bottom: 1px solid var(--pf-line); backdrop-filter: blur(14px); }
 .pf-header-inner { max-width: 1800px; height: 100%; margin: auto; padding: 0 clamp(20px,3vw,54px); display: flex; align-items: center; justify-content: space-between; }
 .pf-header-actions { display: flex; align-items: center; gap: .8rem; }
@@ -997,6 +1000,29 @@ main:has(> .pf-desk) { padding-top: 0; min-height: 0; }
   font-stretch: 100%;
   line-height: .95;
   letter-spacing: -.03em;
+}
+/* "All exhibitions" call-to-action on About */
+:root[data-theme='brutal'] .pf-site .pf-exhibitions-preview .pf-chip { padding: .8rem 1.3rem; border: var(--pf-bw) solid #161513; background: #FF4A1C; color: #161513; font-weight: 800; text-decoration: none; box-shadow: 5px 5px 0 #161513; transition: transform .08s, box-shadow .08s, background .08s; }
+:root[data-theme='brutal'] .pf-site .pf-exhibitions-preview .pf-chip:hover { background: #161513; color: #FF4A1C; }
+:root[data-theme='brutal'] .pf-site .pf-exhibitions-preview .pf-chip:active { transform: translate(5px, 5px); box-shadow: none; }
+
+/* Headings look like selected text: ink block, paper-coloured letters */
+:root[data-theme='brutal'] .pf-site .pf-page-hero h1,
+:root[data-theme='brutal'] .pf-site .pf-hero h1,
+:root[data-theme='brutal'] .pf-site .pf-detail-header h1,
+:root[data-theme='brutal'] .pf-site .pf-portrait-page > .pf-page-hero h1,
+:root[data-theme='brutal'] .pf-site .pf-section-intro h2,
+:root[data-theme='brutal'] .pf-site .pf-section-heading h2,
+:root[data-theme='brutal'] .pf-site .pf-rich-content h2.pf-block-heading,
+:root[data-theme='brutal'] .pf-site .pf-exhibitions-preview h2,
+:root[data-theme='brutal'] .pf-site .pf-press-preview h2,
+:root[data-theme='brutal'] .pf-site .pf-bio h2 {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  padding: .06em .12em .02em;
+  background: #161513;
+  color: #9DBF3B;
 }
 :root[data-theme='brutal'] .pf-site .pf-bookmark,
 :root[data-theme='brutal'] .pf-site .pf-silent-quote,
