@@ -20,7 +20,7 @@ function host(url) {
 
 const byHost = {}
 for (const item of media) byHost[host(item.url)] = (byHost[host(item.url)] || 0) + 1
-const failed = media.filter(item => !item.localPath)
+const failed = media.filter(item => item.error)
 function findMedia(blocks, mediaId) {
   for (const block of blocks) {
     const value = block[block.type]

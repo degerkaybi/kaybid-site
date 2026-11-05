@@ -5,7 +5,7 @@
   --secondary-text: #86868b;
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
-  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-main: var(--font-body), system-ui, sans-serif;
 }
 
 body.light-mode h1,
@@ -1789,7 +1789,7 @@ body.light-mode .thumbnail-item {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: 12px;
   border: 1px solid rgba(255,255,255,0.3);
   pointer-events: none;
 }
@@ -2188,7 +2188,7 @@ body.light-mode .broadcast-left-panel {
   gap: 0.3rem;
   padding: 0.24rem 0.6rem;
   border-radius: 6px;
-  font-size: 0.72rem;
+  font-size: .75rem;
   font-weight: 700;
   cursor: pointer;
   border: none;
@@ -2219,7 +2219,7 @@ body.light-mode .broadcast-left-panel {
 }
 
 .inline-status-badge {
-  font-size: 0.72rem;
+  font-size: .75rem;
   font-weight: 700;
   color: #059669;
 }
@@ -2417,7 +2417,7 @@ body.light-mode .broadcast-left-panel {
 }
 
 .row-match-chip {
-  font-size: 0.68rem;
+  font-size: .75rem;
   padding: 0.1rem 0.4rem;
   border-radius: 6px;
   font-weight: 600;
@@ -2772,7 +2772,7 @@ body.light-mode .broadcast-right-panel {
   border: 1px solid var(--glass-border);
   background: rgba(0, 0, 0, 0.5);
   color: var(--text-color);
-  font-family: monospace;
+  font-family: var(--font-body), system-ui, sans-serif;
 }
 
 .modal-actions {
@@ -3135,7 +3135,7 @@ body.light-mode .input-with-icon select {
   border: 1px solid var(--glass-border);
   background: rgba(0, 0, 0, 0.4);
   color: var(--text-color);
-  font-family: monospace;
+  font-family: var(--font-body), system-ui, sans-serif;
   font-size: 0.88rem;
 }
 
@@ -3395,7 +3395,7 @@ body.light-mode .input-with-icon select {
   gap: 0.3rem;
   padding: 0.2rem 0.5rem;
   border-radius: 8px;
-  font-size: 0.72rem;
+  font-size: .75rem;
   font-weight: 500;
 }
 
@@ -3549,7 +3549,7 @@ body.light-mode .input-with-icon select {
   right: 0;
   background: #ffd700;
   color: #000;
-  font-size: 0.68rem;
+  font-size: .75rem;
   font-weight: 800;
   padding: 0.2rem 0.6rem;
   border-bottom-left-radius: 10px;
@@ -3592,7 +3592,7 @@ body.light-mode .input-with-icon select {
 }
 
 .winner-badges .chip {
-  font-size: 0.7rem;
+  font-size: .75rem;
   padding: 0.15rem 0.5rem;
   border-radius: 6px;
   background: rgba(0, 230, 118, 0.15);
@@ -3712,7 +3712,7 @@ body.light-mode .art-ideas-giveaway-card {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.72rem;
+  font-size: .75rem;
   font-weight: 800;
   color: #e1306c;
   letter-spacing: 0.06em;

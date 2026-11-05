@@ -9,6 +9,7 @@ const mediaDir = path.join(root, 'public', 'media')
 const sourceDir = path.join(root, '.media-source')
 const mediaOnly = process.argv.includes('--media-only')
 const sanitizeOnly = process.argv.includes('--sanitize-only')
+const addMissing = process.argv.includes('--add-missing')
 const downloadMedia = process.argv.includes('--media') || mediaOnly
 
 const pageSeeds = [
@@ -85,7 +86,8 @@ function recordMedia(holder, key) {
   if (!value || !['file', 'external'].includes(value.type)) return
   const url = value[value.type]?.url
   if (!url) return
-  const id = createHash('sha256').update(url.split('?')[0]).digest('hex').slice(0, 20)
+  const stableUrl = value.type === 'file' ? url.split('?')[0] : url
+  const id = createHash('sha256').update(stableUrl).digest('hex').slice(0, 20)
   if (!media.has(id)) media.set(id, { id, url, source: value.type, mimeType: null, localPath: null, error: null })
   value.mediaId = id
   delete value.file
@@ -110,6 +112,13 @@ async function hydrateBlocks(blockId) {
   return blocks
 }
 
+function childPages(blocks) {
+  return blocks.flatMap(block => [
+    ...(block.type === 'child_page' ? [block.id] : []),
+    ...childPages(block.children || []),
+  ])
+}
+
 async function visitPage(pageId, parentId = null) {
   const id = dashed(pageId)
   if (pages[id]) return
@@ -128,20 +137,24 @@ async function visitPage(pageId, parentId = null) {
       blocks,
     }
     process.stdout.write(`page ${Object.keys(pages).length}: ${pages[id].title}\n`)
-    for (const block of blocks) {
-      if (block.type === 'child_page') await visitPage(block.id, id)
-    }
+    for (const childId of childPages(blocks)) await visitPage(childId, id)
   } catch (error) {
     errors.push({ id, message: String(error) })
     process.stderr.write(`failed ${id}: ${error}\n`)
   }
 }
 
-if (mediaOnly || sanitizeOnly) {
+if (mediaOnly || sanitizeOnly || addMissing) {
   const existing = JSON.parse(await readFile(path.join(outputDir, 'notion-export.json'), 'utf8'))
   Object.assign(pages, existing.pages)
   for (const [id, item] of Object.entries(existing.media)) media.set(id, item)
   errors.push(...existing.errors)
+  if (addMissing) {
+    // Pages nested inside columns/callouts were skipped by earlier exports; fetch just those.
+    for (const page of Object.values({ ...pages })) {
+      for (const childId of childPages(page.blocks)) await visitPage(childId, page.id)
+    }
+  }
 } else {
   for (const [, id] of pageSeeds) await visitPage(id)
 }

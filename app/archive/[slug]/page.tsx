@@ -2,24 +2,43 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import RichContent from '@/components/RichContent'
-import { getPageBySlug } from '@/lib/portfolio'
+import { Fragment } from 'react'
+import { eidolaId, getPage, getPageBySlug, getPageHref, getPageLabel, getSection, getWorkSlug, type PortfolioPage } from '@/lib/portfolio'
 import archive from '@/data/portfolio-content.json'
+import { textLang } from '@/lib/locale'
+
+// The page opens with its own "WWF Market x Kaybid Collaboration" heading, so the archive title above it is left out.
+const wwfPageId = '22a39248-8fe5-8019-9671-dd9af9e33095'
 
 type Props = { params: Promise<{ slug: string }> }
 
 export function generateStaticParams() {
-  return Object.values(archive.pages).map(page => {
-    const slug = page.title.toLocaleLowerCase('tr').replace(/ı/g, 'i').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 64)
-    return { slug: `${slug || 'work'}-${page.id.replaceAll('-', '').slice(0, 8)}` }
-  })
+  return Object.values(archive.pages).map(page => ({ slug: getWorkSlug(page as PortfolioPage) }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  return { title: getPageBySlug((await params).slug)?.title || 'Archive' }
+  const page = getPageBySlug((await params).slug)
+  return { title: page ? getPageLabel(page) : 'Archive' }
 }
 
 export default async function ArchivePage({ params }: Props) {
   const page = getPageBySlug((await params).slug)
   if (!page) notFound()
-  return <div className="pf-page-shell pf-detail-page"><nav className="pf-breadcrumbs" aria-label="Breadcrumb"><Link href="/works">Works</Link><span>/</span><span>{page.title}</span></nav><header className="pf-detail-header"><div><p className="pf-eyebrow">FROM THE ARCHIVE</p><h1>{page.title}</h1></div></header><div className="pf-detail-content"><RichContent blocks={page.blocks} /></div></div>
+  const parent = page.parentId ? getPage(page.parentId) : null
+  const portrait = parent?.parentId === eidolaId
+  // Every non-root ancestor, outermost first: Works / Eidōla / Browse All Eidōla / this page.
+  const trail: PortfolioPage[] = []
+  for (let ancestor = parent; ancestor?.parentId; ancestor = getPage(ancestor.parentId)) trail.unshift(ancestor)
+  // Pages that sit under the Editions section lead back to Editions, everything else to Works.
+  let top: PortfolioPage | null = parent
+  while (top?.parentId) top = getPage(top.parentId)
+  const inEditions = !!top && top.id === getSection('art-ideas')?.id
+  const header = <header className={`pf-detail-header${portrait ? ' is-compact' : ''}`}><div><p className="pf-eyebrow">FROM THE ARCHIVE</p><h1 lang={textLang(page.title)}>{getPageLabel(page)}</h1></div></header>
+  const content = <div className={`pf-detail-content${portrait ? ' is-compact' : ''}`}><RichContent blocks={page.blocks} portrait={portrait} hideCrumbs /></div>
+  return (
+    <div className="pf-page-shell pf-detail-page">
+      <nav className="pf-breadcrumbs" aria-label="Breadcrumb"><Link href={inEditions ? '/editions' : '/works'}>{inEditions ? 'Editions' : 'Works'}</Link>{trail.map(ancestor => <Fragment key={ancestor.id}><span>/</span><Link href={getPageHref(ancestor)}>{ancestor.title}</Link></Fragment>)}<span>/</span><span>{getPageLabel(page)}</span></nav>
+      {portrait ? <div className="pf-portrait-page">{header}{content}</div> : <>{page.id === wwfPageId ? null : header}{content}</>}
+    </div>
+  )
 }
