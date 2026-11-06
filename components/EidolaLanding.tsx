@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import RichContent from '@/components/RichContent'
+import EidolaGifSection from '@/components/EidolaGifSection'
 import { getPage, type NotionBlock, type Work } from '@/lib/portfolio'
 
 export function eidolaIntro(blocks: NotionBlock[]): string {
@@ -22,6 +23,8 @@ export default function EidolaLanding({ work }: { work: Work }) {
   return (
     <>
       {grid.length > 0 && <div className="pf-detail-content"><RichContent blocks={grid} /></div>}
+      <EidolaGifSection />
+      <EidolaGifSection group="halloween" />
       <div className="pf-eidola-about-nav">
         <Link href={`${work.href}/about`} className="pf-eidola-option is-primary">
           <span>THE SERIES</span>

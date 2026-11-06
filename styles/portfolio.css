@@ -500,6 +500,14 @@ html:has(.pf-home-hero) { scroll-behavior: smooth; }
 .pf-eidolon-info em { font-size: .75rem; font-style: normal; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; opacity: .85; }
 .pf-eidolon:focus-visible { outline: 3px solid var(--pf-accent); outline-offset: 3px; }
 
+/* Eidōla GIFs: the "GIF" section under the films, and a GIF's own page (the GIF, then the slider). */
+.pf-eidola-gifs { margin-top: clamp(48px,6vw,96px); }
+.pf-eidola-gifs .pf-eidolon-grid { margin-top: 0; }
+.pf-gif-page { display: grid; justify-items: center; }
+.pf-gif-figure { margin: 1rem 0 0; width: min(100%, 520px); background: var(--pf-image-bg); }
+.pf-gif-figure img { display: block; width: 100%; height: auto; }
+.pf-gif-page .pf-stack { width: 100%; margin-top: clamp(32px,4vw,64px); }
+
 .pf-video-portrait { display: block; margin: 2rem 0; }
 .pf-yt { position: relative; overflow: hidden; width: 100%; background: #000; color: #fff; cursor: pointer; outline-offset: -3px; }
 .pf-yt.is-fill { position: absolute; inset: 0; width: auto; }

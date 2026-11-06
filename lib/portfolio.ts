@@ -1,6 +1,7 @@
 import archive from '@/data/portfolio-content.json'
 import mediaUrls from '@/data/media-urls.json'
 import { addExtraEidola } from '@/lib/eidola-extra'
+import { addEidolaGifs } from '@/lib/eidola-gifs'
 import { addedWorks, removedWorkIds, workCatalog } from '@/lib/work-catalog'
 
 export type NotionBlock = {
@@ -371,6 +372,7 @@ function yearFrom(page: PortfolioPage): string | null {
 // The Eidōla on the "Browse All Eidōla" page, each with its own page and the picture shown on that page.
 export const browseEidolaId ='22a39248-8fe5-805a-9be0-daa6cad580cf'
 addExtraEidola(data, browseEidolaId)
+addEidolaGifs(data, browseEidolaId)
 let eidolonWorks: Work[] | null = null
 
 const eidolonExcerpt = (callout: NotionBlock) => richTextPlain((callout.callout as { rich_text?: unknown } | undefined)?.rich_text).replace(/^[-\s]+|[-\s]+$/g, '')

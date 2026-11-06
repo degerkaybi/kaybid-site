@@ -1,0 +1,2118 @@
+{
+  "source": "KBD/Eidola/SEZON",
+  "seasons": [
+    "S1",
+    "S2"
+  ],
+  "items": [
+    {
+      "id": "c6c0a003-9902-4f33-8fbc-763410bfa415",
+      "season": "S1",
+      "folder": "KBD/Eidola/SEZON/S1/-Charm",
+      "title": "Charm",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978688/Charm-V2_ffdqml.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977488/A1_jdfno6.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977500/A2_ls8zjd.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977488/A3_quszfu.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977501/A4_bwxswd.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977502/A5_smr2ri.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977496/A6_pyxzeu.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977493/A7_tu81vm.jpg",
+          "width": 1612,
+          "height": 2279
+        }
+      ]
+    },
+    {
+      "id": "ddb295bd-1dec-4cc0-89ac-e8507d5a3261",
+      "season": "S1",
+      "folder": "KBD/Eidola/SEZON/S1/-Conscience",
+      "title": "Conscience",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978680/FAVOR_mqeb8x.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977504/E1-_1_dvsyle.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977501/E1-_2_yrowzf.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977488/E1-_3_cijjrf.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977492/E1-_4_qzxleb.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977493/E1-_5_lcffok.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977489/E1-_6_dau9bk.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977483/E1-_7_lpb7cy.jpg",
+          "width": 1612,
+          "height": 2279
+        }
+      ]
+    },
+    {
+      "id": "1bf834bb-1887-4861-84f5-21a6dc8a939e",
+      "season": "S1",
+      "folder": "KBD/Eidola/SEZON/S1/-Emotion",
+      "title": "Emotion",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978703/EMOTION-V2_saeapl.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977808/Eidola_8_vfhtbs.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977807/Eidola_15_exlg6t.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977809/Eidola_16_f3kfpb.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977808/Eidola_17_xzk65p.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977618/Eidola_18_bbbpts.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977614/Eidola_19_wkkhq9.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977613/Eidola_20_utdyu0.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977511/Eidola_21_qhbxin.jpg",
+          "width": 1612,
+          "height": 2279
+        }
+      ]
+    },
+    {
+      "id": "5dc41b75-adb2-4f09-8981-6c2749142c94",
+      "season": "S1",
+      "folder": "KBD/Eidola/SEZON/S1/-Enthusiasm",
+      "title": "Enthusiasm",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978707/FEEL-v2_lltxpr.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977483/Eidola_22_bmiqhe.jpg",
+          "width": 1487,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977486/Eidola_23_famted.jpg",
+          "width": 1487,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977489/Eidola_24_rfkbls.jpg",
+          "width": 1487,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977491/Eidola_25_boz74j.jpg",
+          "width": 1487,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977500/Eidola_26_vwysbm.jpg",
+          "width": 1487,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977497/Eidola_27_i5e8yj.jpg",
+          "width": 1487,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977504/Eidola_28_gnrchq.jpg",
+          "width": 1592,
+          "height": 2246
+        }
+      ]
+    },
+    {
+      "id": "f98c5394-cb67-4aee-8fb4-8581b661643b",
+      "season": "S1",
+      "folder": "KBD/Eidola/SEZON/S1/-EQ",
+      "title": "EQ",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978712/Ape-V2_k8oslr.gif",
+        "width": 714,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977811/Eidola_29_junthy.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977809/Eidola_30_y5txek.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977809/Eidola_31_tc0uyy.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977853/Eidola_32_azopjt.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977851/Eidola_33_egjlah.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977851/Eidola_34_o7rqqb.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977843/Eidola_35_mvo0uh.jpg",
+          "width": 1488,
+          "height": 2104
+        }
+      ]
+    },
+    {
+      "id": "792e1609-cdcb-43d2-811e-aedfccfca46a",
+      "season": "S1",
+      "folder": "KBD/Eidola/SEZON/S1/-Essance",
+      "title": "Essance",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978706/ESSENCE-V2_kmqq4u.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977843/Eidola_36_dn4eom.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977845/Eidola_37_e8ogne.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977846/Eidola_38_n1g3wc.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977844/Eidola_39_ox9dgw.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977844/Eidola_40_gd42he.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977848/Eidola_41_o9df8z.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977847/Eidola_42_r0zixv.jpg",
+          "width": 1488,
+          "height": 2104
+        }
+      ]
+    },
+    {
+      "id": "5714fc36-0816-404f-869d-4be4cbce0b3c",
+      "season": "S1",
+      "folder": "KBD/Eidola/SEZON/S1/-jungle bogie",
+      "title": "jungle bogie",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978706/GROWTH-V2_saukuh.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977848/Eidola_43_asbcz3.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977847/Eidola_44_s8klrk.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977848/Eidola_45_jxroaz.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977853/Eidola_46_x8aprt.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977852/Eidola_47_pef82l.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977848/Eidola_48_qss0tw.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977853/Eidola_49_bdp87j.jpg",
+          "width": 1488,
+          "height": 2104
+        }
+      ]
+    },
+    {
+      "id": "196c4259-f077-4380-8fbe-998e216bffa1",
+      "season": "S1",
+      "folder": "KBD/Eidola/SEZON/S1/-Love brain",
+      "title": "Love brain",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978688/1-skl-V2_pv6twq.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977646/Eidola_50_roqd1k.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977797/Eidola_51_szi97e.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977857/Eidola_52_jmffzd.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977858/Eidola_53_r5t1iw.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977857/Eidola_54_ogyxjn.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977858/Eidola_55_do2ov0.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977858/Eidola_56_qqwdky.jpg",
+          "width": 1488,
+          "height": 2104
+        }
+      ]
+    },
+    {
+      "id": "a09597e5-5d18-4f45-8f00-eb71aefc3aad",
+      "season": "S1",
+      "folder": "KBD/Eidola/SEZON/S1/-NoName",
+      "title": "NoName",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978684/1-3-V2_xu4fjt.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977858/Eidola_57_f0ivq3.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977860/Eidola_58_em9i0c.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977863/Eidola_59_cihelw.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977864/Eidola_60_aas8zj.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977864/Eidola_61_puhele.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977864/Eidola_62_ydiwe5.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977866/Eidola_63_hnv6g3.jpg",
+          "width": 1488,
+          "height": 2104
+        }
+      ]
+    },
+    {
+      "id": "e52a3ab0-2a8c-4e89-89e2-aa39c8c71a5a",
+      "season": "S1",
+      "folder": "KBD/Eidola/SEZON/S1/OLD LOVE",
+      "title": "OLD LOVE",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978712/Love-V2_t0iqer.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977803/A1_qxbieo.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977803/A2_zgyklb.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977804/A3_cktp6l.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978465/A4_ntehx8.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978465/A5_zm11ul.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978465/A6_c3kok8.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978467/A7_g9e46o.jpg",
+          "width": 2480,
+          "height": 3507
+        }
+      ]
+    },
+    {
+      "id": "f1331b60-d502-4ab3-8325-f4bacee1636c",
+      "season": "S1",
+      "folder": "KBD/Eidola/SEZON/S1/-Painter",
+      "title": "Painter",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978707/PAINTER-V2_ibtfyr.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977866/Eidola_64_fvbsay.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977868/Eidola_65_gcvm9q.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977869/Eidola_66_zilcad.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977869/Eidola_67_sgeqgn.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977870/Eidola_68_rchvvw.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977870/Eidola_69_rjbdkk.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977873/Eidola_70_ktxejf.jpg",
+          "width": 1488,
+          "height": 2104
+        }
+      ]
+    },
+    {
+      "id": "f281279f-c624-46b4-8eaf-feb3ba43e631",
+      "season": "S1",
+      "folder": "KBD/Eidola/SEZON/S1/Rêverie",
+      "title": "Rêverie",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978714/DREAM-V2_abooru.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977511/Eidola_8_i8nlc8.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977615/Eidola_9_cinwaa.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977613/Eidola_10_qhoq5c.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977614/Eidola_11_tam8yy.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977612/Eidola_12_du0csn.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977489/Eidola_13_krmosg.jpg",
+          "width": 1612,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977803/Eidola_14_j6kxnz.jpg",
+          "width": 1612,
+          "height": 2279
+        }
+      ]
+    },
+    {
+      "id": "7e78b0cc-3946-40e6-8dcf-bcb7174c33ec",
+      "season": "S1",
+      "folder": "KBD/Eidola/SEZON/S1/-Ritim",
+      "title": "Ritim",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978706/RHYTHM-V2_ser3jw.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977873/Eidola_71_to2kwe.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977873/Eidola_72_boq4me.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977874/Eidola_73_irv5kz.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977874/Eidola_74_hryh7w.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977874/Eidola_75_ecozzz.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977874/Eidola_76_hxv6af.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977878/Eidola_77_kyynsj.jpg",
+          "width": 2474,
+          "height": 3483
+        }
+      ]
+    },
+    {
+      "id": "14429211-acf9-41ae-8808-2a69815fa320",
+      "season": "S1",
+      "folder": "KBD/Eidola/SEZON/S1/-Seed",
+      "title": "Seed",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978701/Seed_gfa4gu.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977510/seed1_ibo1fl.jpg",
+          "width": 1487,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977505/seed2_dufnks.jpg",
+          "width": 1487,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977505/seed3_jy7sug.jpg",
+          "width": 1487,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977505/seed4_yxexwt.jpg",
+          "width": 1487,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977488/seed5_lqabmb.jpg",
+          "width": 1487,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977510/seed6_q6tdwo.jpg",
+          "width": 1487,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977880/seed7_xiaffu.jpg",
+          "width": 1061,
+          "height": 1500
+        }
+      ]
+    },
+    {
+      "id": "1b4c7c06-a61d-4be3-8443-79c68c454d08",
+      "season": "S1",
+      "folder": "KBD/Eidola/SEZON/S1/-Serenity",
+      "title": "Serenity",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978698/Sr-v2_w8zjnm.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977798/Eidola_85_gfycbb.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977802/Eidola_86_jgsqey.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977880/Eidola_87_fgakjs.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977881/Eidola_88_r3rbqb.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977882/Eidola_89_f6oq7z.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977916/Eidola_90_cjmmbm.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978454/Eidola_91_aw5bfa.jpg",
+          "width": 1488,
+          "height": 2104
+        }
+      ]
+    },
+    {
+      "id": "8155b152-5f50-4303-876c-c12c5d747d6e",
+      "season": "S1",
+      "folder": "KBD/Eidola/SEZON/S1/-Singer",
+      "title": "Singer",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978707/SINGER-V2_ftxi0c.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978449/Eidola_92_ibyqpe.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978454/Eidola_93_xeumjw.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978448/Eidola_94_uwuouy.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978448/Eidola_95_ntlofd.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978455/Eidola_96_u7zhu3.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978449/Eidola_97_tnmonf.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978449/Eidola_98_tg5hrt.jpg",
+          "width": 1488,
+          "height": 2104
+        }
+      ]
+    },
+    {
+      "id": "ea475fc3-9673-416e-82b4-7dc39643cfb7",
+      "season": "S1",
+      "folder": "KBD/Eidola/SEZON/S1/-Spring",
+      "title": "Spring",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978714/SPRING-V2_kv3xfe.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978451/Eidola_99_qrkska.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978450/Eidola_100_zg8l90.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978450/Eidola_101_zmctat.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978450/Eidola_102_nqln0r.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978451/Eidola_103_nmwyg0.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978451/Eidola_104_wyu2ls.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978452/Eidola_105_wpemiu.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978704/IMG_20210711_0043_mgpxr6.jpg",
+          "width": 4960,
+          "height": 7015
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978697/IMG_20210711_0044_tyel2n.jpg",
+          "width": 4960,
+          "height": 7015
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978691/IMG_20210711_0045_vlg41f.jpg",
+          "width": 4960,
+          "height": 7015
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978701/IMG_20210711_0046_ti5fl2.jpg",
+          "width": 4960,
+          "height": 7015
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978691/IMG_20210711_0047_y53lx0.jpg",
+          "width": 4960,
+          "height": 7015
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978695/IMG_20210711_0048_ngqua6.jpg",
+          "width": 4960,
+          "height": 7015
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978709/IMG_20210711_0049_pwgryu.jpg",
+          "width": 4960,
+          "height": 7015
+        }
+      ]
+    },
+    {
+      "id": "6074329d-beaf-419b-88fd-86f70e823f04",
+      "season": "S1",
+      "folder": "KBD/Eidola/SEZON/S1/-Synestesic",
+      "title": "Synestesic",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978713/HDL-v2_btfzkw.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977803/Eidola_106_zrluiq.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977798/Eidola_107_dsdkvb.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977807/Eidola_108_ugkudn.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978459/Eidola_109_fnkbgm.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978460/Eidola_110_tkuvys.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978460/Eidola_111_e3xnm2.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978458/Eidola_112_cyvqdz.jpg",
+          "width": 1488,
+          "height": 2104
+        }
+      ]
+    },
+    {
+      "id": "5d47c9c8-8a2b-43f9-878a-9f141c053f12",
+      "season": "S1",
+      "folder": "KBD/Eidola/SEZON/S1/-Trust",
+      "title": "Trust",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978689/Trust_cznwlx.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977798/Eidola_113_vwyvxh.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977802/Eidola_114_gepzr2.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977804/Eidola_115_vedmwv.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978458/Eidola_116_xz9p3o.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978459/Eidola_117_tpbww9.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978459/Eidola_118_hgnzhl.jpg",
+          "width": 1488,
+          "height": 2104
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978459/Eidola_119_hjqarj.jpg",
+          "width": 1488,
+          "height": 2104
+        }
+      ]
+    },
+    {
+      "id": "691cdc3c-5638-4b70-8c02-b85973ee6d43",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/xxx-Anger_By_Kaybid",
+      "title": "Anger",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978728/Anger_By_Kaybid_arazyy.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978617/Ang_1_n4m4c1.jpg",
+          "width": 1240,
+          "height": 1754
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978714/Ang_2_ey55mx.jpg",
+          "width": 2480,
+          "height": 3508
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978617/Ang_3_cxo4i2.jpg",
+          "width": 1240,
+          "height": 1754
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978617/Ang_4_jlvenb.jpg",
+          "width": 1240,
+          "height": 1754
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978623/Ang_5_fdyo4r.jpg",
+          "width": 1240,
+          "height": 1754
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978622/Ang_6_rvx7yp.jpg",
+          "width": 1240,
+          "height": 1754
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978622/Ang_7_pgqibx.jpg",
+          "width": 1240,
+          "height": 1754
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978623/Ang_8_ox6nev.jpg",
+          "width": 1240,
+          "height": 1754
+        }
+      ]
+    },
+    {
+      "id": "c276be26-00c2-47b3-8f03-e0a0d657b199",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/Atom_by_Kaybid",
+      "title": "Atom",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978712/Atom_by_Kaybid_krso3b.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977545/Atom_1_i1pepi.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977614/Atom_2_bxykks.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977797/Atom_3_qiz426.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977613/Atom_4_s15qql.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977799/Atom_5_gdob87.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977799/Atom_6_sxpmpz.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977802/Atom_7_bacekm.jpg",
+          "width": 1603,
+          "height": 2243
+        }
+      ]
+    },
+    {
+      "id": "3c4bcdee-4676-44b7-8aa2-638b99472d26",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/Caution_By_Kaybid",
+      "title": "Caution",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978713/Caution_By_Kaybid_tsuxi1.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977512/Caut_1_zd31vy.jpg",
+          "width": 1612,
+          "height": 2278
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977510/Caut_2_uflauo.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977617/Caut_3_xxe2va.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793977797/Caut_4_szms7h.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978460/Caut_5_oh0yol.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978465/Caut_6_sxauzy.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978466/Caut_7_fgm63o.jpg",
+          "width": 1612,
+          "height": 2280
+        }
+      ]
+    },
+    {
+      "id": "1e8562c8-2a5e-48c6-8653-492d8f21c6c3",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/Contact_By_Kaybid",
+      "title": "Contact",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978730/Light_By_Kaybid_lpcndj.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978469/Li_1_gvtukz.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978470/Li_2_py70xt.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978470/Li_3_vxonhz.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978470/Li_4_foqqro.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978470/Li_5_okgtyw.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978472/Li_6_iajzv2.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978473/Li_7_j0frn1.jpg",
+          "width": 1592,
+          "height": 2246
+        }
+      ]
+    },
+    {
+      "id": "245e9ee8-a703-453b-8a5b-9ec0e0a588d2",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/zz-Ebony",
+      "title": "Ebony",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978735/IMG_20210929_0126_mw1gdl.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978623/Bon_1_t9bwcw.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978654/Bon_2_qcg1fc.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978659/Bon_3_i2ri96.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978664/Bon_4_fqvn7u.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978665/Bon_5_lxfscr.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978665/Bon_6_vcuxum.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978664/Bon_7_tsgzb0.jpg",
+          "width": 1612,
+          "height": 2280
+        }
+      ]
+    },
+    {
+      "id": "50e483c4-f9d2-45e9-8383-ac2e71da5e4e",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/Ecstasy_By_Kaybid",
+      "title": "Ecstasy",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978729/Ecstasy_By_Kaybid_lz5kms.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978475/Ecsta_1_ucemrd.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978475/Ecsta_2_gim6qu.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978476/Ecsta_3_epxicd.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978476/Ecsta_4_g3ehk2.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978476/Ecsta_5_xyujpw.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978477/Ecsta_6_tasnvo.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978477/Ecsta_7_k3svgj.jpg",
+          "width": 1598,
+          "height": 2243
+        }
+      ]
+    },
+    {
+      "id": "1af8e9f7-7702-4a5d-800c-e6aebebc9573",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/Edilon_By_Kaybid",
+      "title": "Edilon",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978745/Edilon_By_Kaybid_zvnjok.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978525/Hie_1_wefl2u.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978526/Hie_2_bjr997.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978526/Hie_3_qmvapm.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978526/Hie_4_zzadfo.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978527/Hie_5_fd7nk4.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978529/Hie_6_yibdai.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978529/Hie_7_y265ky.jpg",
+          "width": 1603,
+          "height": 2259
+        }
+      ]
+    },
+    {
+      "id": "36f290ee-8819-413c-868c-3bcfe10f96be",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/Evil_By_Kaybid",
+      "title": "Evil",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978724/Evil_By_Kaybid_jisk4t.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978530/Fur_1_q2cvdo.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978530/Fur_2_dpsnky.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978532/Fur_3_e3lnhm.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978532/Fur_4_ltjve9.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978533/Fur_5_whpweq.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978533/Fur_6_pyqafy.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978533/Fur_7_q5av1a.jpg",
+          "width": 1000,
+          "height": 1408
+        }
+      ]
+    },
+    {
+      "id": "d20ee674-aa9e-4489-8e79-31b7cd55adaa",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/Fire_By_Kaybid",
+      "title": "Fire",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978730/Fire_By_Kaybid_wrmewc.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978537/Fire_1_aabyik.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978537/Fire_2_vzs8j4.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978537/Fire_3_jvuebm.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978537/Fire_4_csa2vj.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978538/Fire_5_kehiys.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978538/Fire_6_ef99va.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978538/Fire_7_v51d2y.jpg",
+          "width": 1612,
+          "height": 2280
+        }
+      ]
+    },
+    {
+      "id": "ef5a2bd7-6a39-4094-89cf-870b923f081f",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/Harmony_By_Kaybid",
+      "title": "Harmony",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978737/Harmony_By_Kaybid_nkgdod.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978543/Harm_1_ujvvrx.jpg",
+          "width": 1592,
+          "height": 2257
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978542/Harm_2_sjlftl.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978543/Harm_3_m6tvuf.jpg",
+          "width": 1598,
+          "height": 2251
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978543/Harm_4_axeccj.jpg",
+          "width": 1603,
+          "height": 2265
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978543/Harm_5_gttmtl.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978544/Harm_6_d96lju.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978547/Harm_7_cd79xe.jpg",
+          "width": 1612,
+          "height": 2280
+        }
+      ]
+    },
+    {
+      "id": "aa2fc2a2-d310-4b62-887b-75567a7c07de",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/Love_Heart_by_Kaybid",
+      "title": "Love Heart",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978732/Love_Heart_by_Kaybid_uelcyq.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978547/love_heart_1_ehzpbu.jpg",
+          "width": 967,
+          "height": 1368
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978548/love_heart_2_thbi51.jpg",
+          "width": 967,
+          "height": 1368
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978548/love_heart_3_lqoiwj.jpg",
+          "width": 967,
+          "height": 1368
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978552/love_heart_4_okktfe.jpg",
+          "width": 967,
+          "height": 1368
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978548/love_heart_5_o9ziip.jpg",
+          "width": 967,
+          "height": 1368
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978552/love_heart_6_qhmy34.jpg",
+          "width": 967,
+          "height": 1368
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978552/love_heart_7_frmmfg.jpg",
+          "width": 967,
+          "height": 1368
+        }
+      ]
+    },
+    {
+      "id": "b5e0f9a9-2645-4700-88bd-b7b028526372",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/Mycelia_by_Kaybid",
+      "title": "Mycelia",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978737/Mycelia_anumzc.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978552/Anx_1_uga2rf.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978553/Anx_2_zb20ih.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978554/Anx_3_s41psy.jpg",
+          "width": 1587,
+          "height": 2235
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978556/Anx_4_yz7hte.jpg",
+          "width": 1588,
+          "height": 2251
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978557/Anx_5_lfpoxg.jpg",
+          "width": 1589,
+          "height": 2251
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978557/Anx_6_kxw6v7.jpg",
+          "width": 1604,
+          "height": 2246
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978557/Anx_7_iwlxwr.jpg",
+          "width": 1592,
+          "height": 2243
+        }
+      ]
+    },
+    {
+      "id": "a8b2fa94-66a8-4a39-89c9-c86ea909bf4a",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/Persevere_By_Kaybid",
+      "title": "Persevere",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978722/Persevere_By_Kaybid_bfrnt8.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978557/Pers_1_kufmka.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978558/Pers_2_ztje74.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978558/Pers_3_kzj1gu.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978572/Pers_4_gveswk.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978572/Pers_5_oemuk2.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978572/Pers_6_t2eltf.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978652/Pers_7_qnqryf.jpg",
+          "width": 1612,
+          "height": 2280
+        }
+      ]
+    },
+    {
+      "id": "7efe2ed5-3321-4777-8b33-dd2f361d5b8c",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/Persona_by_Kaybid",
+      "title": "Persona",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978736/Shadow_by_Kaybid_vxqpcw.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978573/Shad_1_go2nj3.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978573/Shad_2_apa3gz.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978573/Shad_3_c9li3y.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978573/Shad_4_oetupj.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978577/Shad_5_iexmh8.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978577/Shad_6_ltkda8.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978577/Shad_7_xknzj7.jpg",
+          "width": 1612,
+          "height": 2280
+        }
+      ]
+    },
+    {
+      "id": "9169f511-47f4-45bd-8463-3ac6d97e4e5e",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/Rest_By_Kaybid",
+      "title": "Rest",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978732/Rest_By_Kaybid_oxnkuh.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978578/Res_1_dztf21.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978578/Res_2_zzl7br.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978581/Res_3_s3j6j2.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978581/Res_4_dy0dnm.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978581/Res_5_hepdcx.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978581/Res_6_uw4nbv.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978582/Res_7_ly61mo.jpg",
+          "width": 1612,
+          "height": 2280
+        }
+      ]
+    },
+    {
+      "id": "d2ec3ef5-a044-4c23-8a05-a15abad0d496",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/zz-Skull",
+      "title": "Skull",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978743/SKULL_pa6hbc.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978629/Skl_1_jpemxr.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978629/Skl_2_dfiyel.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978630/Skl_3_gyiqdm.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978630/Skl_4_v8icgh.jpg",
+          "width": 1603,
+          "height": 2251
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978631/Skl_5_vnqtxm.jpg",
+          "width": 1606,
+          "height": 2260
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978631/Skl_6_w4lsui.jpg",
+          "width": 1604,
+          "height": 2243
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978634/Skl_7_nxv8pm.jpg",
+          "width": 1599,
+          "height": 2240
+        }
+      ]
+    },
+    {
+      "id": "85d909f7-e07f-4cd7-8ad5-e8b7fba1dcc9",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/Trust_By_Kaybid",
+      "title": "Trust",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978737/Trust_By_Kaybid_wfjl3l.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978585/Tru_1_rr0ctb.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978585/Tru_2_nwfzgz.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978585/Tru_3_bglord.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978586/Tru_4_bvucnd.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978588/Tru_5_ysuizu.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978588/Tru_6_rldfvx.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978652/Tru_7_jikpiu.jpg",
+          "width": 1598,
+          "height": 2254
+        }
+      ]
+    },
+    {
+      "id": "ea6b5fba-bcbf-4752-8efa-f8a7fba38111",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/Twinkle_By_Kaybid",
+      "title": "Twinkle",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978738/Twinkle_By_Kaybid_qxejoh.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978589/Pip_1_mjhmzl.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978589/Pip_2_ytoawg.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978590/Pip_3_uwdc81.jpg",
+          "width": 1592,
+          "height": 2259
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978590/Pip_4_tjkzzw.jpg",
+          "width": 1585,
+          "height": 2235
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978592/Pip_5_isaufu.jpg",
+          "width": 1600,
+          "height": 2238
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978594/Pip_6_w5ghbi.jpg",
+          "width": 1603,
+          "height": 2232
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978593/Pip_7_d2sjpk.jpg",
+          "width": 1589,
+          "height": 2229
+        }
+      ]
+    },
+    {
+      "id": "891914ca-c2c7-406c-813b-8fef1173ca9b",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/U+1F92A_by_Kaybid",
+      "title": "U+1F92A",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978724/U_1F92A_by_Kaybid_xwozge.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978606/U_1F92A_1_w8w2e7.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978607/U_1F92A_2_eigqvs.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978606/U_1F92A_3_pz2m9g.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978607/U_1F92A_4_mlbr7w.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978608/U_1F92A_5_jsi51a.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978607/U_1F92A_6_crty9k.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978611/U_1F92A_7_gyoo4z.jpg",
+          "width": 1612,
+          "height": 2280
+        }
+      ]
+    },
+    {
+      "id": "35d52ca6-ea2f-455d-8797-9833d80ac063",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/U+1F479_By_Kaybid",
+      "title": "U+1F479",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978724/U1F479_By_Kaybid_mas3ge.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978594/U_1F479_1_oynnzg.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978594/U_1F479_2_eww3bq.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978594/U_1F479_3_n8hly4.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978594/U_1F479_4_zkueqt.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978595/U_1F479_5_u51fo3.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978599/U_1F479_6_ulcqwl.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978599/U_1F479_7_ki65ri.jpg",
+          "width": 1612,
+          "height": 2280
+        }
+      ]
+    },
+    {
+      "id": "962dd5e0-3bf7-46d8-880f-6338c6e2a997",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/U+1F631_By_Kaybid",
+      "title": "U+1F631",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978736/U_1F631_By_Kaybid_ifb61b.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978600/U_1F631_1_axkj9w.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978600/U_1F631_2_p913mu.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978600/U_1F631_3_rpzhir.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978600/U_1F631_4_usiu3i.jpg",
+          "width": 1611,
+          "height": 2279
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978601/U_1F631_5_dcs7fd.jpg",
+          "width": 1572,
+          "height": 2228
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978606/U_1F631_6_hxyqtk.jpg",
+          "width": 1588,
+          "height": 2243
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978601/U_1F631_7_rpwnkj.jpg",
+          "width": 1590,
+          "height": 2236
+        }
+      ]
+    },
+    {
+      "id": "7cb80e05-fd80-448b-84f8-a084a8aa5e41",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/Voice_By_Kaybid",
+      "title": "Voice",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978722/Voice_By_Kaybid_gjs9cv.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978652/Vo_1_ajfafy.jpg",
+          "width": 3224,
+          "height": 4560
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978652/Vo_2_kaz3j5.jpg",
+          "width": 3224,
+          "height": 4560
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978653/Vo_3_qrud1g.jpg",
+          "width": 3224,
+          "height": 4560
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978653/Vo_4_rijxsq.jpg",
+          "width": 3224,
+          "height": 4560
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978658/Vo_5_p2o2pj.jpg",
+          "width": 3224,
+          "height": 4560
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978670/Vo_6_mxy2ar.jpg",
+          "width": 3224,
+          "height": 4560
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978697/Vo_7_ntosmh.jpg",
+          "width": 3206,
+          "height": 4476
+        }
+      ]
+    },
+    {
+      "id": "85d4488e-550c-4834-8882-c07edb00cb31",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/Water_By_Kaybid",
+      "title": "Water",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978736/Water_By_Kaybid_nl3jot.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978612/Water_1_vbw9jp.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978612/Water_2_cuxflv.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978612/Water_3_v4ngxs.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978612/Water_4_lirpvf.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978616/Water_5_nbtchq.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978616/Water_6_bw2hkh.jpg",
+          "width": 1612,
+          "height": 2280
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978616/Water_7_if6m7u.jpg",
+          "width": 1612,
+          "height": 2280
+        }
+      ]
+    },
+    {
+      "id": "676e9cac-eb0e-459a-83c4-d2d034219e55",
+      "season": "S2",
+      "folder": "KBD/Eidola/SEZON/S2/zz-Yeşil Surat",
+      "title": "Yeşil Surat",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978736/YE%C5%9E%C4%B0L-SURAT_k61xmm.gif",
+        "width": 500,
+        "height": 707
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978635/A128_ndhduh.jpg",
+          "width": 2096,
+          "height": 2964
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978635/A129_fko8iy.jpg",
+          "width": 2096,
+          "height": 2964
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978635/A130_riojes.jpg",
+          "width": 2096,
+          "height": 2964
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978635/A131_tlx02y.jpg",
+          "width": 2096,
+          "height": 2964
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978636/A132_tjwbsw.jpg",
+          "width": 2096,
+          "height": 2964
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978639/A133_xmrdr9.jpg",
+          "width": 2096,
+          "height": 2964
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978639/A134_y1bqkh.jpg",
+          "width": 2096,
+          "height": 2964
+        }
+      ]
+    }
+  ]
+}

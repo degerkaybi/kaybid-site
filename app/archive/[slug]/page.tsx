@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound, redirect } from 'next/navigation'
 import RichContent from '@/components/RichContent'
+import EidolaGifPage from '@/components/EidolaGifPage'
+import { getEidolaGif } from '@/lib/eidola-gifs'
 import { Fragment } from 'react'
 import { browseEidolaId, eidolaId, getPage, getPageBySlug, getPageHref, getPageLabel, getSection, getWorkSlug, type PortfolioPage } from '@/lib/portfolio'
 import archive from '@/data/portfolio-content.json'
@@ -38,6 +40,17 @@ export default async function ArchivePage({ params }: Props) {
   let top: PortfolioPage | null = parent
   while (top?.parentId) top = getPage(top.parentId)
   const inEditions = !!top && top.id === getSection('art-ideas')?.id
+  // The Eidōla GIF pages: the GIF, then a slider with the pictures of its folder.
+  const gif = getEidolaGif(page.id)
+  if (gif) {
+    return (
+      <div className="pf-page-shell pf-detail-page">
+        <nav className="pf-breadcrumbs" aria-label="Breadcrumb"><Link href="/works">Works</Link>{trail.map(ancestor => <Fragment key={ancestor.id}><span>/</span><Link href={getPageHref(ancestor)}>{ancestor.title}</Link></Fragment>)}<span>/</span><span>{gif.title}</span></nav>
+        <header className="pf-detail-header is-compact"><div><p className="pf-eyebrow">{gif.group === 'halloween' ? 'EIDŌLA HALLOWEEN' : `EIDŌLA GIF · ${gif.season}`}</p><h1 lang={textLang(gif.title)}>{gif.title}</h1></div></header>
+        <EidolaGifPage gif={gif} />
+      </div>
+    )
+  }
   const header = <header className={`pf-detail-header${portrait ? ' is-compact' : ''}`}><div><p className="pf-eyebrow">FROM THE ARCHIVE</p><h1 lang={textLang(page.title)}>{getPageLabel(page)}</h1></div></header>
   const content = <div className={`pf-detail-content${portrait ? ' is-compact' : ''}`}><RichContent blocks={page.blocks} portrait={portrait} hideCrumbs /></div>
   return (
