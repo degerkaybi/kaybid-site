@@ -1,9 +1,5 @@
 {
   "source": "KBD/Eidola/SEZON",
-  "seasons": [
-    "S1",
-    "S2"
-  ],
   "items": [
     {
       "id": "c6c0a003-9902-4f33-8fbc-763410bfa415",
@@ -2111,6 +2107,256 @@
           "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978639/A134_y1bqkh.jpg",
           "width": 2096,
           "height": 2964
+        }
+      ]
+    },
+    {
+      "id": "59069878-0250-4419-8ff9-b93f9e52f147",
+      "group": "halloween",
+      "source": "S3/HALLOWEN",
+      "season": "S3",
+      "folder": "KBD/Eidola/SEZON/S3/HALLOWEN/H-ALLO",
+      "title": "H-ALLO",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978746/h5_g_grkk8y.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978742/5-01_cosmea.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978674/5-02_qgtpxe.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978675/5-03_xcmby6.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978730/5-04_jd4zzk.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978716/5-05_qh6lqx.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978696/5-06_zkb6h0.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978688/5-07_fo1cpv.jpg",
+          "width": 2480,
+          "height": 3507
+        }
+      ]
+    },
+    {
+      "id": "897b848a-0f90-4e80-8175-44021c59ab3a",
+      "group": "halloween",
+      "source": "S3/HALLOWEN",
+      "season": "S3",
+      "folder": "KBD/Eidola/SEZON/S3/HALLOWEN/H-EEN",
+      "title": "H-EEN",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978744/h1-01_ccggor.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978689/1-01_qci39z.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978680/1-02_ybugis.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978681/1-03_hsfswr.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978680/1-04_af83zg.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978675/1-05_rqmxtc.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978722/1-06_v5inyc.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978714/1-07_lrmj4t.jpg",
+          "width": 2480,
+          "height": 3507
+        }
+      ]
+    },
+    {
+      "id": "02a6de97-93bc-4f9d-8ff0-3c9c2f99042d",
+      "group": "halloween",
+      "source": "S3/HALLOWEN",
+      "season": "S3",
+      "folder": "KBD/Eidola/SEZON/S3/HALLOWEN/H-HA",
+      "title": "H-HA",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978730/h3_g_cz1i7z.gif",
+        "width": 637,
+        "height": 901
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978683/3-01_kbixbg.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978696/3-02_ajqms9.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978696/3-03_viiyeo.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978697/3-04_kiifze.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978679/3-05_jvauww.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978674/3-06_hmu49m.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978670/3-07_zyhrot.jpg",
+          "width": 2480,
+          "height": 3507
+        }
+      ]
+    },
+    {
+      "id": "d607567c-fe74-46b7-8d2e-73616efe3dc4",
+      "group": "halloween",
+      "source": "S3/HALLOWEN",
+      "season": "S3",
+      "folder": "KBD/Eidola/SEZON/S3/HALLOWEN/H-LLOW",
+      "title": "H-LLOW",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978744/h2_g_gjocnj.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978688/2-01_hsxcs4.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978679/2-02_xscliv.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978674/2-03_nublpk.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978675/2-04_ubdxla.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978674/2-05_p7mevz.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978740/2-06_y3iy5s.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978724/2-07_jvanii.jpg",
+          "width": 2480,
+          "height": 3507
+        }
+      ]
+    },
+    {
+      "id": "3a03bd0e-f9ba-47fb-8ae1-cf5adfe53d5a",
+      "group": "halloween",
+      "source": "S3/HALLOWEN",
+      "season": "S3",
+      "folder": "KBD/Eidola/SEZON/S3/HALLOWEN/H-OWEE",
+      "title": "H-OWEE",
+      "gif": {
+        "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978742/h4_g_klpah0.gif",
+        "width": 707,
+        "height": 1000
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978681/4-01_iofauf.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978722/4-02_e7w6mf.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978729/4-03_pqwgti.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978724/4-04_ustppj.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978714/4-05_s0scnp.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978704/4-06_yn8ibs.jpg",
+          "width": 2480,
+          "height": 3507
+        },
+        {
+          "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978688/4-07_ky9hhg.jpg",
+          "width": 2480,
+          "height": 3507
         }
       ]
     }
