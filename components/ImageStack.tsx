@@ -1,11 +1,12 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
-import PortraitVideo from './PortraitVideo'
+import YouTubePlayer from './YouTubePlayer'
+import FilePlayer from './FilePlayer'
 
 export type Slide =
   | { kind: 'image'; src: string; alt: string }
-  | { kind: 'video'; id: string; title: string; aspect: string }
+  | { kind: 'video'; id: string; title: string; aspect: string; src?: string }
 
 // A stacked-card slider: the active card sits in front, its neighbours fan out behind it.
 export default function ImageStack({ items }: { items: Slide[] }) {
@@ -68,7 +69,9 @@ export default function ImageStack({ items }: { items: Slide[] }) {
               })}
             >
               {item.kind === 'video'
-                ? <PortraitVideo id={item.id} title={item.title} aspect={item.aspect} active={active} />
+                ? item.src
+                  ? <FilePlayer src={item.src} title={item.title} aspect={item.aspect} autoplay loop active={active} />
+                  : <YouTubePlayer videoId={item.id} title={item.title} aspect={item.aspect} portrait autoplay loop active={active} />
                 : <img src={item.src} alt={item.alt} loading={Math.abs(offset) > 1 ? 'lazy' : 'eager'} decoding="async" draggable={false} />}
             </div>
           )

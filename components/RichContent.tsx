@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import ImageStack, { type Slide } from './ImageStack'
-import PortraitVideo from './PortraitVideo'
+import YouTubePlayer from './YouTubePlayer'
+import FilePlayer from './FilePlayer'
 import WorkCard from './WorkCard'
 import InstagramPostEmbed from './InstagramPostEmbed'
 import { getMediaUrl, getPage, getPageHref, getPageImage, type NotionBlock } from '@/lib/portfolio'
@@ -30,16 +31,22 @@ function richText(parts: RichPart[] = []) {
   })
 }
 
-export function youtubeEmbed(url: string): string | null {
+export function youtubeId(url: string): string | null {
   try {
     const parsed = new URL(url)
-    if (parsed.hostname === 'youtu.be') return `https://www.youtube-nocookie.com/embed/${parsed.pathname.slice(1)}`
-    if (parsed.hostname.endsWith('youtube.com')) {
-      const id = parsed.searchParams.get('v') || parsed.pathname.match(/\/(?:embed|shorts)\/([^/]+)/)?.[1]
-      return id ? `https://www.youtube-nocookie.com/embed/${id}` : null
-    }
+    if (parsed.hostname === 'youtu.be') return parsed.pathname.slice(1) || null
+    if (parsed.hostname === 'youtube.com' || parsed.hostname.endsWith('.youtube.com')) return parsed.searchParams.get('v') || parsed.pathname.match(/\/(?:embed|shorts|live)\/([^/]+)/)?.[1] || null
   } catch {}
   return null
+}
+
+// A YouTube film, shown through the site's own player (click to pause, the keyboard to skip).
+// Shorts are vertical, so they get a portrait frame.
+export function YouTubeFilm({ url, title }: { url: string; title: string }) {
+  const id = youtubeId(url)
+  if (!id) return null
+  const short = /\/shorts\//.test(url)
+  return <YouTubePlayer videoId={id} title={title} {...(short ? { aspect: '1360 / 1920', portrait: true } : {})} />
 }
 
 function Media({ value, kind, caption, zoomable = false }: { value: { mediaId?: string; url?: string }; kind: string; caption?: RichPart[]; zoomable?: boolean }) {
@@ -51,8 +58,8 @@ function Media({ value, kind, caption, zoomable = false }: { value: { mediaId?: 
     return <figure className="pf-figure">{zoomable ? <button type="button" className="pf-lightbox-trigger pf-zoom" data-lightbox={url} data-alt={label} data-caption={label} aria-label={label ? `Enlarge ${label}` : 'Enlarge image'}>{image}</button> : image}{label && <figcaption>{richText(caption)}</figcaption>}</figure>
   }
   if (kind === 'video') {
-    const embed = youtubeEmbed(url)
-    return <figure className="pf-figure pf-video">{embed ? <iframe src={embed} title={label || 'Artwork video'} loading="lazy" allowFullScreen /> : <video src={url} controls preload="metadata" />}{label && <figcaption>{richText(caption)}</figcaption>}</figure>
+    const film = youtubeId(url)
+    return <figure className="pf-figure pf-video">{film ? <YouTubeFilm url={url} title={label || 'Artwork video'} /> : <video src={url} controls preload="metadata" />}{label && <figcaption>{richText(caption)}</figcaption>}</figure>
   }
   if (kind === 'audio') return <figure className="pf-audio"><audio src={url} controls preload="none" />{label && <figcaption>{richText(caption)}</figcaption>}</figure>
   return <a className="pf-file" href={url} target="_blank" rel="noopener noreferrer">{label || 'Open file'} ↗</a>
@@ -61,8 +68,7 @@ function Media({ value, kind, caption, zoomable = false }: { value: { mediaId?: 
 function Embed({ url, title }: { url: string; title: string }) {
   const instagram = instagramPostPermalink(url)
   if (instagram) return <InstagramPostEmbed permalink={instagram} />
-  const youtube = youtubeEmbed(url)
-  if (youtube) return <div className="pf-embed pf-video"><iframe src={youtube} title={title} loading="lazy" allowFullScreen /></div>
+  if (youtubeId(url)) return <div className="pf-embed pf-video"><YouTubeFilm url={url} title={title} /></div>
   if (/google\.[^/]+\/maps/.test(url)) {
     const mapUrl = url.replace('/edit?', '/embed?').replace('/viewer?', '/embed?')
     return <div className="pf-embed pf-map"><iframe src={mapUrl} title={title} loading="lazy" /></div>
@@ -321,12 +327,16 @@ export default function RichContent({ blocks: source, inColumn = false, zoomable
   // The credit moves above the slider, set off from the poem by a thin rule.
   const credit = firstVideo >= 0 ? blocks.slice(firstVideo + 1).find(isCredit) : undefined
   const video = firstVideo >= 0 ? blocks[firstVideo].video as { mediaId?: string; url?: string; caption?: RichPart[] } | undefined : undefined
-  const embed = video ? youtubeEmbed(getMediaUrl(video.mediaId) || video.url || '') : null
+  const filmUrl = video ? getMediaUrl(video.mediaId) || video.url || '' : ''
+  const filmId = youtubeId(filmUrl)
+  // A film hosted as a file (the Eidōla) rather than on YouTube.
+  const filmFile = !filmId && /\.(mp4|webm|mov)(\?|$)/i.test(filmUrl) ? filmUrl : null
   const creditText = credit ? plainText((credit.paragraph as { rich_text?: RichPart[] }).rich_text) : ''
   const size = creditText.match(/(\d+)\s*x\s*(\d+)\s*px/)
-  // Use the stated frame when it is portrait; otherwise assume the usual 3:4 picture.
-  const aspect = size && Number(size[1]) < Number(size[2]) ? `${size[1]} / ${size[2]}` : '3 / 4'
-  const videoSlide = embed ? { kind: 'video' as const, id: embed.split('/embed/')[1], title: plainText(video?.caption) || 'Artwork video', aspect } : null
+  // Use the stated frame when it is portrait; otherwise assume the usual 1360 x 1920 upload.
+  const aspect = size && Number(size[1]) < Number(size[2]) ? `${size[1]} / ${size[2]}` : '1360 / 1920'
+  const filmTitle = plainText(video?.caption) || 'Artwork video'
+  const videoSlide = filmId ? { kind: 'video' as const, id: filmId, title: filmTitle, aspect } : filmFile ? { kind: 'video' as const, id: filmFile, src: filmFile, title: filmTitle, aspect } : null
   const useStack = images.length > 1 || (!!videoSlide && images.length > 0)
   // Video first; the picture that used to open the slider now closes it.
   const slides = useStack ? [...(videoSlide ? [videoSlide] : []), ...images.slice(1), ...images.slice(0, 1)] : []
@@ -341,7 +351,7 @@ export default function RichContent({ blocks: source, inColumn = false, zoomable
       if (credit) content.push(<p className="pf-credit" key={`${block.id}-credit`}>{richText((credit.paragraph as { rich_text?: RichPart[] }).rich_text)}</p>)
       content.push(useStack
         ? <ImageStack key={`${block.id}-stack`} items={slides} />
-        : <figure className="pf-figure pf-video-portrait" key={block.id}><PortraitVideo id={videoSlide.id} title={videoSlide.title} aspect={aspect} /></figure>)
+        : <figure className="pf-figure pf-video-portrait" key={block.id}>{videoSlide.src ? <FilePlayer src={videoSlide.src} title={videoSlide.title} aspect={aspect} autoplay loop /> : <YouTubePlayer videoId={videoSlide.id} title={videoSlide.title} aspect={aspect} portrait autoplay loop />}</figure>)
       index++
       continue
     }

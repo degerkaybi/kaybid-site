@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import RichContent from '@/components/RichContent'
 import { Fragment } from 'react'
-import { eidolaId, getPage, getPageBySlug, getPageHref, getPageLabel, getSection, getWorkSlug, type PortfolioPage } from '@/lib/portfolio'
+import { browseEidolaId, eidolaId, getPage, getPageBySlug, getPageHref, getPageLabel, getSection, getWorkSlug, type PortfolioPage } from '@/lib/portfolio'
 import archive from '@/data/portfolio-content.json'
 import { textLang } from '@/lib/locale'
 
@@ -24,11 +24,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ArchivePage({ params }: Props) {
   const page = getPageBySlug((await params).slug)
   if (!page) notFound()
+  // "Browse All Eidōla" no longer has a page of its own: its paintings open the Eidōla page.
+  if (page.id === browseEidolaId) {
+    const eidola = getPage(eidolaId)
+    if (eidola) redirect(getPageHref(eidola))
+  }
   const parent = page.parentId ? getPage(page.parentId) : null
   const portrait = parent?.parentId === eidolaId
-  // Every non-root ancestor, outermost first: Works / Eidōla / Browse All Eidōla / this page.
+  // Every non-root ancestor, outermost first: Works / Eidōla / this page.
   const trail: PortfolioPage[] = []
-  for (let ancestor = parent; ancestor?.parentId; ancestor = getPage(ancestor.parentId)) trail.unshift(ancestor)
+  for (let ancestor = parent; ancestor?.parentId; ancestor = getPage(ancestor.parentId)) if (ancestor.id !== browseEidolaId) trail.unshift(ancestor)
   // Pages that sit under the Editions section lead back to Editions, everything else to Works.
   let top: PortfolioPage | null = parent
   while (top?.parentId) top = getPage(top.parentId)

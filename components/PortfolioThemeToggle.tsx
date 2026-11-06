@@ -5,15 +5,15 @@ import { useEffect, useState } from 'react'
 
 type Theme = 'light' | 'dark' | 'brutal'
 
-const order: Theme[] = ['light', 'dark', 'brutal']
+const order: Theme[] = ['brutal', 'dark', 'light']
 
 function readTheme(): Theme {
   const current = document.documentElement.dataset.theme
-  return current === 'dark' || current === 'brutal' ? current : 'light'
+  return current === 'dark' || current === 'light' ? current : 'brutal'
 }
 
 export default function PortfolioThemeToggle() {
-  const [theme, setTheme] = useState<Theme>('light')
+  const [theme, setTheme] = useState<Theme>('brutal')
 
   useEffect(() => {
     setTheme(readTheme())
@@ -32,7 +32,8 @@ export default function PortfolioThemeToggle() {
     }
   }
 
-  const Icon = nextTheme === 'dark' ? Moon : nextTheme === 'brutal' ? Square : Sun
+  // Show the icon of the *current* theme so dark mode reads as a moon.
+  const Icon = theme === 'dark' ? Moon : theme === 'brutal' ? Square : Sun
 
   return (
     <button

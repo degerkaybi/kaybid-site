@@ -38,12 +38,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: `
           try {
             const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark' || savedTheme === 'brutal') {
-              document.documentElement.dataset.theme = savedTheme;
-            } else if (!savedTheme && matchMedia('(prefers-color-scheme: dark)').matches) {
-              document.documentElement.dataset.theme = 'dark';
-            }
-          } catch (error) {}
+            document.documentElement.dataset.theme =
+              savedTheme === 'dark' || savedTheme === 'light' || savedTheme === 'brutal' ? savedTheme : 'brutal';
+          } catch (error) {
+            document.documentElement.dataset.theme = 'brutal';
+          }
         ` }} />
       </head>
       <body className="pf-site">

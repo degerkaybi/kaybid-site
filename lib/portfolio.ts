@@ -1,5 +1,6 @@
 import archive from '@/data/portfolio-content.json'
 import mediaUrls from '@/data/media-urls.json'
+import { addExtraEidola } from '@/lib/eidola-extra'
 import { addedWorks, removedWorkIds, workCatalog } from '@/lib/work-catalog'
 
 export type NotionBlock = {
@@ -186,8 +187,22 @@ export function getSection(slug: string): PortfolioPage | null {
   return getPage(data.roots[slug])
 }
 
+// The Eidōla films, hosted as files instead of on YouTube (Notion media id → file).
+const cloudinaryFilm = (version: string, name: string, hash: string) => `https://res.cloudinary.com/dlyp8lb1b/video/upload/v${version}/${name}_By_Kaybid_${hash}.mp4`
+const filmOverrides: Record<string, string> = {
+  '879447d2e24ab2593ae7': cloudinaryFilm('1793963550', 'Evil', 'soawwp'),
+  '96fd4c835dd238183fbb': cloudinaryFilm('1793963548', 'Contact', 'epgyc2'),
+  'e3416782fddcd7431931': cloudinaryFilm('1793963545', 'Rest', 'p85e6g'),
+  '507a2baf216867069f73': cloudinaryFilm('1793963544', 'Insomnia', 'hzwgl9'),
+  'f36b2c177e0785128190': cloudinaryFilm('1793963542', 'Fire', 'evyrqk'),
+  '759c34c64655872f5aa2': cloudinaryFilm('1793963542', 'Rhythm', 'sfcb0r'),
+  'c3ae8c9f15175d916822': cloudinaryFilm('1793963541', 'Seed', 'xjxq27'),
+  'bfe010f0c26191a45add': cloudinaryFilm('1793963539', 'Reverie', 'v8xrcu'),
+}
+
 export function getMediaUrl(mediaId?: string | null): string | null {
   if (!mediaId) return null
+  if (filmOverrides[mediaId]) return filmOverrides[mediaId]
   const item = data.media[mediaId]
   if (!item) return null
   if (item.error) return null
@@ -354,7 +369,8 @@ function yearFrom(page: PortfolioPage): string | null {
 }
 
 // The Eidōla on the "Browse All Eidōla" page, each with its own page and the picture shown on that page.
-const browseEidolaId = '22a39248-8fe5-805a-9be0-daa6cad580cf'
+export const browseEidolaId ='22a39248-8fe5-805a-9be0-daa6cad580cf'
+addExtraEidola(data, browseEidolaId)
 let eidolonWorks: Work[] | null = null
 
 const eidolonExcerpt = (callout: NotionBlock) => richTextPlain((callout.callout as { rich_text?: unknown } | undefined)?.rich_text).replace(/^[-\s]+|[-\s]+$/g, '')

@@ -16,9 +16,10 @@ const workLinks: [RegExp, string][] = [
   [/"Panda"/, '22a39248-8fe5-80c8-aae6-fcdebd717fb8'],
 ]
 
-// Shows that are not in the Notion list yet; they lead their year.
-const addedExhibitions: Exhibition[] = [
+// Shows that are not in the Notion list yet; they lead their year, unless `after` names the show they follow.
+const addedExhibitions: (Exhibition & { after?: string })[] = [
   { year: '2026', title: 'Arsa Payı', place: 'Subnomad.tv - Kadıköy - İstanbul', flag: '🇹🇷', href: null },
+  { year: '2026', title: 'UpCycle X Silent Steps', place: 'Terminal Kadıköy - İstanbul', flag: '🇹🇷', href: null, after: 'ReCover' },
 ]
 
 // "Title (Venue - City) 2025 🇹🇷" in its several spellings → year / title / place / flag.
@@ -59,7 +60,12 @@ export function getAboutParts() {
   let end = start + 1
   while (end < page.blocks.length && page.blocks[end].type === 'bulleted_list_item') end++
   const listed = splitPenguinAndRhino(page.blocks.slice(start + 1, end).map(block => parseExhibition(plain(block))).filter(item => item.title))
-  const exhibitions = [...addedExhibitions.filter(added => !listed.some(item => item.title === added.title && item.year === added.year)), ...listed]
+  const missing = addedExhibitions.filter(added => !listed.some(item => item.title === added.title && item.year === added.year))
+  const exhibitions = [...missing.filter(added => !added.after), ...listed]
+  for (const { after, ...added } of missing.filter(added => added.after)) {
+    const at = exhibitions.findIndex(item => item.year === added.year && item.title === after)
+    exhibitions.splice(at < 0 ? 0 : at + 1, 0, added)
+  }
   // Up to the next divider: spacing and the two videos that follow the list.
   let tail = end
   while (tail < page.blocks.length && page.blocks[tail].type !== 'divider') tail++

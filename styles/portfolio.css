@@ -110,19 +110,7 @@
 .pf-video-modal { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 3vw; background: rgba(0,0,0,.86); }
 .pf-video-modal-content { position: relative; width: min(1200px,100%); aspect-ratio: 16/9; background: #000; box-shadow: 0 24px 80px rgba(0,0,0,.5); }
 .pf-video-modal-content iframe { width: 100%; height: 100%; border: 0; }
-.pf-doc-player { position: absolute; inset: 0; background: #000; }
-.pf-doc-player:fullscreen { width: 100vw; height: 100vh; }
-.pf-doc-player-frame, .pf-doc-player-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.pf-doc-player-shield { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: transparent; cursor: pointer; }
 /* Solid bands hide YouTube's title bar and its link / "More videos" buttons. */
-.pf-doc-player-edge { position: absolute; left: 0; right: 0; pointer-events: none; }
-.pf-doc-player-edge.is-top { top: 0; height: 14%; background: linear-gradient(#000 0,#000 60%,transparent); }
-.pf-doc-player-edge.is-bottom { bottom: 0; height: 22%; background: linear-gradient(transparent,#000 40%,#000); }
-.pf-doc-player-controls { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: .8rem; padding: .6rem clamp(12px,2vw,24px) .9rem; color: #fff; }
-.pf-doc-player-controls button { display: grid; place-items: center; width: 36px; height: 36px; padding: 0; border: 0; background: none; color: #fff; cursor: pointer; }
-.pf-doc-player-controls button:hover { color: var(--pf-accent); }
-.pf-doc-player-time { min-width: 3ch; font-size: .78rem; font-variant-numeric: tabular-nums; }
-.pf-doc-player-controls input[type="range"] { flex: 1; min-width: 0; accent-color: var(--pf-accent); cursor: pointer; }
 .pf-video-modal-close { position: absolute; top: -42px; right: 0; z-index: 1; border: 0; background: none; color: #fff; font-size: 2rem; line-height: 1; cursor: pointer; }
 
 main:has(.pf-home-hero) { padding-top: 0; }
@@ -288,7 +276,7 @@ html:has(.pf-home-hero) { scroll-behavior: smooth; }
 }
 .pf-silent-description { margin: 0; align-self: start; color: var(--pf-muted); font-size: .86rem; line-height: 1.65; }
 .pf-silent-description strong { font-weight: 700; color: inherit; }
-.pf-silent-video { aspect-ratio: 16/10; background: #111; }
+.pf-silent-video { position: relative; aspect-ratio: 16/10; background: #111; }
 .pf-silent-video iframe { display: block; width: 100%; height: 100%; border: 0; }
 .pf-silent-grid figcaption { display: grid; gap: .15rem; margin-top: .7rem; }
 .pf-silent-grid figcaption strong { font-size: .92rem; font-weight: 700; }
@@ -488,6 +476,17 @@ html:has(.pf-home-hero) { scroll-behavior: smooth; }
 .pf-eidola-option:hover { background: var(--pf-accent); border-color: var(--pf-accent); color: var(--pf-on-accent); }
 .pf-eidola-option:hover span:first-child { color: var(--pf-on-accent); opacity: .85; }
 .pf-eidola-about-nav { max-width: 1150px; margin: 5rem auto 0; }
+.pf-eidola-feature { max-width: 1150px; margin: clamp(32px,4vw,56px) auto 0; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(20px,3vw,48px); align-items: center; }
+.pf-eidola-feature .pf-detail-lead { max-width: none; margin: 0; }
+@media (max-width: 700px) { .pf-eidola-feature { grid-template-columns: 1fr; } }
+.pf-yt-stage { position: absolute; inset: 0; }
+.pf-yt:fullscreen { width: 100vw; background: #000; }
+.pf-yt.is-portrait:fullscreen .pf-yt-stage { inset: 0 auto; left: 50%; width: min(100vw, calc(100vh * var(--ar, .708))); transform: translateX(-50%); }
+.pf-yt-fs { position: absolute; right: 10px; bottom: 10px; z-index: 3; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; background: rgba(0,0,0,.55); color: #fff; cursor: pointer; opacity: 0; transition: opacity .2s, background .2s; }
+.pf-yt:hover .pf-yt-fs, .pf-yt:focus-within .pf-yt-fs, .pf-yt-fs:focus-visible { opacity: 1; }
+.pf-yt-fs:hover { background: var(--pf-accent, rgba(0,0,0,.8)); }
+@media (hover: none) { .pf-yt-fs { opacity: 1; } }
+.pf-yt-file video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
 @media (max-width: 700px) { .pf-eidola-options { grid-template-columns: 1fr; } .pf-eidola-option { min-height: 160px; } }
 
 .pf-eidolon { position: relative; display: block; aspect-ratio: 3/4; overflow: hidden; background: #1a1a1a; color: #fff; }
@@ -502,16 +501,28 @@ html:has(.pf-home-hero) { scroll-behavior: smooth; }
 .pf-eidolon:focus-visible { outline: 3px solid var(--pf-accent); outline-offset: 3px; }
 
 .pf-video-portrait { display: block; margin: 2rem 0; }
-.pf-pvideo { position: relative; overflow: hidden; background: #111; width: min(100%, calc(78vh * var(--ar, .75))); margin: 0 auto; }
-.pf-pvideo-frame { position: absolute; left: 0; right: 0; top: 50%; aspect-ratio: 9/16; transform: translateY(-50%); }
-.pf-pvideo-frame iframe { display: block; width: 100%; height: 100%; border: 0; pointer-events: none; }
-.pf-pvideo-surface { position: absolute; inset: 0; border: 0; background: none; cursor: pointer; }
-.pf-pvideo-bar { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: .8rem; padding: 2.4rem .9rem .8rem; background: linear-gradient(to top, rgba(0,0,0,.7), rgba(0,0,0,0)); color: #f6f2ea; font-size: .75rem; font-weight: 700; letter-spacing: .12em; opacity: 0; transition: opacity .25s; }
-.pf-pvideo:hover .pf-pvideo-bar, .pf-pvideo:focus-within .pf-pvideo-bar { opacity: 1; }
-@media (hover: none) { .pf-pvideo-bar { opacity: 1; } }
-.pf-pvideo-bar button { border: 0; background: none; color: inherit; font: inherit; cursor: pointer; padding: .3rem; white-space: nowrap; }
-.pf-pvideo-bar input[type="range"] { flex: 1; min-width: 0; accent-color: #f6f2ea; cursor: pointer; }
-.pf-pvideo-bar span { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.pf-yt { position: relative; overflow: hidden; width: 100%; background: #000; color: #fff; cursor: pointer; outline-offset: -3px; }
+.pf-yt.is-fill { position: absolute; inset: 0; width: auto; }
+.pf-yt.is-portrait { width: min(100%, calc(78vh * var(--ar, .75))); margin: 0 auto; }
+.pf-yt-frame { position: absolute; inset: 0; }
+.pf-yt.is-portrait .pf-yt-frame { inset: auto; left: 0; right: 0; top: 50%; aspect-ratio: 9/16; transform: translateY(-50%); }
+.pf-yt-frame iframe { display: block; width: 100%; height: 100%; border: 0; pointer-events: none; }
+/* YouTube draws its title and "More videos" over the top and bottom of the picture; black bands keep them out of sight. */
+.pf-yt-edge { position: absolute; left: 0; right: 0; pointer-events: none; transition: opacity .25s; }
+.pf-yt-edge.is-top { top: 0; height: 14%; background: linear-gradient(#000 0,#000 60%,transparent); }
+.pf-yt-edge.is-bottom { bottom: 0; height: 18%; background: linear-gradient(transparent,#000 40%,#000); }
+/* A Short carries its own like / share / channel buttons along the bottom of the picture. They show on pause and for the first seconds of playback, so a black band covers that stretch. */
+.pf-yt.is-portrait .pf-yt-edge.is-top { display: none; }
+.pf-yt.is-portrait .pf-yt-edge.is-bottom { height: 16.5%; background: linear-gradient(transparent,#000 14%); }
+.pf-yt.is-portrait.is-settled .pf-yt-edge.is-bottom { opacity: 0; transition-duration: .8s; }
+.pf-yt-cover { position: absolute; inset: 0; background: #000; pointer-events: none; }
+.pf-yt-cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* The poster of a Short is a 16:9 frame with the vertical picture in its middle. */
+.pf-yt.is-portrait .pf-yt-cover img { inset: 0 auto auto 50%; width: auto; max-width: none; transform: translateX(-50%); }
+.pf-yt-play { position: absolute; left: 50%; top: 50%; display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; background: rgba(0,0,0,.55); color: #fff; transform: translate(-50%,-50%); pointer-events: none; transition: background .2s; }
+.pf-yt-play svg { margin-left: 3px; }
+.pf-yt:hover .pf-yt-play { background: var(--pf-accent, rgba(0,0,0,.8)); }
+.pf-yt-shield { position: absolute; inset: 0; }
 .pf-rich-content.is-portrait > .pf-callout { max-width: none; margin: 0 0 1.5rem; padding: 0; background: none; font-size: 1.08rem; }
 .pf-credit { max-width: 780px; margin: 0 0 1.5rem; padding-top: .9rem; border-top: 1px solid var(--pf-line); color: var(--pf-muted); font-size: .8rem; line-height: 1.6; }
 .pf-credit strong { color: var(--pf-ink); }
@@ -539,13 +550,13 @@ html:has(.pf-home-hero) { scroll-behavior: smooth; }
 .pf-portrait-page .pf-rich-content.is-portrait > .pf-callout { grid-column: 1; grid-row: 2; max-width: 620px; }
 .pf-portrait-page .pf-rich-content.is-portrait > .pf-credit { grid-column: 1; grid-row: 3; width: 100%; box-sizing: border-box; }
 .pf-portrait-page .pf-rich-content.is-portrait > .pf-video-portrait, .pf-portrait-page .pf-rich-content.is-portrait > .pf-stack { grid-column: 2; grid-row: 1 / span 4; width: 100%; margin: clamp(32px,4vw,64px) 0 0; }
-.pf-portrait-page .pf-pvideo { margin: 0 0 0 auto; }
+.pf-portrait-page .pf-yt.is-portrait { margin: 0 0 0 auto; }
 @media (max-width: 900px) {
   .pf-portrait-page { display: block; }
   .pf-portrait-page > .pf-detail-content, .pf-portrait-page > .pf-section-body, .pf-portrait-page > .pf-detail-content > .pf-rich-content, .pf-portrait-page > .pf-section-body > .pf-rich-content { display: block; }
   .pf-portrait-page .pf-rich-content.is-portrait > .pf-video-portrait { margin: 1.5rem 0 2rem; }
   .pf-portrait-page .pf-rich-content.is-portrait > .pf-stack { margin: 1.5rem 0 2rem; }
-  .pf-portrait-page .pf-pvideo { margin: 0 auto; }
+  .pf-portrait-page .pf-yt.is-portrait { margin: 0 auto; }
 }
 .pf-crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; max-width: 780px; margin: 3rem auto 0; padding: 1.4rem 0; border-top: 1px solid var(--pf-line); color: var(--pf-muted); font-size: .75rem; }
 .pf-crumbs > span { display: inline-flex; gap: .8rem; }
@@ -557,7 +568,7 @@ html:has(.pf-home-hero) { scroll-behavior: smooth; }
 .pf-stack-slide { position: absolute; top: 50%; left: 50%; height: min(calc(100% - 64px), var(--card)); max-width: none; padding: 0; border: 0; background: none; cursor: pointer; z-index: calc(10 - var(--d)); transform: translate(calc(-50% + var(--o) * var(--shift)), -50%) scale(calc(1 - var(--d) * .12)); opacity: calc(1 - var(--d) * .28); filter: grayscale(calc(var(--d) * .5)); box-shadow: 0 6px 20px rgba(0,0,0,.2); transition: transform .5s cubic-bezier(.2,.7,.2,1), opacity .5s, filter .5s; }
 .pf-stack-slide[data-active="true"] { cursor: default; }
 .pf-stack-slide[data-active="false"] * { pointer-events: none; }
-.pf-stack-slide .pf-pvideo { width: auto; height: 100%; max-width: none; margin: 0; }
+.pf-stack-slide .pf-yt.is-portrait { width: auto; height: 100%; max-width: none; margin: 0; }
 .pf-stack-slide:focus-visible { outline: 3px solid var(--pf-accent); outline-offset: 3px; }
 .pf-stack-slide img { display: block; width: auto; max-width: none; height: 100%; }
 .pf-stack-slide[hidden] { display: none; }
@@ -567,10 +578,6 @@ html:has(.pf-home-hero) { scroll-behavior: smooth; }
 .pf-stack-controls button:disabled { opacity: .3; cursor: default; }
 .pf-stack-slide[data-far="true"] { opacity: 0; }
 .pf-video-lightbox .pf-lightbox-stage { padding: 0 1rem 1.5rem; }
-.pf-video-lightbox .pf-pvideo { width: auto; height: 100%; max-width: 100%; margin: 0; }
-.pf-video-lightbox .pf-pvideo-bar { opacity: 1; }
-@media (max-width: 600px) { .pf-pvideo-bar span { display: none; } .pf-pvideo-bar { gap: .4rem; } }
-.pf-pvideo-bar button { display: inline-flex; align-items: center; justify-content: center; }
 
 .pf-gallery { margin: 3rem 0; }
 .pf-gallery-label { margin: 0 0 1rem; color: var(--pf-muted); font-size: .75rem; font-weight: 700; letter-spacing: .16em; }
@@ -880,7 +887,6 @@ main:has(> .pf-desk) { padding-top: 0; min-height: 0; }
 .pf-site .pf-lightbox-bar button,
 .pf-site .pf-eidola-option span:first-child,
 .pf-site .pf-eidolon-info em,
-.pf-site .pf-pvideo-bar,
 .pf-site .pf-stack-controls,
 .pf-site .pf-gallery-label,
 .pf-site .pf-contact-list a span:first-child,

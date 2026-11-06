@@ -4,7 +4,7 @@ import AboutTabs from '@/components/AboutTabs'
 import ArtistBio from '@/components/ArtistBio'
 import ExhibitionList from '@/components/ExhibitionList'
 import { getAboutParts } from '@/lib/exhibitions'
-import RichContent, { youtubeEmbed } from '@/components/RichContent'
+import RichContent, { YouTubeFilm } from '@/components/RichContent'
 
 export const metadata: Metadata = { title: 'About' }
 
@@ -32,7 +32,7 @@ export default function AboutPage() {
           </section>
         )}
         {extra.length > 0 && <RichContent blocks={extra} />}
-        <div className="pf-embed pf-video"><iframe src={youtubeEmbed(aboutVideo) || ''} title="Kaybid" loading="lazy" allowFullScreen /></div>
+        <div className="pf-embed pf-video"><YouTubeFilm url={aboutVideo} title="Kaybid" /></div>
       </div>
     </div>
   )

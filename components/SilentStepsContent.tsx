@@ -1,6 +1,7 @@
 import FrozenGif from '@/components/FrozenGif'
 import Lightbox from '@/components/Lightbox'
-import RichContent, { youtubeEmbed } from '@/components/RichContent'
+import RichContent, { youtubeId } from '@/components/RichContent'
+import YouTubePlayer from '@/components/YouTubePlayer'
 import type { SilentStepsContent as Content } from '@/lib/silent-steps'
 
 function label(name: string, place: string, years: string) {
@@ -40,12 +41,12 @@ export default function SilentStepsContent({ content }: { content: Content }) {
               <h3 id={`year-title-${group.year}`}>{group.year}<span>{group.items.length}</span></h3>
               <div className="pf-silent-grid">
                 {group.items.map(item => {
-                  const embed = item.video ? youtubeEmbed(item.video) : null
+                  const embed = item.video ? youtubeId(item.video) : null
                   return (
                     <figure key={item.id} className={embed ? (item.description ? 'is-paired has-description' : 'is-paired') : undefined}>
                       <div className="pf-silent-media">
                         <FrozenGif src={item.src} name={item.name} caption={label(item.name, item.place, item.years)} />
-                        {embed && <div className="pf-silent-video"><iframe src={embed} title={`${item.name} video`} loading="lazy" allowFullScreen /></div>}
+                        {embed && <div className="pf-silent-video"><YouTubePlayer videoId={embed} title={`${item.name} video`} aspect="16 / 10" fill /></div>}
                         {embed && item.description && <p className="pf-silent-description"><strong>{item.description.split('. ')[0]}.</strong>{item.description.includes('. ') ? ` ${item.description.slice(item.description.indexOf('. ') + 2)}` : ''}</p>}
                       </div>
                       <figcaption>
@@ -66,10 +67,10 @@ export default function SilentStepsContent({ content }: { content: Content }) {
             <div className="pf-section-heading"><div><p className="pf-eyebrow">ON FILM</p><h2 id="silent-films">In motion.</h2></div></div>
             <div className="pf-silent-films">
               {content.videos.map(video => {
-                const embed = youtubeEmbed(video.url)
+                const embed = youtubeId(video.url)
                 return embed ? (
                   <figure key={video.id}>
-                    <div className="pf-video"><iframe src={embed} title={video.caption || 'Silent Steps video'} loading="lazy" allowFullScreen /></div>
+                    <div className="pf-video"><YouTubePlayer videoId={embed} title={video.caption || 'Silent Steps video'} /></div>
                     {video.caption && <figcaption>{video.caption}</figcaption>}
                   </figure>
                 ) : null
