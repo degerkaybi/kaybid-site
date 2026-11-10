@@ -21,6 +21,14 @@ export type Edition = {
 export const monxPage = '/editions/kaybid-x-m-c'
 export const monxCover = 'https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793886759/Ekran_g%C3%B6r%C3%BCnt%C3%BCs%C3%BC_2026-11-05_165140_rslw9i.png'
 export const monxPost = 'https://www.instagram.com/monx.culture/p/DadYeNPCn1p/?img_index=6'
+// The photos in Cloudinary under KBD/Monk/Kimo, in the order they were taken. Resized and re-encoded by Cloudinary: the originals are 2000px+ JPEGs.
+const monxPhoto = (version: string, id: string) => `https://res.cloudinary.com/dlyp8lb1b/image/upload/f_auto,q_auto,w_1600/v${version}/${id}.jpg`
+export const monxImages = [
+  monxPhoto('1794334001', '20260310_170913_nszbsc'),
+  monxPhoto('1794334087', '20260310_170915_v6lzkg'),
+  monxPhoto('1794333924', '20260310_170927_bwlzpa'),
+  monxPhoto('1794334044', '20260310_170936_sze7gz'),
+]
 
 // The Kaybid X UpCycle page: the "Şehirde Fil Var!" installation at the Upcycle Istanbul Festival. The first picture is the card cover.
 export const upcyclePage = '/editions/kaybid-x-upcycle'

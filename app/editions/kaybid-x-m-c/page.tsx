@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import InstagramPostEmbed from '@/components/InstagramPostEmbed'
-import { monxCover, monxPost } from '@/lib/editions'
+import { monxCover, monxImages, monxPost } from '@/lib/editions'
 
 const title = 'Kaybid X monx.culture'
 
@@ -21,6 +21,9 @@ export default function MonxPage() {
         <div className="pf-rich-content">
           <figure className="pf-figure"><img src={monxCover} alt={title} /></figure>
           <InstagramPostEmbed permalink={monxPost} showLink={false} />
+          <div className="pf-image-gallery">
+            {monxImages.map((src, index) => <figure className="pf-figure" key={src}><img src={src} alt={`${title}, photo ${index + 1}`} loading="lazy" /></figure>)}
+          </div>
         </div>
       </div>
     </div>
