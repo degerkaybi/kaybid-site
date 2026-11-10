@@ -3,6 +3,9 @@
 import { useEffect, useRef, useState } from 'react'
 import WorkDesktop, { type DesktopWork } from '@/components/WorkDesktop'
 
+// The modal's background video starts at 4:00.
+const modalVideoStart = 240
+
 // A link-styled button that opens the works desktop in a full-screen modal instead of navigating.
 export default function DesktopModal({ works, filters }: { works: DesktopWork[]; filters: string[] }) {
   const [open, setOpen] = useState(false)
@@ -31,7 +34,7 @@ export default function DesktopModal({ works, filters }: { works: DesktopWork[];
       </button>
       {open && (
         <div className="pf-desk-modal" role="dialog" aria-modal="true" aria-label="All works on the desktop">
-          <WorkDesktop works={works} filters={filters} />
+          <WorkDesktop works={works} filters={filters} videoStart={modalVideoStart} />
           <button ref={closeRef} type="button" className="pf-desk-modal-close" onClick={() => setOpen(false)} aria-label="Close desktop">CLOSE ✕</button>
         </div>
       )}

@@ -706,9 +706,9 @@ html:has(.pf-home-hero) { scroll-behavior: smooth; }
 
 @media (max-width: 700px) {
   .pf-desk { height: calc(100dvh - 64px); }
-  .pf-desk-stage { overflow-y: auto; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); align-content: start; gap: 1.4rem .5rem; padding: 1.4rem 14px 5.5rem; }
-  .pf-desk-icon { position: static; width: auto; touch-action: manipulation; cursor: pointer; }
-  .pf-desk-thumb { width: min(84px,100%); aspect-ratio: 1; height: auto; }
+  .pf-desk { --size: clamp(38px, calc(var(--s) * .72), 58px); }
+  .pf-desk-icon { width: calc(var(--size) + 14px); gap: .35rem; }
+  .pf-desk-label { font-size: .6rem; letter-spacing: .06em; }
   .pf-desk-window { position: fixed; inset: 64px 0 74px 0 !important; width: auto !important; height: auto !important; box-shadow: none; border-left: 0; border-right: 0; }
   .pf-desk-titlebar { cursor: default; }
   .pf-desk-resize { display: none; }
@@ -727,22 +727,23 @@ html:has(.pf-home-hero) { scroll-behavior: smooth; }
 
 /* Icons stay hidden until they have been placed, so the reshuffle never shows as a jump. */
 .pf-desk-stage:not(.is-shuffled) .pf-desk-icon { opacity: 0; }
-@media (max-width: 700px) { .pf-desk-stage:not(.is-shuffled) .pf-desk-icon { opacity: 1; } }
 
 /* Works that open onto sub-pages get a coloured frame. */
 .pf-desk-icon.has-sub .pf-desk-thumb { outline: 2px solid var(--pf-accent); outline-offset: 3px; }
 
 /* "Open full page" stays on the window frame while the body scrolls. */
-.pf-desk-footer { flex: none; padding: .85rem 2.4rem .85rem 1.1rem; background: var(--pf-ink); color: var(--pf-on-ink); }
-.pf-desk-footer .pf-desk-open { color: var(--pf-on-ink); border-bottom: 1px solid transparent; padding-bottom: .15rem; transition: border-color .2s; }
-.pf-desk-footer .pf-desk-open:hover { border-color: var(--pf-on-ink); }
+.pf-desk-titlebar-main { display: flex; align-items: baseline; gap: 1rem; min-width: 0; }
+.pf-desk-titlebar-main > span { min-width: 0; }
+/* The link matches the title's type exactly; only the underline sets it apart. */
+.pf-site .pf-desk-titlebar .pf-desk-open { flex: none; white-space: nowrap; font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; border-bottom: 1px solid transparent; transition: border-color .2s; }
+.pf-site .pf-desk-titlebar .pf-desk-open:hover { border-color: currentColor; }
+.pf-site .pf-desk-titlebar .pf-desk-open span { overflow: visible; }
 
 /* Tidy up / Scatter */
 .pf-desk-stage.is-arranging .pf-desk-icon { transition: left .7s cubic-bezier(.2,.8,.2,1), top .7s cubic-bezier(.2,.8,.2,1), opacity .4s ease, filter .4s ease, transform .2s ease; }
 .pf-desk-dock-divider { flex: none; width: 1px; height: 22px; background: var(--pf-line); }
 .pf-desk-dock .pf-desk-tidy { padding: .55rem .9rem; border: 1px solid var(--pf-ink); background: var(--pf-ink); color: var(--pf-on-ink); }
 .pf-desk-dock .pf-desk-tidy:hover { background: var(--pf-accent); border-color: var(--pf-accent); color: var(--pf-on-accent); }
-@media (max-width: 700px) { .pf-desk-dock-divider, .pf-desk-dock .pf-desk-tidy { display: none; } }
 
 /* The desktop fills the screen exactly: no page scroll and no footer below it. */
 body:has(.pf-desk) { overflow: hidden; }
@@ -752,12 +753,12 @@ body:has(main > .pf-desk) .pf-footer { display: none; }
 /* Drop the old template's 80px offset above the desktop. */
 main:has(> .pf-desk) { padding-top: 0; min-height: 0; }
 
-/* The desktop as a full-screen modal over the Works page. */
-.pf-desk-modal { position: fixed; inset: 0; z-index: 400; background: #1c1a18; }
-.pf-desk-modal .pf-desk { height: 100dvh; }
+/* The desktop as a modal over the Works page: inset 8px so the page shows around it (full screen on mobile). */
+.pf-desk-modal { position: fixed; inset: 8px; z-index: 400; background: #1c1a18; border-radius: 5px; overflow: hidden; box-shadow: 0 2px 14px rgba(0,0,0,.12); }
+.pf-desk-modal .pf-desk { height: 100%; }
 .pf-desk-modal-close { position: absolute; top: 14px; right: 14px; z-index: 2100; padding: .55rem .9rem; border: 1px solid var(--pf-ink); background: var(--pf-ink); color: var(--pf-on-ink); font-size: .75rem; font-weight: 700; letter-spacing: .16em; cursor: pointer; }
 .pf-desk-modal-close:hover { background: var(--pf-accent); border-color: var(--pf-accent); color: var(--pf-on-accent); }
-@media (max-width: 700px) { .pf-desk-modal .pf-desk { height: 100dvh; } .pf-desk-modal .pf-desk-window { inset: 56px 0 74px 0 !important; } }
+@media (max-width: 700px) { .pf-desk-modal { inset: 0; border-radius: 0; box-shadow: none; } .pf-desk-modal .pf-desk { height: 100dvh; } .pf-desk-modal .pf-desk-window { inset: 56px 0 74px 0 !important; } }
 
 /* Link to the works desktop, under the description on the Works page. */
 .pf-hero-desk-link { display: inline-block; margin-top: 1.6rem; padding-top: 0; padding-inline: 0; border-top: 0; border-inline: 0; background: none; color: inherit; font-family: inherit; cursor: pointer; }

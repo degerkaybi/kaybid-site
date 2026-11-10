@@ -35,8 +35,9 @@ function seeded(seed: number) {
 }
 
 // Jittered grid in percentages, kept clear of the dock and the edges.
-function scatter(count: number, seed = count * 97 + 11): { x: number; y: number }[] {
-  const cols = Math.max(1, Math.ceil(Math.sqrt(count * 1.7)))
+// `aspect` is the stage's width / height, so tall phone screens get fewer columns than wide desktops.
+function scatter(count: number, seed = count * 97 + 11, aspect = 1.7): { x: number; y: number }[] {
+  const cols = Math.max(1, Math.ceil(Math.sqrt(count * aspect)))
   const rows = Math.max(1, Math.ceil(count / cols))
   const cells = Array.from({ length: cols * rows }, (_, index) => index)
   const random = seeded(seed)
@@ -55,9 +56,9 @@ function scatter(count: number, seed = count * 97 + 11): { x: number; y: number 
 }
 
 // Ranked works lead in their set order, the rest follow shuffled; laid out as an even grid in percentages.
-function arrange(works: DesktopWork[]): { x: number; y: number }[] {
+function arrange(works: DesktopWork[], aspect = 1.6): { x: number; y: number }[] {
   const count = works.length
-  const cols = Math.max(1, Math.ceil(Math.sqrt(count * 1.6)))
+  const cols = Math.max(1, Math.ceil(Math.sqrt(count * aspect)))
   const rows = Math.max(1, Math.ceil(count / cols))
   const ranked = works.map((work, index) => index).filter(index => works[index].rank !== null).sort((a, b) => (works[a].rank as number) - (works[b].rank as number))
   const rest = works.map((work, index) => index).filter(index => works[index].rank === null)
@@ -73,7 +74,7 @@ function arrange(works: DesktopWork[]): { x: number; y: number }[] {
   return grid
 }
 
-export default function WorkDesktop({ works, filters }: { works: DesktopWork[]; filters: string[] }) {
+export default function WorkDesktop({ works, filters, videoStart = startTime }: { works: DesktopWork[]; filters: string[]; videoStart?: number }) {
   const stageRef = useRef<HTMLDivElement>(null)
   const dockRef = useRef<HTMLElement>(null)
   const topZ = useRef(1000)
@@ -91,7 +92,9 @@ export default function WorkDesktop({ works, filters }: { works: DesktopWork[]; 
 
   // The server renders the fixed layout; once mounted, every visit deals the icons out afresh.
   useEffect(() => {
-    setPositions(scatter(works.length, Math.floor(Math.random() * 2 ** 32)))
+    const box = stageRef.current?.getBoundingClientRect()
+    const aspect = box && box.height ? Math.min(1.7, box.width / box.height) : 1.7
+    setPositions(scatter(works.length, Math.floor(Math.random() * 2 ** 32), aspect))
     setShuffled(true)
   }, [works.length])
 
@@ -136,7 +139,9 @@ export default function WorkDesktop({ works, filters }: { works: DesktopWork[]; 
   const toggleTidy = () => {
     clearTimeout(arrangeTimer.current)
     setArranging(true)
-    setPositions(tidy ? scatter(works.length, Math.floor(Math.random() * 2 ** 32)) : arrange(works))
+    const { w, h } = stageSize()
+    const aspect = Math.min(1.7, w / h)
+    setPositions(tidy ? scatter(works.length, Math.floor(Math.random() * 2 ** 32), aspect) : arrange(works, aspect))
     setTidy(!tidy)
     arrangeTimer.current = setTimeout(() => setArranging(false), 800)
   }
@@ -157,7 +162,7 @@ export default function WorkDesktop({ works, filters }: { works: DesktopWork[]; 
   }
 
   const dragIcon = (index: number) => (event: PointerEvent<HTMLButtonElement>) => {
-    if (isCompact() || event.button !== 0) return
+    if (event.button !== 0) return
     const target = event.currentTarget
     const startX = event.clientX
     const startY = event.clientY
@@ -269,7 +274,7 @@ export default function WorkDesktop({ works, filters }: { works: DesktopWork[]; 
     <section className="pf-desk" aria-label="All works" style={{ '--s': `${thumbSize}px` } as CSSProperties}>
       <div className="pf-desk-backdrop" aria-hidden="true">
         <iframe
-          src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&start=${startTime}&rel=0&modestbranding=1&playsinline=1`}
+          src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&start=${videoStart}&rel=0&modestbranding=1&playsinline=1`}
           title="Background video"
           allow="autoplay; encrypted-media"
           tabIndex={-1}
@@ -313,7 +318,10 @@ export default function WorkDesktop({ works, filters }: { works: DesktopWork[]; 
               onPointerDown={() => focusWindow(win.id)}
             >
               <header className="pf-desk-titlebar" onPointerDown={trackWindow(win, 'move')}>
-                <span>{work.title}</span>
+                <div className="pf-desk-titlebar-main">
+                  <span>{work.title}</span>
+                  <Link href={work.href} className="pf-desk-open" onPointerDown={event => event.stopPropagation()}>Open full page <span aria-hidden="true">↗</span></Link>
+                </div>
                 <button type="button" onPointerDown={event => event.stopPropagation()} onClick={() => closeWindow(win.id)} aria-label={`Close ${work.title}`}>✕</button>
               </header>
               <div className="pf-desk-body">
@@ -338,9 +346,6 @@ export default function WorkDesktop({ works, filters }: { works: DesktopWork[]; 
                   </div>
                 )}
               </div>
-              <footer className="pf-desk-footer">
-                <Link href={work.href} className="pf-desk-open">Open full page <span aria-hidden="true">↗</span></Link>
-              </footer>
               <span className="pf-desk-resize" onPointerDown={trackWindow(win, 'resize')} aria-hidden="true" />
             </article>
           )
