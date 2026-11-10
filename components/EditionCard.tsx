@@ -26,7 +26,7 @@ export default function EditionCard({ edition }: { edition: Edition }) {
         {edition.description && <p className="pf-edition-text">{edition.description}</p>}
         <div className="pf-edition-actions">
           {edition.external && <a className="pf-chip is-solid" href={edition.external} target="_blank" rel="noopener noreferrer">{edition.externalLabel} <span aria-hidden="true">↗</span></a>}
-          {edition.href && <Link className="pf-chip" href={edition.href}>{edition.hrefLabel} <span aria-hidden="true">↗</span></Link>}
+          {edition.href && <Link className="pf-chip" href={edition.href}>{edition.hrefLabel} <span aria-hidden="true">→</span></Link>}
           {soldOut && !edition.href && <span className="pf-edition-note">No longer in stock</span>}
         </div>
       </div>

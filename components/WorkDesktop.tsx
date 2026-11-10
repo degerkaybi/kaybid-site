@@ -320,7 +320,7 @@ export default function WorkDesktop({ works, filters, videoStart = startTime }: 
               <header className="pf-desk-titlebar" onPointerDown={trackWindow(win, 'move')}>
                 <div className="pf-desk-titlebar-main">
                   <span>{work.title}</span>
-                  <Link href={work.href} className="pf-desk-open" onPointerDown={event => event.stopPropagation()}>Open full page <span aria-hidden="true">↗</span></Link>
+                  <Link href={work.href} className="pf-desk-open" onPointerDown={event => event.stopPropagation()}>Open full page <span aria-hidden="true">→</span></Link>
                 </div>
                 <button type="button" onPointerDown={event => event.stopPropagation()} onClick={() => closeWindow(win.id)} aria-label={`Close ${work.title}`}>✕</button>
               </header>

@@ -52,7 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="pf-footer">
           <div className="pf-footer-top">
             <Link href="/" className="pf-footer-logo">Kaybid</Link>
-            <Link href="/hello" className="pf-footer-contact">Contact <span aria-hidden="true">↗</span></Link>
+            <Link href="/hello" className="pf-footer-contact">Contact <span aria-hidden="true">→</span></Link>
           </div>
           <div className="pf-footer-links">
             <nav aria-label="Site">

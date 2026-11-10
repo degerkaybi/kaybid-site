@@ -22,7 +22,7 @@ export default function ExhibitionsPage() {
       <div className="pf-section-body">
         <ExhibitionList items={parts.exhibitions} />
       </div>
-      <Link href="/works" className="pf-back-link">Explore the works <span aria-hidden="true">↗</span></Link>
+      <Link href="/works" className="pf-back-link">Explore the works <span aria-hidden="true">→</span></Link>
     </div>
   )
 }

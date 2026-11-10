@@ -20,7 +20,7 @@ export default function SectionLayout({ page, eyebrow, title, introduction, zoom
   return (
     <div className="pf-page-shell pf-section-page">
       {portrait ? <>{before}<div className="pf-portrait-page">{hero}{body}</div></> : <>{hero}{before}{body}</>}
-      <Link href="/works" className="pf-back-link">Explore the works <span aria-hidden="true">↗</span></Link>
+      <Link href="/works" className="pf-back-link">Explore the works <span aria-hidden="true">→</span></Link>
     </div>
   )
 }

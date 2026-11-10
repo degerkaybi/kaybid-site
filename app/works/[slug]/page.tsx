@@ -80,7 +80,7 @@ export default async function WorkPage({ params }: Props) {
       </>}
       {work.page.id === '33239248-8fe5-8018-b85b-cbdb6ba6e03f' && (() => {
         const otherPresentation = getPage('36439248-8fe5-8078-9dd3-f09a1b16667f')
-        return otherPresentation ? <div className="pf-presentation-link"><span>ALSO PRESENTED AT UPCYCLE</span><Link href={getPageHref(otherPresentation)}>View this presentation ↗</Link></div> : null
+        return otherPresentation ? <div className="pf-presentation-link"><span>ALSO PRESENTED AT UPCYCLE</span><Link href={getPageHref(otherPresentation)}>View this presentation →</Link></div> : null
       })()}
       {related.length > 0 && <section className="pf-related" aria-labelledby="related-heading"><div className="pf-section-heading"><div><p className="pf-eyebrow">CONTINUE EXPLORING</p><h2 id="related-heading">Related works.</h2></div></div><div className="pf-work-grid">{related.map(item => <WorkCard key={item.page.id} work={{ id: item.page.id, title: item.page.title, href: item.href, image: item.image, still: item.still, tags: item.tags, year: item.year, series: item.series, hasSubPages: hasWorkSubPages(item) }} />)}</div></section>}
     </div>

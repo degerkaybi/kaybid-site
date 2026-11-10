@@ -164,6 +164,10 @@ html:has(.pf-home-hero) { scroll-behavior: smooth; }
 .pf-work-card:hover .pf-work-card-image img { transform: scale(1.035); }
 .pf-image-placeholder { display: flex; height: 100%; align-items: center; justify-content: center; color: #8d8578; font-size: 1.5rem; letter-spacing: .2em; }
 .pf-card-arrow { position: absolute; right: 12px; top: 12px; display: grid; place-items: center; width: 30px; height: 30px; background: var(--pf-paper); color: var(--pf-ink); font-size: 1rem; }
+/* The arrow on cards and list rows slides a few pixels to the right while the card is hovered or focused. */
+.pf-arrow-glyph { display: inline-block; transition: transform .22s ease; }
+.pf-work-card:is(:hover, :focus-visible) .pf-arrow-glyph, .pf-work-row:is(:hover, :focus-visible) .pf-arrow-glyph { transform: translateX(4px); }
+@media (prefers-reduced-motion: reduce) { .pf-arrow-glyph { transition: none; } .pf-work-card:is(:hover, :focus-visible) .pf-arrow-glyph, .pf-work-row:is(:hover, :focus-visible) .pf-arrow-glyph { transform: none; } }
 .pf-card-arrow.is-labelled { width: auto; gap: .4rem; padding: 0 .65rem; grid-auto-flow: column; font-size: .75rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; white-space: nowrap; }
 .pf-work-card-info { display: flex; justify-content: space-between; gap: .5rem; padding: 1rem 0 .35rem; }
 .pf-work-card-info h3 { font-size: clamp(1.2rem,1.5vw,1.8rem); line-height: 1.1; margin: 0; }
@@ -878,6 +882,11 @@ main:has(> .pf-desk) { padding-top: 0; min-height: 0; }
 .pf-site .pf-footer-links nav[aria-label="Site"] a,
 .pf-site .pf-desk-dock button,
 .pf-site .pf-desk-open { font-family: var(--font-body), system-ui, sans-serif; font-size: 13px; font-weight: 600; font-stretch: normal; font-style: normal; line-height: 1.3; letter-spacing: .08em; text-transform: uppercase; }
+/* The tab row under a page title (About / Exhibitions / Press, Silent Steps / More about the series): larger and easier to see than the other labels. */
+.pf-site .pf-subnav { flex-wrap: wrap; row-gap: 0; min-height: 68px; }
+.pf-site .pf-subnav a { font-size: 18px; font-weight: 700; letter-spacing: .1em; padding: 14px 0; color: var(--pf-ink); opacity: .62; border-bottom-width: 3px; }
+.pf-site .pf-subnav a:hover, .pf-site .pf-subnav a.is-active { opacity: 1; }
+@media (max-width: 480px) { .pf-site .pf-subnav a { font-size: 15px; letter-spacing: .06em; } }
 .pf-site .pf-menu-toggle,
 .pf-site .pf-view-toggle button,
 .pf-site .pf-sort select,

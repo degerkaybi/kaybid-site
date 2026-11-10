@@ -165,7 +165,7 @@ export default function WorkExplorer({ works, filters }: { works: FilterableWork
                   </span>
                   <span className="pf-work-row-tags">{work.tags.slice(0, 3).join(' · ')}</span>
                   <span className="pf-work-row-year">{work.year}</span>
-                  <span className="pf-work-row-arrow" aria-hidden="true">↗</span>
+                  <span className="pf-work-row-arrow" aria-hidden="true"><span className="pf-arrow-glyph">→</span></span>
                 </Link>
               </li>
             )

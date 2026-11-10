@@ -28,7 +28,7 @@ export default function EidolaLanding({ work }: { work: Work }) {
       <div className="pf-eidola-about-nav">
         <Link href={`${work.href}/about`} className="pf-eidola-option is-primary">
           <span>THE SERIES</span>
-          <strong>About Eidōla <span aria-hidden="true">↗</span></strong>
+          <strong>About Eidōla <span aria-hidden="true">→</span></strong>
         </Link>
       </div>
       <div className="pf-eidola-feature">

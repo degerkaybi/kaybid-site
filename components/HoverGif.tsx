@@ -23,7 +23,7 @@ export default function HoverGif({ src, still, label }: { src: string; still: st
     >
       <img src={stillSrc} alt="" loading="lazy" decoding="async" onError={() => setStillSrc(src)} />
       {playing && <img className="pf-hover-gif-play" src={src} alt="" aria-hidden="true" data-ready={ready} onLoad={() => setReady(true)} />}
-      <span className={`pf-card-arrow${label ? ' is-labelled' : ''}`} aria-hidden="true">{label && <>{label} </>}↗</span>
+      <span className={`pf-card-arrow${label ? ' is-labelled' : ''}`} aria-hidden="true">{label && <>{label} </>}<span className="pf-arrow-glyph">→</span></span>
     </div>
   )
 }

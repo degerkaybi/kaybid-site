@@ -26,7 +26,7 @@ export default function WorkCard({ work, featured = false, catalogue = false }: 
           {work.image && work.still ? <HoverGif src={work.image} still={work.still} label={work.hasSubPages ? 'Series' : undefined} /> : (
             <div className="pf-work-card-image">
               {work.image ? <img src={work.image} alt="" loading="lazy" decoding="async" /> : <span className="pf-image-placeholder">KAYBID</span>}
-              <span className={`pf-card-arrow${work.hasSubPages ? ' is-labelled' : ''}`} aria-hidden="true">{work.hasSubPages && 'Series '}↗</span>
+              <span className={`pf-card-arrow${work.hasSubPages ? ' is-labelled' : ''}`} aria-hidden="true">{work.hasSubPages && 'Series '}<span className="pf-arrow-glyph">→</span></span>
             </div>
           )}
         </div>
@@ -39,7 +39,7 @@ export default function WorkCard({ work, featured = false, catalogue = false }: 
       {work.image && work.still ? <HoverGif src={work.image} still={work.still} label={work.hasSubPages ? 'Series' : undefined} /> : (
         <div className="pf-work-card-image">
           {work.image ? <img src={work.image} alt="" loading="lazy" decoding="async" /> : <span className="pf-image-placeholder">KAYBID</span>}
-          <span className={`pf-card-arrow${work.hasSubPages ? ' is-labelled' : ''}`} aria-hidden="true">{work.hasSubPages && 'Series '}↗</span>
+          <span className={`pf-card-arrow${work.hasSubPages ? ' is-labelled' : ''}`} aria-hidden="true">{work.hasSubPages && 'Series '}<span className="pf-arrow-glyph">→</span></span>
         </div>
       )}
       <div className="pf-work-card-info">

@@ -46,7 +46,7 @@ export default function HomePage() {
       <section className="pf-home-works" aria-labelledby="recent-heading">
         <div className="pf-section-heading">
           <div><p className="pf-eyebrow">FROM THE ARCHIVE</p><h2 id="recent-heading">More to explore.</h2></div>
-          <Link href="/works" className="pf-text-link">VIEW ALL WORKS <span aria-hidden="true">↗</span></Link>
+          <Link href="/works" className="pf-text-link">VIEW ALL WORKS <span aria-hidden="true">→</span></Link>
         </div>
         <div className="pf-work-grid">
           {recent.map(work => <WorkCard key={work.page.id} work={{ id: work.page.id, title: work.page.title, titleNote: work.titleNote, href: work.href, image: work.image, still: work.still, tags: work.tags, year: work.year, series: work.series, hasSubPages: hasWorkSubPages(work) }} />)}

@@ -30,7 +30,7 @@ export default function DesktopModal({ works, filters }: { works: DesktopWork[];
   return (
     <>
       <button ref={opener} type="button" className="pf-text-link pf-hero-desk-link" aria-haspopup="dialog" onClick={() => setOpen(true)}>
-        See all works on the desktop <span aria-hidden="true">↗</span>
+        See all works on the desktop <span aria-hidden="true">→</span>
       </button>
       {open && (
         <div className="pf-desk-modal" role="dialog" aria-modal="true" aria-label="All works on the desktop">

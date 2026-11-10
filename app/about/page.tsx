@@ -28,7 +28,7 @@ export default function AboutPage() {
           <section className="pf-exhibitions-preview" aria-labelledby="recent-exhibitions">
             <h2 id="recent-exhibitions" className="pf-block-heading">Recent exhibitions</h2>
             <ExhibitionList items={exhibitions.slice(0, 5)} />
-            <Link href="/about/exhibitions" className="pf-chip">All exhibitions <span aria-hidden="true">↗</span></Link>
+            <Link href="/about/exhibitions" className="pf-chip">All exhibitions <span aria-hidden="true">→</span></Link>
           </section>
         )}
         {extra.length > 0 && <RichContent blocks={extra} />}
