@@ -1,5 +1,17 @@
+const path = require('node:path')
+const { pathToFileURL } = require('node:url')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Old addresses (title + 8-character Notion id) redirect permanently to the new ones; the list comes from lib/redirects.ts.
+  async redirects() {
+    const { registerTs } = await import(pathToFileURL(path.join(__dirname, 'scripts', 'register-ts.mjs')).href)
+    registerTs()
+    const { getRedirects } = await import(pathToFileURL(path.join(__dirname, 'lib', 'redirects.ts')).href)
+    const redirects = getRedirects()
+    console.log(`Redirects: ${redirects.length} permanent redirects from old URLs`)
+    return redirects
+  },
   experimental: {
     cpus: 2,
     staticGenerationMaxConcurrency: 2,

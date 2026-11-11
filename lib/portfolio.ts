@@ -1,7 +1,7 @@
 import archive from '@/data/portfolio-content.json'
 import mediaUrls from '@/data/media-urls.json'
 import { addExtraEidola } from '@/lib/eidola-extra'
-import { addEidolaGifs } from '@/lib/eidola-gifs'
+import { addEidolaGifs, getEidolaGif } from '@/lib/eidola-gifs'
 import { addedWorks, removedWorkIds, workCatalog } from '@/lib/work-catalog'
 
 export type NotionBlock = {
@@ -357,9 +357,66 @@ export function getPageLabel(page: PortfolioPage): string {
   return withoutMoreAbout.has(page.id) ? page.title.replace(/^more about\s+/i, '').trim() : page.title
 }
 
-export function getWorkSlug(page: PortfolioPage): string {
+// Pages whose address is written by hand instead of coming from their title.
+const manualSlugs: Record<string, string> = {
+  'added-back-to-the-commencis': 'back-to-the-commencis',
+  'added-human-zer0': 'human-zer0',
+  'added-arsa-payi': 'arsa-payi',
+  // "Trust" exists twice as a GIF page (season 1 and 2) and in no Notion page, so "-gif" cannot tell them apart.
+  '85d909f7-e07f-4cd7-8ad5-e8b7fba1dcc9': 'trust-s2',
+}
+
+function titleSlug(page: PortfolioPage): string {
+  const base = slugify(getPageLabel(page))
+  return manualSlugs[page.id] || (slugWithoutMore.has(page.id) ? base.replace(/^more-/, '') : base) || 'work'
+}
+
+// The address the site used until the Notion-style ids were dropped: title + first 8 characters of the page id.
+// Only for redirects from old URLs (lib/redirects.ts). The 8 characters are shared by many pages, so pair old and new by page id.
+export function getLegacyWorkSlug(page: PortfolioPage): string {
   const base = slugify(getPageLabel(page))
   return `${(slugWithoutMore.has(page.id) ? base.replace(/^more-/, '') : base) || 'work'}-${page.id.replaceAll('-', '').slice(0, 8)}`
+}
+
+let slugsById: Map<string, string> | null = null
+
+// The address of every page: its title. When two pages would share one, the Notion page keeps it and the Cloudinary GIF page
+// gets "-gif" added. Any other duplicate fails the build.
+function getSlugs(): Map<string, string> {
+  if (slugsById) return slugsById
+  const groups = new Map<string, PortfolioPage[]>()
+  for (const page of [...Object.values(data.pages), ...addedPages]) {
+    const base = titleSlug(page)
+    groups.set(base, [...(groups.get(base) || []), page])
+  }
+  const slugs = new Map<string, string>()
+  const problems: string[] = []
+  for (const [base, pages] of groups) {
+    const gifs = pages.filter(page => getEidolaGif(page.id))
+    const others = pages.filter(page => !getEidolaGif(page.id))
+    if (pages.length === 1) slugs.set(pages[0].id, base)
+    else if (others.length === 1 && gifs.length > 0 && gifs.length === pages.length - 1 && gifs.length === 1) {
+      slugs.set(others[0].id, base)
+      slugs.set(gifs[0].id, `${base}-gif`)
+    } else problems.push(`"${base}": ${pages.map(page => `${page.id} (${page.title})`).join(', ')}`)
+  }
+  const taken = new Map<string, string>()
+  for (const [id, slug] of slugs) {
+    if (taken.has(slug)) problems.push(`"${slug}" (after adding -gif): ${taken.get(slug)}, ${id}`)
+    taken.set(slug, id)
+  }
+  if (problems.length) throw new Error(`Page address collision. Two pages in the same route group would get the same address (only a Notion page + its Cloudinary GIF page is resolved automatically, with "-gif"). Give one of them a manual slug in lib/portfolio.ts (manualSlugs):\n${problems.join('\n')}`)
+  slugsById = slugs
+  return slugs
+}
+
+export function getWorkSlug(page: PortfolioPage): string {
+  return getSlugs().get(page.id) || titleSlug(page)
+}
+
+// Every page of the archive data, including the Eidōla pages added in code.
+export function getAllPages(): PortfolioPage[] {
+  return Object.values(data.pages)
 }
 
 function yearFrom(page: PortfolioPage): string | null {
@@ -461,6 +518,9 @@ export function getPageHref(page: PortfolioPage): string {
     const paths: Record<string, string> = { home: '/', about: '/about', works: '/works', 'art-ideas': '/editions', press: '/about/press', contact: '/contact' }
     return paths[rootEntry[0]] || '/'
   }
+  // "Browse All Eidōla" has no page of its own: links go straight to Eidōla instead of through its redirect.
+  const eidola = page.id === browseEidolaId ? data.pages[ids.eidola] : null
+  if (eidola) return getPageHref(eidola)
   const work = getAllWorks().find(item => item.page.id === page.id)
   return work?.href || `/archive/${getWorkSlug(page)}`
 }
