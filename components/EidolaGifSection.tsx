@@ -7,7 +7,7 @@ const sections: Record<EidolaGroup, { eyebrow: string; title: string }> = {
   halloween: { eyebrow: 'SEASON 3', title: 'HALLOWEEN' },
 }
 
-// A section under the Eidōla films ("GIF", "Halloween"): one card per folder, the animated picture as its cover.
+// A section under the Eidōla films ("GIF", "Halloween"): one card per folder, a still as its cover (the animation plays on the card's own page).
 export default function EidolaGifSection({ group = 'gif' }: { group?: EidolaGroup }) {
   const cards = getEidolaGifs(group).flatMap(gif => {
     const page = getPage(gif.id)

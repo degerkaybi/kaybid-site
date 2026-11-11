@@ -21,7 +21,8 @@ export type EidolaGif = {
   group: EidolaGroup
   season: string
   title: string
-  // The animated cover on the card and the animated picture on the page (animated WebP: ~1/6 of the GIF's weight).
+  // The card shows a still (first frame, same width as the old animated cover); the animated picture
+  // (animated WebP: ~1/6 of the GIF's weight) is only loaded on the page.
   card: string
   page: string
   // The GIF as uploaded, for the full-size view.
@@ -38,7 +39,7 @@ const gifs: EidolaGif[] = items.map(item => {
     group: item.group || 'gif',
     season: item.season,
     title: item.title,
-    card: animated ? variant(cover.url, 'w_480,q_auto', 'webp') : variant(cover.url, 'f_auto,q_auto,w_480'),
+    card: animated ? variant(cover.url, 'pg_1,w_480,f_auto,q_auto', 'jpg') : variant(cover.url, 'f_auto,q_auto,w_480'),
     page: animated ? variant(cover.url, 'w_800,q_auto', 'webp') : variant(cover.url, 'f_auto,q_auto,w_1200'),
     original: item.gif?.url || null,
     slides: item.images.map((image, index) => ({ src: variant(image.url, 'f_auto,q_auto,w_1400'), alt: `${item.title} ${index + 1}` })),
