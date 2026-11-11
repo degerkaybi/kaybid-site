@@ -1,12 +1,12 @@
-import { getMediaUrl, type NotionBlock } from '@/lib/portfolio'
+import { getMediaUrl, type ContentBlock } from '@/lib/portfolio'
 
 type Item = { id: string; kind: 'image' | 'video'; src: string }
 
-const flat = (blocks: NotionBlock[]): NotionBlock[] => blocks.flatMap(block => [block, ...flat(block.children || [])])
+const flat = (blocks: ContentBlock[]): ContentBlock[] => blocks.flatMap(block => [block, ...flat(block.children || [])])
 
 // Press pictures as equal small tiles. Hovering one floats a larger copy beside it; a click opens the
 // surrounding <Lightbox> (images and video alike).
-export default function PressGallery({ blocks }: { blocks: NotionBlock[] }) {
+export default function PressGallery({ blocks }: { blocks: ContentBlock[] }) {
   const items: Item[] = flat(blocks).flatMap(block => {
     if (block.type !== 'image' && block.type !== 'video') return []
     const value = block[block.type] as { mediaId?: string; url?: string } | undefined

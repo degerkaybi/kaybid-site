@@ -1,4 +1,4 @@
-import { getSection, type NotionBlock } from '@/lib/portfolio'
+import { getSection, type ContentBlock } from '@/lib/portfolio'
 
 export type PressLink = { label: string; href: string }
 
@@ -29,7 +29,7 @@ const outlets: Record<string, string> = {
 export function getPressLinks(): PressLink[] {
   const page = getSection('press')
   if (!page) return []
-  const flat = (blocks: NotionBlock[]): NotionBlock[] => blocks.flatMap(block => [block, ...flat(block.children || [])])
+  const flat = (blocks: ContentBlock[]): ContentBlock[] => blocks.flatMap(block => [block, ...flat(block.children || [])])
   const links: PressLink[] = []
   for (const block of flat(page.blocks)) {
     if (block.type !== 'paragraph') continue

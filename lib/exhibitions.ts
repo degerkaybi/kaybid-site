@@ -1,10 +1,10 @@
-import { getAllWorks, getSection, voltaId, type NotionBlock } from '@/lib/portfolio'
+import { getAllWorks, getSection, voltaId, type ContentBlock } from '@/lib/portfolio'
 
 export type Exhibition = { year: string; title: string; place: string; flag: string; href: string | null }
 
 type Part = { plain_text?: string }
 
-const plain = (block: NotionBlock) =>
+const plain = (block: ContentBlock) =>
   (((block[block.type] as { rich_text?: Part[] } | undefined)?.rich_text) || []).map(part => part.plain_text || '').join('').trim()
 
 // Exhibitions that have a page of their own among the works.
@@ -56,7 +56,7 @@ export function getAboutParts() {
   const page = getSection('about')
   if (!page) return null
   const start = page.blocks.findIndex(block => block.type === 'heading_1' && /Selected Exhibitions/i.test(plain(block)))
-  if (start < 0) return { page, before: page.blocks, after: [] as NotionBlock[], extra: [] as NotionBlock[], exhibitions: [] as Exhibition[] }
+  if (start < 0) return { page, before: page.blocks, after: [] as ContentBlock[], extra: [] as ContentBlock[], exhibitions: [] as Exhibition[] }
   let end = start + 1
   while (end < page.blocks.length && page.blocks[end].type === 'bulleted_list_item') end++
   const listed = splitPenguinAndRhino(page.blocks.slice(start + 1, end).map(block => parseExhibition(plain(block))).filter(item => item.title))

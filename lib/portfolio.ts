@@ -4,11 +4,11 @@ import { addExtraEidola } from '@/lib/eidola-extra'
 import { addEidolaGifs, getEidolaGif } from '@/lib/eidola-gifs'
 import { addedWorks, removedWorkIds, workCatalog } from '@/lib/work-catalog'
 
-export type NotionBlock = {
+export type ContentBlock = {
   id: string
   type: string
   has_children?: boolean
-  children?: NotionBlock[]
+  children?: ContentBlock[]
   [key: string]: unknown
 }
 
@@ -20,7 +20,7 @@ export type PortfolioPage = {
   lastEditedTime: string
   cover: unknown
   icon: unknown
-  blocks: NotionBlock[]
+  blocks: ContentBlock[]
 }
 
 export type Work = {
@@ -110,8 +110,8 @@ const addedPages: PortfolioPage[] = addedWorks.map(work => ({
     // The first paragraph is the page's lead-in (its summary), so it is not repeated in the body; the card picture follows it.
     ...(work.cover ? [{ id: `${work.id}-cover`, type: 'image', image: { url: work.cover } }] : []),
     ...(work.paragraphs || []).slice(1).map((text, index) => ({ id: `${work.id}-text-${index}`, type: 'paragraph', paragraph: { rich_text: [{ plain_text: text }] } })),
-    ...(work.videos || []).map((item, index): NotionBlock => {
-      const film = (url: string, id: string): NotionBlock => ({ id, type: 'video', video: { url } })
+    ...(work.videos || []).map((item, index): ContentBlock => {
+      const film = (url: string, id: string): ContentBlock => ({ id, type: 'video', video: { url } })
       if (typeof item === 'string') return film(item, `${work.id}-video-${index}`)
       return {
         id: `${work.id}-videos-${index}`,
@@ -157,7 +157,7 @@ const cardImageOverrides: Record<string, string> = {
 }
 
 // For those works, lift the first image of the page out of the body so it can lead the page.
-export function splitLeadImage(page: PortfolioPage): { image: string; blocks: NotionBlock[] } | null {
+export function splitLeadImage(page: PortfolioPage): { image: string; blocks: ContentBlock[] } | null {
   if (!leadImageIds.has(page.id)) return null
   const index = page.blocks.findIndex(block => block.type === 'image' && imageFromObject(block.image))
   if (index < 0) return null
@@ -245,7 +245,7 @@ function imageFromObject(value: unknown): string | null {
   return getMediaUrl(object.mediaId) || (object.url?.startsWith('https://') ? object.url : null)
 }
 
-function findImageInBlocks(blocks: NotionBlock[]): string | null {
+function findImageInBlocks(blocks: ContentBlock[]): string | null {
   for (const block of blocks) {
     if (block.type === 'image') {
       const image = imageFromObject(block.image)
@@ -279,7 +279,7 @@ function richTextPlain(value: unknown): string {
   return value.map(part => (part as { plain_text?: string }).plain_text || '').join('')
 }
 
-function textFromBlocks(blocks: NotionBlock[]): string[] {
+function textFromBlocks(blocks: ContentBlock[]): string[] {
   const texts: string[] = []
   for (const block of blocks) {
     const value = block[block.type] as { rich_text?: unknown } | undefined
@@ -299,7 +299,7 @@ function getExcerpt(page: PortfolioPage): string {
 
 // True when the page links to pages of its own, at any depth (columns and callouts included).
 export function hasSubPages(page: PortfolioPage): boolean {
-  const visit = (blocks: NotionBlock[]): boolean =>
+  const visit = (blocks: ContentBlock[]): boolean =>
     blocks.some(block => block.type === 'child_page' || (!!block.children?.length && visit(block.children)))
   return visit(page.blocks)
 }
@@ -315,7 +315,7 @@ export function getPageSummary(page: PortfolioPage, limit = 460): string {
   return text.length > limit ? `${text.slice(0, limit - 1).trimEnd()}…` : text
 }
 
-function collectImages(blocks: NotionBlock[], found: string[], limit: number) {
+function collectImages(blocks: ContentBlock[], found: string[], limit: number) {
   for (const block of blocks) {
     if (found.length >= limit) return
     if (block.type === 'image') {
@@ -432,12 +432,12 @@ addExtraEidola(data, browseEidolaId)
 addEidolaGifs(data, browseEidolaId)
 let eidolonWorks: Work[] | null = null
 
-const eidolonExcerpt = (callout: NotionBlock) => richTextPlain((callout.callout as { rich_text?: unknown } | undefined)?.rich_text).replace(/^[-\s]+|[-\s]+$/g, '')
+const eidolonExcerpt = (callout: ContentBlock) => richTextPlain((callout.callout as { rich_text?: unknown } | undefined)?.rich_text).replace(/^[-\s]+|[-\s]+$/g, '')
 
 function getEidolonWorks(): Work[] {
   if (eidolonWorks) return eidolonWorks
   const works: Work[] = []
-  const visit = (blocks: NotionBlock[]) => {
+  const visit = (blocks: ContentBlock[]) => {
     for (const block of blocks) {
       if (block.type === 'column') {
         const items = block.children || []
@@ -523,6 +523,43 @@ export function getPageHref(page: PortfolioPage): string {
   if (eidola) return getPageHref(eidola)
   const work = getAllWorks().find(item => item.page.id === page.id)
   return work?.href || `/archive/${getWorkSlug(page)}`
+}
+
+// First path segments that are real routes (folders and files in app/). An old root address with one of these names is
+// never redirected: the real page answers it. lib/redirects.ts checks this list against app/ at build time.
+export const routeRoots = ['about', 'api', 'archive', 'contact', 'desktop', 'editions', 'hello', 'icon.svg', 'press', 'robots.txt', 'works']
+
+let aliasPages: Map<string, PortfolioPage> | null = null
+
+// The old root addresses: a page's 32-character id, or its title ("/kaybid"). Where two pages share a title, the first one wins.
+export function getAliasPages(): Map<string, PortfolioPage> {
+  if (aliasPages) return aliasPages
+  const aliases = new Map<string, PortfolioPage>()
+  for (const page of getAllPages()) {
+    for (const alias of [slugify(page.title), page.id.replaceAll('-', '')]) {
+      if (alias && !aliases.has(alias)) aliases.set(alias, page)
+    }
+  }
+  aliasPages = aliases
+  return aliases
+}
+
+// Where an old root address leads now: the page's final URL, or null when it names no page (or a real route).
+export function getAliasHref(alias: string): string | null {
+  if (routeRoots.includes(alias)) return null
+  const page = getAliasPages().get(alias)
+  return page ? getPageHref(page) : null
+}
+
+// A link written in the content that points inside the site the old way (/<32-character id>, /<title>, or a Notion page address).
+// `internal` is false for everything else (external links, real routes). `href` is the final URL, or null when the page is gone.
+export function resolveInternalLink(href: string): { internal: false } | { internal: true; href: string | null } {
+  const notionId = href.match(/^https?:\/\/(?:[\w-]+\.)*notion\.(?:com|so)\/(?:.*[-/])?([0-9a-f]{32})(?:[?#].*)?$/i)?.[1]
+  if (notionId) return { internal: true, href: getAliasHref(notionId.toLowerCase()) }
+  const path = href.match(/^\/([^/?#]+)([?#].*)?$/)
+  if (!path || routeRoots.includes(path[1])) return { internal: false }
+  const target = getAliasHref(path[1].toLowerCase())
+  return { internal: true, href: target ? target + (path[2] || '') : null }
 }
 
 export function getFeaturedWorks(): Work[] {

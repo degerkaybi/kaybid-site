@@ -1,4 +1,4 @@
-import { getMediaMimeType, getMediaUrl, getPage, getSection, silentStepsId, type NotionBlock } from '@/lib/portfolio'
+import { getMediaMimeType, getMediaUrl, getPage, getSection, silentStepsId, type ContentBlock } from '@/lib/portfolio'
 
 type RichPart = { plain_text?: string }
 type MediaValue = { mediaId?: string; url?: string; caption?: RichPart[]; rich_text?: RichPart[] }
@@ -25,7 +25,7 @@ export type SilentStepsContent = {
   years: SilentStepsYear[]
   videos: SilentStepsVideo[]
   photos: SilentStepsPhoto[]
-  rest: NotionBlock[]
+  rest: ContentBlock[]
 }
 
 const yearPattern = /\b((?:19|20)\d{2})(?:\s*[-–]\s*((?:19|20)\d{2}))?/
@@ -47,7 +47,7 @@ function plain(parts?: RichPart[]): string {
   return (parts || []).map(part => part.plain_text || '').join('')
 }
 
-function valueOf(block: NotionBlock): MediaValue {
+function valueOf(block: ContentBlock): MediaValue {
   return (block[block.type] || {}) as MediaValue
 }
 
@@ -55,7 +55,7 @@ function mediaSrc(value: MediaValue): string | null {
   return getMediaUrl(value.mediaId) || value.url || null
 }
 
-function flatten(blocks: NotionBlock[]): NotionBlock[] {
+function flatten(blocks: ContentBlock[]): ContentBlock[] {
   return blocks.flatMap(block => [block, ...flatten(block.children || [])])
 }
 
@@ -78,7 +78,7 @@ function parseCaption(caption: string) {
   return { name, year: match[2] || match[1], years: match[0].replace(/\s+/g, ''), place: place.replace(separators, ''), note }
 }
 
-function introFrom(blocks: NotionBlock[]) {
+function introFrom(blocks: ContentBlock[]) {
   const heading = blocks.find(block => block.type === 'heading_3')
   const text = heading ? plain(valueOf(heading).rich_text) : ''
   const quoteStart = text.indexOf('”')

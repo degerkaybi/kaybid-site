@@ -70,4 +70,4 @@ for (const [id, item] of Object.entries(data.media)) {
   if (/(?:youtube\.com|youtu\.be)/.test(item.url || '') && !used.has(id)) delete data.media[id]
 }
 await writeFile(exportPath, JSON.stringify(data))
-console.log('Raw snapshot updated. Run node scripts/export-notion-content.mjs --sanitize-only next.')
+console.log('Raw snapshot updated. Run node legacy/scripts/export-notion-content.mjs --sanitize-only next.')

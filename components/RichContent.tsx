@@ -4,7 +4,7 @@ import YouTubePlayer from './YouTubePlayer'
 import FilePlayer from './FilePlayer'
 import WorkCard from './WorkCard'
 import InstagramPostEmbed from './InstagramPostEmbed'
-import { getMediaUrl, getPage, getPageHref, getPageImage, type NotionBlock } from '@/lib/portfolio'
+import { getMediaUrl, getPage, getPageHref, getPageImage, resolveInternalLink, type ContentBlock } from '@/lib/portfolio'
 
 type RichPart = {
   plain_text?: string
@@ -23,6 +23,9 @@ function richText(parts: RichPart[] = []) {
     if (part.annotations?.strikethrough) text = <s>{text}</s>
     const linkedPage = part.mention?.type === 'page' && part.mention.page?.id ? getPage(part.mention.page.id) : null
     if (linkedPage) return <Link key={index} prefetch={false} href={getPageHref(linkedPage)}>{text}</Link>
+    // Links inside the site go straight to the page's final address; one whose page no longer exists stays plain text.
+    const internal = part.href ? resolveInternalLink(part.href) : null
+    if (internal?.internal) return internal.href ? <Link key={index} prefetch={false} href={internal.href}>{text}</Link> : <span key={index}>{text}</span>
     if (part.href) return <a key={index} href={part.href} target="_blank" rel="noopener noreferrer">{text}</a>
     if (/https?:\/\//.test(part.plain_text || '')) {
       return <span key={index}>{(part.plain_text || '').split(/(https?:\/\/[^\s]+)/g).map((piece, pieceIndex) => /^https?:\/\//.test(piece) ? <a key={pieceIndex} href={piece} target="_blank" rel="noopener noreferrer">{piece}</a> : piece)}</span>
@@ -89,7 +92,7 @@ function instagramPostPermalink(url: string): string | null {
 }
 
 // A row of Instagram posts: every column holds one post link and nothing else.
-function instagramRow(block: NotionBlock): string[] {
+function instagramRow(block: ContentBlock): string[] {
   if (block.type !== 'column_list' || !block.children?.length) return []
   const links = block.children.map(column => {
     const items = (column.children || []).filter(item => !(item.type === 'paragraph' && !plainText((item.paragraph as { rich_text?: RichPart[] } | undefined)?.rich_text)))
@@ -100,7 +103,7 @@ function instagramRow(block: NotionBlock): string[] {
 }
 
 // A callout made only of page mentions (e.g. "Eidōla / Browse All Eidōla") is navigation, not a note.
-function pageCrumbs(block: NotionBlock) {
+function pageCrumbs(block: ContentBlock) {
   const parts = [block, ...(block.children || [])].flatMap(item => ((item[item.type] as { rich_text?: RichPart[] } | undefined)?.rich_text) || [])
   const meaningful = parts.filter(part => part.plain_text?.trim())
   if (meaningful.length === 0 || !meaningful.every(part => part.mention?.type === 'page' && part.mention.page?.id)) return []
@@ -110,7 +113,7 @@ function pageCrumbs(block: NotionBlock) {
 const plainText = (parts: RichPart[] = []) => parts.map(part => part.plain_text || '').join('').trim()
 
 // A Browse All column: equation (name) + image + callout (subtitle) holding a link to the Eidōlon page.
-function EidolonCard({ column }: { column: NotionBlock }) {
+function EidolonCard({ column }: { column: ContentBlock }) {
   const items = column.children || []
   const equation = items.find(item => item.type === 'equation')
   const image = items.find(item => item.type === 'image')
@@ -133,12 +136,12 @@ function EidolonCard({ column }: { column: NotionBlock }) {
   )
 }
 
-function isEidolonColumn(column: NotionBlock) {
+function isEidolonColumn(column: ContentBlock) {
   const items = column.children || []
   return items.some(item => item.type === 'equation') && items.some(item => item.type === 'image') && items.some(item => item.type === 'callout' && item.children?.some(child => child.type === 'child_page'))
 }
 
-function Block({ block, inColumn = false, zoomable = false }: { block: NotionBlock; inColumn?: boolean; zoomable?: boolean }) {
+function Block({ block, inColumn = false, zoomable = false }: { block: ContentBlock; inColumn?: boolean; zoomable?: boolean }) {
   const value = (block[block.type] || {}) as {
     rich_text?: RichPart[]
     caption?: RichPart[]
@@ -236,18 +239,18 @@ function Block({ block, inColumn = false, zoomable = false }: { block: NotionBlo
 }
 
 // Browse All lays the Eidōla out in several 3-up rows separated by dividers; pool the cards into one grid.
-const eidolonColumns = (block: NotionBlock) => block.type === 'column_list' ? (block.children || []).filter(isEidolonColumn) : []
-const isDividerList = (block: NotionBlock) => block.type === 'column_list' && !!block.children?.length && block.children.every(column => column.children?.every(child => child.type === 'divider'))
+const eidolonColumns = (block: ContentBlock) => block.type === 'column_list' ? (block.children || []).filter(isEidolonColumn) : []
+const isDividerList = (block: ContentBlock) => block.type === 'column_list' && !!block.children?.length && block.children.every(column => column.children?.every(child => child.type === 'divider'))
 
 // Slider pictures: standalone images plus rows of three or more image-only columns. A side-by-side pair stays below the slider.
-const isImageRow = (block: NotionBlock) => block.type === 'column_list' && (block.children?.length || 0) > 2 && block.children!.every(column => column.children?.length === 1 && column.children[0].type === 'image')
+const isImageRow = (block: ContentBlock) => block.type === 'column_list' && (block.children?.length || 0) > 2 && block.children!.every(column => column.children?.length === 1 && column.children[0].type === 'image')
 // The small side-by-side pair that used to follow the slider is dropped on portrait pages.
-const isImagePair = (block: NotionBlock) => block.type === 'column_list' && !isImageRow(block) && !!block.children?.some(column => column.children?.some(child => child.type === 'image')) && block.children.every(column => column.children?.every(child => child.type === 'image' || isEmptyParagraph(child)))
-const stackImages = (block: NotionBlock) => block.type === 'image' ? [block] : isImageRow(block) ? block.children!.map(column => column.children![0]) : []
+const isImagePair = (block: ContentBlock) => block.type === 'column_list' && !isImageRow(block) && !!block.children?.some(column => column.children?.some(child => child.type === 'image')) && block.children.every(column => column.children?.every(child => child.type === 'image' || isEmptyParagraph(child)))
+const stackImages = (block: ContentBlock) => block.type === 'image' ? [block] : isImageRow(block) ? block.children!.map(column => column.children![0]) : []
 
 // The caption line under each Eidōlon video: "Fire" 1/1 edition MPEG4, 39.7 MiB, 41 s, 2246 x 1592 px
-const isCredit = (block: NotionBlock) => block.type === 'paragraph' && /\d+\s*x\s*\d+\s*px/.test(plainText((block.paragraph as { rich_text?: RichPart[] } | undefined)?.rich_text))
-const isEmptyParagraph = (block: NotionBlock) => block.type === 'paragraph' && !plainText((block.paragraph as { rich_text?: RichPart[] } | undefined)?.rich_text) && !block.children?.length
+const isCredit = (block: ContentBlock) => block.type === 'paragraph' && /\d+\s*x\s*\d+\s*px/.test(plainText((block.paragraph as { rich_text?: RichPart[] } | undefined)?.rich_text))
+const isEmptyParagraph = (block: ContentBlock) => block.type === 'paragraph' && !plainText((block.paragraph as { rich_text?: RichPart[] } | undefined)?.rich_text) && !block.children?.length
 
 // Streaming and social links are shown by name instead of as long raw URLs.
 const platforms: [RegExp, string][] = [
@@ -259,7 +262,7 @@ const platforms: [RegExp, string][] = [
   [/(^|\.)soundcloud\.com$/, 'SoundCloud'],
 ]
 
-function platformLink(block: NotionBlock): { href: string; label: string } | null {
+function platformLink(block: ContentBlock): { href: string; label: string } | null {
   const value = block[block.type] as { rich_text?: RichPart[]; url?: string; caption?: RichPart[] } | undefined
   const href = block.type === 'bookmark' && !plainText(value?.caption) ? value?.url : block.type === 'paragraph' && !block.children?.length ? plainText(value?.rich_text) : undefined
   if (!href || !/^https?:\/\/\S+$/.test(href)) return null
@@ -273,9 +276,9 @@ function platformLink(block: NotionBlock): { href: string; label: string } | nul
 }
 
 // Volta: the two text pages sit under the intro text, right above the Instagram button; the "Listen" links move below the song catalogue.
-function arrangeShowcase(blocks: NotionBlock[]) {
-  const isPage = (block: NotionBlock) => block.type === 'child_page'
-  const catalogueStart = blocks.findIndex((block, index) => isPage(block) && !isPage(blocks[index - 1] || ({} as NotionBlock)) && blocks.slice(index).findIndex(item => !isPage(item)) > 2)
+function arrangeShowcase(blocks: ContentBlock[]) {
+  const isPage = (block: ContentBlock) => block.type === 'child_page'
+  const catalogueStart = blocks.findIndex((block, index) => isPage(block) && !isPage(blocks[index - 1] || ({} as ContentBlock)) && blocks.slice(index).findIndex(item => !isPage(item)) > 2)
   if (catalogueStart < 0) return blocks
   const listenAt = blocks.findIndex(block => block.type === 'paragraph' && /^\W*Listen all paintings/i.test(plainText((block.paragraph as { rich_text?: RichPart[] } | undefined)?.rich_text)))
   let listenEnd = listenAt + 1
@@ -286,7 +289,7 @@ function arrangeShowcase(blocks: NotionBlock[]) {
   const bookmark = rest.findIndex(block => block.type === 'bookmark')
   if (bookmark >= 0) rest.splice(bookmark, 0, ...pages)
   else rest.unshift(...pages)
-  const catalogueEnd = rest.findIndex((block, index) => isPage(block) && !isPage(rest[index - 1] || ({} as NotionBlock)) && rest.slice(index).findIndex(item => !isPage(item)) > 2)
+  const catalogueEnd = rest.findIndex((block, index) => isPage(block) && !isPage(rest[index - 1] || ({} as ContentBlock)) && rest.slice(index).findIndex(item => !isPage(item)) > 2)
   if (catalogueEnd >= 0) {
     let end = catalogueEnd
     while (end < rest.length && isPage(rest[end])) end++
@@ -296,7 +299,7 @@ function arrangeShowcase(blocks: NotionBlock[]) {
 }
 
 // Volta: rows of image-only columns under "- GALLERY" become one slider.
-function galleryImages(blocks: NotionBlock[]) {
+function galleryImages(blocks: ContentBlock[]) {
   if (!blocks.length || !blocks.every(block => block.type === 'column_list')) return []
   return blocks.flatMap(row => row.children || []).flatMap(column => column.children || []).flatMap(image => {
     const picture = image.type === 'image' ? image.image as { mediaId?: string; url?: string } | undefined : undefined
@@ -306,13 +309,13 @@ function galleryImages(blocks: NotionBlock[]) {
 }
 
 // Lifts the "- GALLERY" picture rows out of the page so the page can open with them as a slider.
-export function splitGallery(blocks: NotionBlock[]): { images: Slide[]; blocks: NotionBlock[] } | null {
+export function splitGallery(blocks: ContentBlock[]): { images: Slide[]; blocks: ContentBlock[] } | null {
   const holder = blocks.find(block => block.type === 'paragraph' && galleryImages(block.children || []).length > 1)
   if (!holder) return null
   return { images: galleryImages(holder.children || []), blocks: blocks.filter(block => block !== holder) }
 }
 
-export default function RichContent({ blocks: source, inColumn = false, zoomable = false, portrait = false, hideCrumbs = false, showcase = false }: { blocks: NotionBlock[]; inColumn?: boolean; zoomable?: boolean; portrait?: boolean; hideCrumbs?: boolean; showcase?: boolean }) {
+export default function RichContent({ blocks: source, inColumn = false, zoomable = false, portrait = false, hideCrumbs = false, showcase = false }: { blocks: ContentBlock[]; inColumn?: boolean; zoomable?: boolean; portrait?: boolean; hideCrumbs?: boolean; showcase?: boolean }) {
   const blocks = showcase && !inColumn ? arrangeShowcase(source) : source
   const content: React.ReactNode[] = []
   const cards = inColumn ? [] : blocks.flatMap(eidolonColumns)

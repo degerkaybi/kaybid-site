@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import type { NotionBlock, PortfolioPage } from '@/lib/portfolio'
+import type { ContentBlock, PortfolioPage } from '@/lib/portfolio'
 
 // Eidōla that are not in Notion. Each has a film (hosted on Cloudinary) and a slider of pictures taken from
 // its own folder, public/media/<Name>/ (the cover is only the picture on its card) — drop the images in there and they appear on the page (in file name order).
@@ -28,9 +28,9 @@ type Data = { pages: Record<string, PortfolioPage>; media: Record<string, unknow
 export function addExtraEidola(data: Data, browseId: string) {
   const browse = data.pages[browseId]
   if (!browse) return
-  const columns: NotionBlock[] = []
+  const columns: ContentBlock[] = []
   for (const { name, id, film, cover } of extraEidola) {
-    const images: NotionBlock[] = folderImages(name).map((file, index) => {
+    const images: ContentBlock[] = folderImages(name).map((file, index) => {
       const mediaId = `${id}-image-${index}`
       data.media[mediaId] = { id: mediaId, source: 'file', mimeType: null, localPath: `/media/${name}/${file}`, error: null }
       return { id: mediaId, type: 'image', image: { mediaId } }
@@ -55,7 +55,7 @@ export function addExtraEidola(data: Data, browseId: string) {
       ],
     })
   }
-  const row: NotionBlock = { id: 'eidola-extra-row', type: 'column_list', children: columns }
+  const row: ContentBlock = { id: 'eidola-extra-row', type: 'column_list', children: columns }
   const back = browse.blocks.findIndex(block => block.type === 'child_page')
   browse.blocks.splice(back < 0 ? browse.blocks.length : back, 0, row)
 }

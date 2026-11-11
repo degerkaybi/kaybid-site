@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import RichContent from '@/components/RichContent'
 import EidolaGifSection from '@/components/EidolaGifSection'
-import { getPage, type NotionBlock, type Work } from '@/lib/portfolio'
+import { getPage, type ContentBlock, type Work } from '@/lib/portfolio'
 
-export function eidolaIntro(blocks: NotionBlock[]): string {
+export function eidolaIntro(blocks: ContentBlock[]): string {
   for (const block of blocks) {
     const text = ((block[block.type] as { rich_text?: { plain_text?: string }[] } | undefined)?.rich_text || []).map(part => part.plain_text || '').join('').trim()
     if (block.type === 'paragraph' && text.startsWith('In this series')) return text

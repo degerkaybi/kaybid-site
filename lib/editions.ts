@@ -1,4 +1,4 @@
-import { getMediaUrl, getPage, getPageHref, getSection, type NotionBlock } from '@/lib/portfolio'
+import { getMediaUrl, getPage, getPageHref, getSection, type ContentBlock } from '@/lib/portfolio'
 
 export type EditionStatus = 'available' | 'free' | 'sold-out' | 'collaboration'
 
@@ -47,10 +47,10 @@ export const upcycleQuote = [
 
 type Part = { plain_text?: string }
 
-const plain = (block: NotionBlock) =>
+const plain = (block: ContentBlock) =>
   (((block[block.type] as { rich_text?: Part[] } | undefined)?.rich_text) || []).map(part => part.plain_text || '').join('').trim()
 
-function descendants(blocks: NotionBlock[]): NotionBlock[] {
+function descendants(blocks: ContentBlock[]): ContentBlock[] {
   return blocks.flatMap(block => [block, ...descendants(block.children || [])])
 }
 
@@ -65,7 +65,7 @@ export function getEditions(): Edition[] {
     const heading = plain(block).replace(/^[〈〉〈〉>\s]+/, '')
     const soldOut = /sold\s*out/i.test(heading)
     const title = heading.replace(/\s*[-–—]\s*sold\s*out!?\s*$/i, '').trim()
-    const content: NotionBlock[] = []
+    const content: ContentBlock[] = []
     for (let next = index + 1; next < page.blocks.length && page.blocks[next].type !== 'heading_1'; next++) content.push(...descendants([page.blocks[next]]))
 
     const picture = content.find(item => item.type === 'image')?.image as { mediaId?: string; url?: string } | undefined

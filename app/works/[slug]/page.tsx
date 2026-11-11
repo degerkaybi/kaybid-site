@@ -8,22 +8,22 @@ import RichContent, { splitGallery } from '@/components/RichContent'
 import SilentStepsContent from '@/components/SilentStepsContent'
 import WorkCard from '@/components/WorkCard'
 import EidolaLanding from '@/components/EidolaLanding'
-import { eidolaId, filters, getAllWorks, isAddedWork, getPage, getPageHref, getRelatedWorks, getWorkBySlug, hasWorkSubPages, silentStepsId, splitLeadImage, voltaId, type NotionBlock, type PortfolioPage } from '@/lib/portfolio'
+import { eidolaId, filters, getAllWorks, isAddedWork, getPage, getPageHref, getRelatedWorks, getWorkBySlug, hasWorkSubPages, silentStepsId, splitLeadImage, voltaId, type ContentBlock, type PortfolioPage } from '@/lib/portfolio'
 import { getSilentSteps } from '@/lib/silent-steps'
 import { textLang } from '@/lib/locale'
 
 const pandaId = '22a39248-8fe5-80c8-aae6-fcdebd717fb8'
 const facesId = '22a39248-8fe5-8050-8c6f-d28fd81cb677'
 
-const blockText = (block: NotionBlock) => (((block[block.type] as { rich_text?: { plain_text?: string }[] } | undefined)?.rich_text) || []).map(part => part.plain_text || '').join('').trim()
+const blockText = (block: ContentBlock) => (((block[block.type] as { rich_text?: { plain_text?: string }[] } | undefined)?.rich_text) || []).map(part => part.plain_text || '').join('').trim()
 
 // Faces opens straight into its Instagram carousels: no lead picture, and no copied site menu or empty tail at the end.
-function facesBlocks(blocks: NotionBlock[]) {
+function facesBlocks(blocks: ContentBlock[]) {
   const lead = blocks.findIndex(block => block.type === 'image')
   // A lone Instagram embed is set as a one-post row so it gets the same bare carousel frame as the rest.
   const kept = blocks
     .filter((block, index) => index !== lead && !(block.type === 'paragraph' && /^Home\s*\|\s*About/.test(blockText(block))))
-    .map((block): NotionBlock => block.type === 'embed' ? { id: `${block.id}-row`, type: 'column_list', children: [{ id: `${block.id}-column`, type: 'column', children: [block] }] } : block)
+    .map((block): ContentBlock => block.type === 'embed' ? { id: `${block.id}-row`, type: 'column_list', children: [{ id: `${block.id}-column`, type: 'column', children: [block] }] } : block)
   while (kept.length && (kept[kept.length - 1].type === 'divider' || (kept[kept.length - 1].type === 'paragraph' && !blockText(kept[kept.length - 1])))) kept.pop()
   return kept
 }
@@ -33,7 +33,7 @@ type Props = { params: Promise<{ slug: string }> }
 // Every valid slug is prerendered at build time; unknown slugs are a static 404, never a function call.
 export const dynamicParams = false
 
-const hasImage = (blocks: NotionBlock[]): boolean => blocks.some(block => block.type === 'image' || (!!block.children && hasImage(block.children)))
+const hasImage = (blocks: ContentBlock[]): boolean => blocks.some(block => block.type === 'image' || (!!block.children && hasImage(block.children)))
 
 export function generateStaticParams() {
   return getAllWorks().filter(work => work.href.startsWith('/works/')).map(work => ({ slug: work.slug }))
