@@ -1,6 +1,6 @@
 import { readdirSync } from 'node:fs'
 import path from 'node:path'
-import { browseEidolaId, eidolaId, getAliasPages, getAllPages, getAllWorks, getLegacyWorkSlug, getPageHref, getWorkSlug, routeRoots, silentStepsId } from '@/lib/portfolio'
+import { browseEidolaId, eidolaId, getAliasPages, getAllPages, getAllWorks, getLegacyWorkSlug, getPageHref, getWorkSlug, hasArchivePage, routeRoots, silentStepsId } from '@/lib/portfolio'
 
 export type Redirect = { source: string; destination: string; permanent: true }
 
@@ -39,6 +39,12 @@ export function getRedirects(root: string): Redirect[] {
   }
 
   for (const page of getAllPages()) {
+    // The home page has no archive page: both its old (suffixed) and current archive address go straight to "/".
+    if (!hasArchivePage(page)) {
+      add(`/archive/${getLegacyWorkSlug(page)}`, getPageHref(page))
+      add(`/archive/${getWorkSlug(page)}`, getPageHref(page))
+      continue
+    }
     const work = workByPageId.get(page.id)
     // "Browse All Eidōla" redirects to Eidōla itself, so its old address goes straight there. A page that is also a work lives
     // under /works; every other archive page keeps its place under /archive.

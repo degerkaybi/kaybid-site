@@ -5,8 +5,7 @@ import RichContent from '@/components/RichContent'
 import EidolaGifPage from '@/components/EidolaGifPage'
 import { getEidolaGif } from '@/lib/eidola-gifs'
 import { Fragment } from 'react'
-import { browseEidolaId, eidolaId, getPage, getPageBySlug, getPageHref, getPageLabel, getSection, getWorkSlug, type PortfolioPage } from '@/lib/portfolio'
-import archive from '@/data/portfolio-content.json'
+import { browseEidolaId, eidolaId, getArchivePages, getPage, getPageBySlug, getPageHref, getPageLabel, getSection, getWorkSlug, type PortfolioPage } from '@/lib/portfolio'
 import { textLang } from '@/lib/locale'
 
 // The page opens with its own "WWF Market x Kaybid Collaboration" heading, so the archive title above it is left out.
@@ -18,7 +17,7 @@ type Props = { params: Promise<{ slug: string }> }
 export const dynamicParams = false
 
 export function generateStaticParams() {
-  return Object.values(archive.pages).map(page => ({ slug: getWorkSlug(page as PortfolioPage) }))
+  return getArchivePages().map(page => ({ slug: getWorkSlug(page) }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

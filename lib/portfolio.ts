@@ -419,6 +419,15 @@ export function getAllPages(): PortfolioPage[] {
   return Object.values(data.pages)
 }
 
+// The Notion root "home" page is served by "/", so it has no /archive page: its archive addresses redirect to "/".
+export const homePageId = data.roots.home
+export const hasArchivePage = (page: PortfolioPage) => page.id !== homePageId
+
+// Every page that is built under /archive/[slug].
+export function getArchivePages(): PortfolioPage[] {
+  return getAllPages().filter(hasArchivePage)
+}
+
 function yearFrom(page: PortfolioPage): string | null {
   const titleYear = page.title.match(/\b(20\d{2})\b/)
   if (titleYear) return titleYear[1]
@@ -509,7 +518,7 @@ export function getWorkBySlug(slug: string): Work | null {
 }
 
 export function getPageBySlug(slug: string): PortfolioPage | null {
-  return Object.values(data.pages).find(page => getWorkSlug(page) === slug) || null
+  return getArchivePages().find(page => getWorkSlug(page) === slug) || null
 }
 
 export function getPageHref(page: PortfolioPage): string {

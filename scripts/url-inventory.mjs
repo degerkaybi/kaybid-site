@@ -116,7 +116,7 @@ async function collectUrls() {
     '/works/[slug]': () => getAllWorks().filter(work => work.href.startsWith('/works/')).map(work => `/works/${work.slug}`),
     '/works/[slug]/about': () => getAllWorks().filter(work => work.page.id === eidolaId).map(work => `/works/${work.slug}/about`),
     '/works/[slug]/story': () => getAllWorks().filter(work => work.page.id === silentStepsId).map(work => `/works/${work.slug}/story`),
-    '/archive/[slug]': () => Object.values(archive.pages).map(page => `/archive/${getWorkSlug(page)}`),
+    '/archive/[slug]': () => portfolio.getArchivePages().map(page => `/archive/${getWorkSlug(page)}`),
     '/[slug]': () => {
       const slugs = new Set()
       for (const page of Object.values(archive.pages)) {
