@@ -20,7 +20,7 @@ export default function EidolaGifSection({ group = 'gif' }: { group?: EidolaGrou
       <div className="pf-section-heading"><div><p className="pf-eyebrow">{eyebrow}</p><h2 id={`eidola-${group}-heading`}>{title}</h2></div></div>
       <div className="pf-eidolon-grid">
         {cards.map(({ gif, href }) => (
-          <Link key={gif.id} href={href} className="pf-eidolon">
+          <Link key={gif.id} prefetch={false} href={href} className="pf-eidolon">
             <img src={gif.card} alt="" loading="lazy" decoding="async" />
             <span className="pf-eidolon-info">
               <strong>{gif.title}</strong>
