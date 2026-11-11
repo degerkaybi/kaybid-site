@@ -10,7 +10,8 @@ const nextConfig = {
     const { getRedirects } = await import(pathToFileURL(path.join(__dirname, 'lib', 'redirects.ts')).href)
     const redirects = getRedirects()
     console.log(`Redirects: ${redirects.length} permanent redirects from old URLs`)
-    return redirects
+    // The removed giveaway tool.
+    return [...redirects, { source: '/cekilis', destination: '/', permanent: true }]
   },
   experimental: {
     cpus: 2,
