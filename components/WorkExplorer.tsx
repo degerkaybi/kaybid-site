@@ -155,7 +155,7 @@ export default function WorkExplorer({ works, filters }: { works: FilterableWork
             const series = work.series?.replace(/\s*:\|\|\s*$/, '')
             return (
               <li key={work.id}>
-                <Link href={work.href} className="pf-work-row">
+                <Link prefetch={false} href={work.href} className="pf-work-row">
                   <span className="pf-work-row-thumb">
                     {thumb ? <img src={thumb} alt="" loading="lazy" decoding="async" /> : <span className="pf-image-placeholder">K</span>}
                   </span>

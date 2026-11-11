@@ -30,6 +30,9 @@ function facesBlocks(blocks: NotionBlock[]) {
 
 type Props = { params: Promise<{ slug: string }> }
 
+// Every valid slug is prerendered at build time; unknown slugs are a static 404, never a function call.
+export const dynamicParams = false
+
 const hasImage = (blocks: NotionBlock[]): boolean => blocks.some(block => block.type === 'image' || (!!block.children && hasImage(block.children)))
 
 export function generateStaticParams() {

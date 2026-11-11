@@ -22,7 +22,7 @@ function richText(parts: RichPart[] = []) {
     if (part.annotations?.underline) text = <u>{text}</u>
     if (part.annotations?.strikethrough) text = <s>{text}</s>
     const linkedPage = part.mention?.type === 'page' && part.mention.page?.id ? getPage(part.mention.page.id) : null
-    if (linkedPage) return <Link key={index} href={getPageHref(linkedPage)}>{text}</Link>
+    if (linkedPage) return <Link key={index} prefetch={false} href={getPageHref(linkedPage)}>{text}</Link>
     if (part.href) return <a key={index} href={part.href} target="_blank" rel="noopener noreferrer">{text}</a>
     if (/https?:\/\//.test(part.plain_text || '')) {
       return <span key={index}>{(part.plain_text || '').split(/(https?:\/\/[^\s]+)/g).map((piece, pieceIndex) => /^https?:\/\//.test(piece) ? <a key={pieceIndex} href={piece} target="_blank" rel="noopener noreferrer">{piece}</a> : piece)}</span>
@@ -123,7 +123,7 @@ function EidolonCard({ column }: { column: NotionBlock }) {
   const picture = image.image as { mediaId?: string; url?: string } | undefined
   const src = getMediaUrl(picture?.mediaId) || picture?.url
   return (
-    <Link href={getPageHref(page)} className="pf-eidolon">
+    <Link prefetch={false} href={getPageHref(page)} className="pf-eidolon">
       {src ? <img src={src} alt="" loading="lazy" decoding="async" /> : <span className="pf-eidolon-empty" />}
       <span className="pf-eidolon-info">
         <strong>{name}</strong>
@@ -217,11 +217,11 @@ function Block({ block, inColumn = false, zoomable = false }: { block: NotionBlo
       // "Back" is an empty Notion page; send it up two levels (Browse All → the series) instead.
       const parent = page.title === 'Back' && !page.blocks.length && page.parentId ? getPage(page.parentId) : null
       const target = (parent?.parentId && getPage(parent.parentId)) || parent || page
-      return <Link className="pf-child-page" href={getPageHref(target)}>{page.title}<span aria-hidden="true">{target === page ? '→' : '←'}</span></Link>
+      return <Link prefetch={false} className="pf-child-page" href={getPageHref(target)}>{page.title}<span aria-hidden="true">{target === page ? '→' : '←'}</span></Link>
     }
     case 'link_to_page': {
       const page = value.page_id ? getPage(value.page_id) : null
-      return page ? <Link className="pf-child-page" href={getPageHref(page)}>{page.title}<span aria-hidden="true">→</span></Link> : null
+      return page ? <Link prefetch={false} className="pf-child-page" href={getPageHref(page)}>{page.title}<span aria-hidden="true">→</span></Link> : null
     }
     case 'code':
       return <pre className="pf-code"><code>{value.rich_text?.map(part => part.plain_text).join('')}</code></pre>

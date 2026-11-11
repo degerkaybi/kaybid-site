@@ -21,7 +21,7 @@ export default function WorkCard({ work, featured = false, catalogue = false }: 
   // Works page: title under the picture, with no description and no year (the list view carries it).
   if (catalogue) {
     return (
-      <Link href={work.href} className={`pf-work-card pf-work-card-catalogue ${work.hasSubPages ? 'pf-work-card-has-subpages' : ''}`}>
+      <Link prefetch={false} href={work.href} className={`pf-work-card pf-work-card-catalogue ${work.hasSubPages ? 'pf-work-card-has-subpages' : ''}`}>
         <div className="pf-work-card-media">
           {work.image && work.still ? <HoverGif src={work.image} still={work.still} label={work.hasSubPages ? 'Series' : undefined} /> : (
             <div className="pf-work-card-image">
@@ -35,7 +35,7 @@ export default function WorkCard({ work, featured = false, catalogue = false }: 
     )
   }
   return (
-    <Link href={work.href} className={`pf-work-card ${featured ? 'pf-work-card-featured' : ''} ${work.hasSubPages ? 'pf-work-card-has-subpages' : ''}`}>
+    <Link prefetch={false} href={work.href} className={`pf-work-card ${featured ? 'pf-work-card-featured' : ''} ${work.hasSubPages ? 'pf-work-card-has-subpages' : ''}`}>
       {work.image && work.still ? <HoverGif src={work.image} still={work.still} label={work.hasSubPages ? 'Series' : undefined} /> : (
         <div className="pf-work-card-image">
           {work.image ? <img src={work.image} alt="" loading="lazy" decoding="async" /> : <span className="pf-image-placeholder">KAYBID</span>}

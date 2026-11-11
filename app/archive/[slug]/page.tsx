@@ -14,6 +14,9 @@ const wwfPageId = '22a39248-8fe5-8019-9671-dd9af9e33095'
 
 type Props = { params: Promise<{ slug: string }> }
 
+// Every valid slug is prerendered at build time; unknown slugs are a static 404, never a function call.
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return Object.values(archive.pages).map(page => ({ slug: getWorkSlug(page as PortfolioPage) }))
 }

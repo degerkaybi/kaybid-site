@@ -78,7 +78,18 @@ function extractCommentsFromHtml(html: string): any[] {
   return comments
 }
 
+// Cached at the CDN so repeated or bot hits never re-run the Instagram scraping function.
+const CACHE_OK = 'public, s-maxage=300, stale-while-revalidate=3600'
+const CACHE_MISS = 'public, s-maxage=60, stale-while-revalidate=300'
+
 export async function GET(req: NextRequest) {
+  const res = await handleGet(req)
+  const body = await res.clone().json().catch(() => null)
+  res.headers.set('Cache-Control', res.status === 200 && body?.success ? CACHE_OK : CACHE_MISS)
+  return res
+}
+
+async function handleGet(req: NextRequest) {
   const { searchParams } = new URL(req.url)
   const postUrl = searchParams.get('url')
 
