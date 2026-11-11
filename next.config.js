@@ -17,22 +17,8 @@ const nextConfig = {
     cpus: 2,
     staticGenerationMaxConcurrency: 2,
   },
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**.amazonaws.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
-      {
-        protocol: 'https',
-        hostname: '**.imgur.com',
-      },
-    ],
-  },
+  // next/image is unused; disable the /_next/image optimizer so bots cannot burn Vercel quota
+  images: { unoptimized: true },
 }
 
 module.exports = nextConfig
