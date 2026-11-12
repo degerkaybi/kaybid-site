@@ -1,6 +1,7 @@
 import archive from '@/data/portfolio-content.json'
 import mediaUrls from '@/data/media-urls.json'
 import { addExtraEidola } from '@/lib/eidola-extra'
+import { cloudinaryStill, imgurStill } from '@/lib/gif-still'
 import { addEidolaGifs, getEidolaGif } from '@/lib/eidola-gifs'
 import { addedWorks, removedWorkIds, workCatalog } from '@/lib/work-catalog'
 
@@ -222,8 +223,8 @@ let animatedUrls: Set<string> | null = null
 // First frame of an animated picture, so lists can stay still until hovered. Null for anything else.
 export function getStillImage(url: string | null): string | null {
   if (!url) return null
-  const imgur = url.match(/^(https:\/\/i\.imgur\.com\/\w+)\.gif$/)
-  if (imgur) return `${imgur[1]}h.jpg`
+  const imgur = imgurStill(url)
+  if (imgur) return imgur
   if (!animatedUrls) {
     animatedUrls = new Set()
     for (const item of Object.values(data.media)) {
@@ -236,7 +237,7 @@ export function getStillImage(url: string | null): string | null {
   // Hosted GIFs of the added works are not in the Notion media list, so recognise them by address.
   const hostedGif = (addedWorks.some(work => work.cover === url) || Object.values(cardImageOverrides).includes(url)) && /\.gif$/i.test(url)
   if (!(animatedUrls.has(url) || hostedGif) || !url.includes('res.cloudinary.com') || !url.includes('/upload/')) return null
-  return url.replace('/upload/', '/upload/pg_1/').replace(/\.\w+$/, '.jpg')
+  return cloudinaryStill(url)
 }
 
 function imageFromObject(value: unknown): string | null {

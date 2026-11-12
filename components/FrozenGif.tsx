@@ -1,15 +1,16 @@
 'use client'
 
 import { useState } from 'react'
+import { canPlayGif } from './gif-playback'
+import { cloudinaryStill, imgurStill } from '@/lib/gif-still'
 
-// Browsers cannot pause a GIF, so a still frame is shown and the GIF itself is only
-// mounted while it is hovered or keyboard-focused. Imgur serves the first frame of
-// any GIF as a small JPEG when "h.jpg" is requested, and Cloudinary does the same with "pg_1";
-// other hosts just show the GIF.
+// Browsers cannot pause a GIF, so a still frame is shown and the GIF itself is only requested while a mouse hovers
+// it or it is keyboard-focused. Touch screens and reduced-motion visitors keep the still frame. Imgur and Cloudinary
+// can serve the first frame as a small picture; for any other host there is no still, so the GIF itself is shown.
 function stillFrom(src: string): string | null {
-  const imgur = src.match(/^(https:\/\/i\.imgur\.com\/\w+)\.gif$/)
-  if (imgur) return `${imgur[1]}h.jpg`
-  if (src.startsWith('https://res.cloudinary.com/') && src.includes('/upload/') && /\.gif$/i.test(src)) return src.replace('/upload/', '/upload/pg_1/').replace(/\.gif$/i, '.jpg')
+  const imgur = imgurStill(src)
+  if (imgur) return imgur
+  if (src.startsWith('https://res.cloudinary.com/') && src.includes('/upload/') && /\.gif$/i.test(src)) return cloudinaryStill(src)
   return null
 }
 
@@ -20,7 +21,7 @@ export default function FrozenGif({ src, name, caption }: Props) {
   const [playing, setPlaying] = useState(false)
   const [ready, setReady] = useState(false)
 
-  const play = () => setPlaying(true)
+  const play = () => { if (canPlayGif()) setPlaying(true) }
   const stop = () => { setPlaying(false); setReady(false) }
 
   return (
@@ -36,7 +37,7 @@ export default function FrozenGif({ src, name, caption }: Props) {
       onFocus={event => { if (event.currentTarget.matches(':focus-visible')) play() }}
       onBlur={stop}
     >
-      <img src={still || src} alt={name} loading="lazy" decoding="async" onError={() => setStill(null)} />
+      <img src={still || src} alt={name} loading="lazy" decoding="async" onError={() => { if (canPlayGif()) setStill(null) }} />
       {still && playing && (
         <img className="pf-frozen-gif" src={src} alt="" aria-hidden="true" data-ready={ready} onLoad={() => setReady(true)} />
       )}
