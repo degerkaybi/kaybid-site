@@ -153,7 +153,7 @@ const leadImageOverrides: Record<string, string> = {
 
 // Card pictures (home, works, desktop) that differ from the work's own first picture.
 const cardImageOverrides: Record<string, string> = {
-  '30239248-8fe5-8018-85f0-d341175edced': 'https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793891116/Up4K_h3uyie.gif', // UpCycle X Silent Steps
+  '30239248-8fe5-8018-85f0-d341175edced': 'https://res.cloudinary.com/epzod3uc/image/upload/v1793891116/Up4K_h3uyie.gif', // UpCycle X Silent Steps
 }
 
 // For those works, lift the first image of the page out of the body so it can lead the page.
@@ -189,7 +189,7 @@ export function getSection(slug: string): PortfolioPage | null {
 }
 
 // The Eidōla films, hosted as files instead of on YouTube (Notion media id → file).
-const cloudinaryFilm = (version: string, name: string, hash: string) => `https://res.cloudinary.com/dlyp8lb1b/video/upload/v${version}/${name}_By_Kaybid_${hash}.mp4`
+const cloudinaryFilm = (version: string, name: string, hash: string) => `https://res.cloudinary.com/epzod3uc/video/upload/v${version}/${name}_By_Kaybid_${hash}.mp4`
 const filmOverrides: Record<string, string> = {
   '879447d2e24ab2593ae7': cloudinaryFilm('1793963550', 'Evil', 'soawwp'),
   'e3416782fddcd7431931': cloudinaryFilm('1793963545', 'Rest', 'p85e6g'),

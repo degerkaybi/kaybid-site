@@ -19,10 +19,10 @@ export type Edition = {
 
 // The monx.culture × Kaybid page and the Instagram post it shows. The page itself stays out of search engines.
 export const monxPage = '/editions/kaybid-x-m-c'
-export const monxCover = 'https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793886759/Ekran_g%C3%B6r%C3%BCnt%C3%BCs%C3%BC_2026-11-05_165140_rslw9i.png'
+export const monxCover = 'https://res.cloudinary.com/epzod3uc/image/upload/v1793886759/Ekran_g%C3%B6r%C3%BCnt%C3%BCs%C3%BC_2026-11-05_165140_rslw9i.png'
 export const monxPost = 'https://www.instagram.com/monx.culture/p/DadYeNPCn1p/?img_index=6'
 // The photos in Cloudinary under KBD/Monk/Kimo, in the order they were taken. Resized and re-encoded by Cloudinary: the originals are 2000px+ JPEGs.
-const monxPhoto = (version: string, id: string) => `https://res.cloudinary.com/dlyp8lb1b/image/upload/f_auto,q_auto,w_1600/v${version}/${id}.jpg`
+const monxPhoto = (version: string, id: string) => `https://res.cloudinary.com/epzod3uc/image/upload/f_auto,q_auto,w_1600/v${version}/${id}.jpg`
 export const monxImages = [
   monxPhoto('1794334001', '20260310_170913_nszbsc'),
   monxPhoto('1794334087', '20260310_170915_v6lzkg'),
@@ -33,8 +33,8 @@ export const monxImages = [
 // The Kaybid X UpCycle page: the "Şehirde Fil Var!" installation at the Upcycle Istanbul Festival. The first picture is the card cover.
 export const upcyclePage = '/editions/kaybid-x-upcycle'
 export const upcycleImages = [
-  'https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793892172/Bu_sene_festival_bitti%C4%9Finde_ve_Terminal_Kad%C4%B1k%C3%B6y_%C3%BCn_kap%C4%B1lar%C4%B1_bizim_i%C3%A7in_kapand%C4%B1%C4%9F%C4%B1nda_modern_zama_2_vrpf5o.jpg',
-  'https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793892153/Ekran_g%C3%B6r%C3%BCnt%C3%BCs%C3%BC_2026-11-05_182012_ysdgc1.png',
+  'https://res.cloudinary.com/epzod3uc/image/upload/v1793892172/Bu_sene_festival_bitti%C4%9Finde_ve_Terminal_Kad%C4%B1k%C3%B6y_%C3%BCn_kap%C4%B1lar%C4%B1_bizim_i%C3%A7in_kapand%C4%B1%C4%9F%C4%B1nda_modern_zama_2_vrpf5o.jpg',
+  'https://res.cloudinary.com/epzod3uc/image/upload/v1793892153/Ekran_g%C3%B6r%C3%BCnt%C3%BCs%C3%BC_2026-11-05_182012_ysdgc1.png',
 ]
 export const upcycleQuote = [
   'Şehirde Fil Var! 🐘',

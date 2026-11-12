@@ -5,9 +5,9 @@ import type { ContentBlock, PortfolioPage } from '@/lib/portfolio'
 // Eidōla that are not in Notion. Each has a film (hosted on Cloudinary) and a slider of pictures taken from
 // its own folder, public/media/<Name>/ (the cover is only the picture on its card) — drop the images in there and they appear on the page (in file name order).
 const extraEidola = [
-  { name: 'Persona', id: 'e1d01a01-0000-4000-8000-000000000001', film: 'https://res.cloudinary.com/dlyp8lb1b/video/upload/v1793967060/Persona_By_Kaybid_qzeicj.mp4', cover: 'https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793967599/Persona_ttpjio.jpg' },
-  { name: 'Love', id: 'e1d01a02-0000-4000-8000-000000000002', film: 'https://res.cloudinary.com/dlyp8lb1b/video/upload/v1793967060/Love_By_Kaybid_ixlxwu.mp4', cover: 'https://res.cloudinary.com/dlyp8lb1b/image/upload/f_auto,q_auto,w_1200/v1793967517/1_cuppuf.jpg' },
-  { name: 'Mycelia', id: 'e1d01a03-0000-4000-8000-000000000003', film: 'https://res.cloudinary.com/dlyp8lb1b/video/upload/v1793967056/Mycelia_By_Kaybid_wumfbs.mp4', cover: 'https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793967698/Mycelia_roreou.jpg' },
+  { name: 'Persona', id: 'e1d01a01-0000-4000-8000-000000000001', film: 'https://res.cloudinary.com/epzod3uc/video/upload/v1793967060/Persona_By_Kaybid_qzeicj.mp4', cover: 'https://res.cloudinary.com/epzod3uc/image/upload/v1793967599/Persona_ttpjio.jpg' },
+  { name: 'Love', id: 'e1d01a02-0000-4000-8000-000000000002', film: 'https://res.cloudinary.com/epzod3uc/video/upload/v1793967060/Love_By_Kaybid_ixlxwu.mp4', cover: 'https://res.cloudinary.com/epzod3uc/image/upload/f_auto,q_auto,w_1200/v1793967517/1_cuppuf.jpg' },
+  { name: 'Mycelia', id: 'e1d01a03-0000-4000-8000-000000000003', film: 'https://res.cloudinary.com/epzod3uc/video/upload/v1793967056/Mycelia_By_Kaybid_wumfbs.mp4', cover: 'https://res.cloudinary.com/epzod3uc/image/upload/v1793967698/Mycelia_roreou.jpg' },
 ]
 
 const imagePattern = /\.(webp|png|jpe?g|gif|avif)$/i

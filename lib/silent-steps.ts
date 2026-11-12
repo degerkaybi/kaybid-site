@@ -38,8 +38,8 @@ const videoDescriptions: Record<string, string> = {
 }
 // Animations that are not in the Notion page, filed under their year like the others.
 const addedAnimations: (Omit<SilentStepsAnimation, 'video' | 'description'> & { year: string })[] = [
-  { id: 'added-fil', year: '2026', src: 'https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793891116/Up4K_h3uyie.gif', name: 'Fil', years: '2026', place: 'İstanbul', note: '' },
-  { id: 'added-yikim-ekibi', year: '2026', src: 'https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793888874/YIKIM-EK%C4%B0B%C4%B0-----_lksef5.gif', name: 'Yıkım Ekibi', years: '2026', place: '', note: '' },
+  { id: 'added-fil', year: '2026', src: 'https://res.cloudinary.com/epzod3uc/image/upload/v1793891116/Up4K_h3uyie.gif', name: 'Fil', years: '2026', place: 'İstanbul', note: '' },
+  { id: 'added-yikim-ekibi', year: '2026', src: 'https://res.cloudinary.com/epzod3uc/image/upload/v1793888874/YIKIM-EK%C4%B0B%C4%B0-----_lksef5.gif', name: 'Yıkım Ekibi', years: '2026', place: '', note: '' },
 ]
 const separators = /^[\s,\-–—]+|[\s,\-–—]+$/g
 

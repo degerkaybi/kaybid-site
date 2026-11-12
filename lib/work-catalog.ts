@@ -43,7 +43,7 @@ export const addedWorks: AddedWork[] = [
     id: 'added-arsa-payi',
     title: 'Arsa Payı',
     titleNote: 'Yıkım Ekibi', // shown beside the title
-    cover: 'https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793888874/YIKIM-EK%C4%B0B%C4%B0-----_lksef5.gif',
+    cover: 'https://res.cloudinary.com/epzod3uc/image/upload/v1793888874/YIKIM-EK%C4%B0B%C4%B0-----_lksef5.gif',
     paragraphs: [
       'Arsa Payı; 4 farklı ülkeden, toplamda 73 bağımsız sanatçıyı yıkım kararı alınmış bir apartman dairesinde bir araya getirdi. Bir ay süren çalışmaların ardından kapılarını sizlere bir günlüğüne açıyor.',
       'Tamamen gönüllülük ilkesiyle çalışan sanatçılar, işlerini kaybedeceklerini bile bile üretimlerini gerçekleştirdiler. Ve yıkım öncesi sizlere sunmaya hazırlar.',
@@ -51,14 +51,14 @@ export const addedWorks: AddedWork[] = [
       '🗓 12 Eylül 2026 — yalnızca bir gün 14:00, 19:00 saatleri arasında gerçekleşti.',
     ],
     videos: [
-      'https://res.cloudinary.com/dlyp8lb1b/video/upload/v1793890050/YIKIM_EK%C4%B0B%C4%B0v2_c10p6c.mp4',
+      'https://res.cloudinary.com/epzod3uc/video/upload/v1793890050/YIKIM_EK%C4%B0B%C4%B0v2_c10p6c.mp4',
       // Three small films side by side, left to right: the sketch, the coloured paper, the wall.
       [
-        'https://res.cloudinary.com/dlyp8lb1b/video/upload/v1793887176/YIKIM_EK%C4%B0B%C4%B0v3-a_vqvovy.mp4',
-        'https://res.cloudinary.com/dlyp8lb1b/video/upload/v1793887158/YIKIM_EK%C4%B0B%C4%B0v3-b_iigsqs.mp4',
-        'https://res.cloudinary.com/dlyp8lb1b/video/upload/v1793887180/YIKIM_EK%C4%B0B%C4%B0v3-c_fjxkzu.mp4',
+        'https://res.cloudinary.com/epzod3uc/video/upload/v1793887176/YIKIM_EK%C4%B0B%C4%B0v3-a_vqvovy.mp4',
+        'https://res.cloudinary.com/epzod3uc/video/upload/v1793887158/YIKIM_EK%C4%B0B%C4%B0v3-b_iigsqs.mp4',
+        'https://res.cloudinary.com/epzod3uc/video/upload/v1793887180/YIKIM_EK%C4%B0B%C4%B0v3-c_fjxkzu.mp4',
       ],
-      'https://res.cloudinary.com/dlyp8lb1b/video/upload/v1793887081/Y%C4%B1k%C4%B1m_ba%C5%9Fl%C4%B1yor_oqnuki.mp4',
+      'https://res.cloudinary.com/epzod3uc/video/upload/v1793887081/Y%C4%B1k%C4%B1m_ba%C5%9Fl%C4%B1yor_oqnuki.mp4',
     ],
     entry: { tags: ['Exhibition', 'Street Art', 'Collage', 'Animation'], year: '2026', summary: 'Arsa Payı; 4 farklı ülkeden, toplamda 73 bağımsız sanatçıyı yıkım kararı alınmış bir apartman dairesinde bir araya getirdi.' },
   },
