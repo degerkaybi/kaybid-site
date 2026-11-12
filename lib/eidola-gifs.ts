@@ -3,18 +3,17 @@ import gifData from '@/data/eidola-gifs.json'
 
 // The Eidōla works of the GIF and Halloween sections: one page per folder of Cloudinary's KBD/Eidola/SEZON/<season>. Refresh the list with
 // `node scripts/sync-eidola-gifs.mjs S1 [S2 S3]` — the result is committed in data/eidola-gifs.json.
-// The animated GIF of each folder is still listed in that file but is no longer used by the site.
 type Picture = { url: string; width: number; height: number }
 // "gif" fills the GIF section, "halloween" the Halloween section under it.
 export type EidolaGroup = 'gif' | 'halloween'
-type GifItem = { id: string; group?: EidolaGroup; season: string; folder: string; title: string; gif: Picture | null; images: Picture[]; cardImageIndex?: number }
+type GifItem = { id: string; group?: EidolaGroup; season: string; folder: string; title: string; images: Picture[]; cardImageIndex?: number }
 
 const items = (gifData as { items: GifItem[] }).items
 
 // Cloudinary serves the original under .../upload/v123/name.ext; a transformation goes between "upload/" and the version.
 const transform = (url: string, transformation: string) => url.replace('/upload/', `/upload/${transformation}/`)
 
-// A card shows one picture of its page's slider, never the GIF: the one at `cardImageIndex` (0-based, in the order the slider shows them)
+// A card shows one picture of its page's slider: the one at `cardImageIndex` (0-based, in the order the slider shows them)
 // in data/eidola-gifs.json, by default the 7th.
 const defaultCardImageIndex = 6
 

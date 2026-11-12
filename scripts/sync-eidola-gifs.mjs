@@ -1,12 +1,19 @@
-// Reads the Eidōla GIF folders from Cloudinary and writes data/eidola-gifs.json.
+// Reads the Eidōla folders from Cloudinary and updates data/eidola-gifs.json.
 //
-//   KBD/Eidola/SEZON/<season>/<gif folder>/            the GIF (cover + top of the page)
-//   KBD/Eidola/SEZON/<season>/<gif folder>/<subfolder>  the pictures of the page's slider, in name order
+//   KBD/Eidola/SEZON/<season>/<folder>/             one page per folder
+//   KBD/Eidola/SEZON/<season>/<folder>/<subfolder>  the pictures of the page's slider, in name order
+//                                                   (a folder without subfolders uses its own pictures)
 //
-// Usage: node scripts/sync-eidola-gifs.mjs [S1 S2 S3/HALLOWEN ...]   (default: S1 S2 S3/HALLOWEN)
-// Each argument is a folder under KBD/Eidola/SEZON whose subfolders become pages; only those sources are refreshed.
+// A folder needs no GIF and is never skipped for lacking one. Animated GIFs are not listed: the site does not use them.
+// Every per-item field already in the file (cardImageIndex, ...) is kept; only `images` is refreshed.
+//
+// Usage: node scripts/sync-eidola-gifs.mjs [--write] [S1 S2 S3/HALLOWEN ...]   (default sources: S1 S2 S3/HALLOWEN)
+//   Default is a dry run: it prints what would change against the current file and writes nothing.
+//   --write  writes data/eidola-gifs.json.
+// Each source is a folder under KBD/Eidola/SEZON whose subfolders become pages; only those sources are refreshed.
 // "S3/HALLOWEN" feeds the Halloween section, every other source the GIF section.
-// Needs CLOUDINARY_URL in .env / .env.local. The result is committed, so builds never need the API secret.
+// Needs CLOUDINARY_URL in .env / .env.local (the Admin API calls here are read-only). The result is committed, so builds
+// never need the API secret.
 import { createHash } from 'node:crypto'
 import { readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
@@ -21,6 +28,7 @@ process.on('uncaughtException', error => {
 const root = process.cwd()
 const base = 'KBD/Eidola/SEZON'
 const groups = { 'S3/HALLOWEN': 'halloween' }
+const write = process.argv.includes('--write')
 const sources = process.argv.slice(2).filter(arg => !arg.startsWith('--'))
 if (!sources.length) sources.push('S1', 'S2', 'S3/HALLOWEN')
 
@@ -91,24 +99,51 @@ for (const source of sources) {
   const group = groups[source] || 'gif'
   for (const folder of await folders(`${base}/${source}`)) {
     const own = await assets(folder.path)
-    const gifs = own.filter(asset => asset.format === 'gif').sort((a, b) => b.created_at.localeCompare(a.created_at))
     const subfolders = (await folders(folder.path)).sort((a, b) => collator.compare(a.name, b.name))
     // The slider holds the pictures of the subfolder(s); a folder without one uses its own pictures.
     const sliderAssets = subfolders.length
       ? (await Promise.all(subfolders.map(sub => assets(sub.path)))).flat()
-      : own.filter(asset => asset.format !== 'gif')
+      : own
     const images = sliderAssets.filter(asset => asset.format !== 'gif').sort((a, b) => collator.compare(sortName(a), sortName(b))).map(picture)
-    const gif = gifs[0] ? picture(gifs[0]) : null
-    // A folder without a GIF has no cover to show, so it gets no page (for now).
-    if (!gif) { console.warn(`skipped ${folder.path}: no GIF`); continue }
-    if (gifs.length > 1) console.warn(`${folder.path}: ${gifs.length} GIFs, using the newest (${gifs[0].display_name})`)
+    if (!images.length) console.warn(`warning: ${folder.path} has no pictures`)
     const id = stableId(folder.path)
-    // cardImageIndex is set by hand in the file: keep it when a source is refreshed.
-    const cardImageIndex = previous.items.find(item => item.id === id)?.cardImageIndex
-    items.push({ id, group, source, season, folder: folder.path, title: titleOf(folder.name), ...(cardImageIndex === undefined ? {} : { cardImageIndex }), gif, images })
+    const existing = previous.items.find(item => item.id === id)
+    // An existing item keeps every field it has (cardImageIndex is set by hand); only its pictures are refreshed.
+    items.push(existing ? { ...existing, images } : { id, group, source, season, folder: folder.path, title: titleOf(folder.name), images })
   }
 }
 items.sort((a, b) => a.season.localeCompare(b.season) || collator.compare(a.title, b.title))
 
-await writeFile(dataPath, `${JSON.stringify({ source: base, items }, null, 2)}\n`)
-console.log(`${items.length} pages written to data/eidola-gifs.json (${items.reduce((sum, item) => sum + item.images.length, 0)} slider pictures)`)
+const next = { source: base, items }
+const describe = item => `${item.title} (${item.folder})`
+const byId = list => new Map(list.map(item => [item.id, item]))
+const before = byId(previous.items)
+const after = byId(items)
+const lines = []
+for (const [id, item] of after) if (!before.has(id)) lines.push(`+ added   ${describe(item)}: ${item.images.length} pictures`)
+for (const [id, item] of before) if (!after.has(id)) lines.push(`- removed ${describe(item)}`)
+for (const [id, item] of after) {
+  const old = before.get(id)
+  if (!old) continue
+  const fields = [...new Set([...Object.keys(old), ...Object.keys(item)])].filter(key => key !== 'images' && JSON.stringify(old[key]) !== JSON.stringify(item[key]))
+  const oldUrls = old.images.map(image => image.url)
+  const newUrls = item.images.map(image => image.url)
+  const gone = oldUrls.filter(url => !newUrls.includes(url))
+  const added = newUrls.filter(url => !oldUrls.includes(url))
+  const reordered = !gone.length && !added.length && JSON.stringify(oldUrls) !== JSON.stringify(newUrls)
+  const sizeChanged = !gone.length && !added.length && JSON.stringify(old.images) !== JSON.stringify(item.images) && !reordered
+  if (!fields.length && !gone.length && !added.length && !reordered && !sizeChanged) continue
+  lines.push(`~ changed ${describe(item)}`)
+  for (const key of fields) lines.push(`    ${key}: ${JSON.stringify(old[key])} -> ${JSON.stringify(item[key])}`)
+  for (const url of gone) lines.push(`    - picture ${url}`)
+  for (const url of added) lines.push(`    + picture ${url}`)
+  if (reordered) lines.push('    pictures reordered')
+  if (sizeChanged) lines.push('    picture dimensions changed')
+}
+const text = `${JSON.stringify(next, null, 2)}\n`
+const unchanged = text === `${JSON.stringify(previous, null, 2)}\n`
+console.log(lines.length ? lines.join('\n') : 'No difference against data/eidola-gifs.json.')
+console.log(`${items.length} pages (${items.reduce((sum, item) => sum + item.images.length, 0)} slider pictures); the file has ${previous.items.length}.`)
+if (!write) console.log('Dry run: nothing written. Run again with --write to update data/eidola-gifs.json.')
+else if (unchanged) console.log('data/eidola-gifs.json is already up to date.')
+else { await writeFile(dataPath, text); console.log('data/eidola-gifs.json written.') }
