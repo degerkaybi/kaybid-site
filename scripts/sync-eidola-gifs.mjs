@@ -102,7 +102,10 @@ for (const source of sources) {
     // A folder without a GIF has no cover to show, so it gets no page (for now).
     if (!gif) { console.warn(`skipped ${folder.path}: no GIF`); continue }
     if (gifs.length > 1) console.warn(`${folder.path}: ${gifs.length} GIFs, using the newest (${gifs[0].display_name})`)
-    items.push({ id: stableId(folder.path), group, source, season, folder: folder.path, title: titleOf(folder.name), gif, images })
+    const id = stableId(folder.path)
+    // cardImageIndex is set by hand in the file: keep it when a source is refreshed.
+    const cardImageIndex = previous.items.find(item => item.id === id)?.cardImageIndex
+    items.push({ id, group, source, season, folder: folder.path, title: titleOf(folder.name), ...(cardImageIndex === undefined ? {} : { cardImageIndex }), gif, images })
   }
 }
 items.sort((a, b) => a.season.localeCompare(b.season) || collator.compare(a.title, b.title))

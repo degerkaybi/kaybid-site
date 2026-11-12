@@ -7,15 +7,16 @@ import gifData from '@/data/eidola-gifs.json'
 type Picture = { url: string; width: number; height: number }
 // "gif" fills the GIF section, "halloween" the Halloween section under it.
 export type EidolaGroup = 'gif' | 'halloween'
-type GifItem = { id: string; group?: EidolaGroup; season: string; folder: string; title: string; gif: Picture | null; images: Picture[] }
+type GifItem = { id: string; group?: EidolaGroup; season: string; folder: string; title: string; gif: Picture | null; images: Picture[]; cardImageIndex?: number }
 
 const items = (gifData as { items: GifItem[] }).items
 
 // Cloudinary serves the original under .../upload/v123/name.ext; a transformation goes between "upload/" and the version.
 const transform = (url: string, transformation: string) => url.replace('/upload/', `/upload/${transformation}/`)
 
-// A card shows the 7th picture of its page's slider (1-based, in the order the slider shows them), never the GIF.
-const cardPicture = 7
+// A card shows one picture of its page's slider, never the GIF: the one at `cardImageIndex` (0-based, in the order the slider shows them)
+// in data/eidola-gifs.json, by default the 7th.
+const defaultCardImageIndex = 6
 
 export type EidolaGif = {
   id: string
@@ -28,8 +29,9 @@ export type EidolaGif = {
 }
 
 const gifs: EidolaGif[] = items.map(item => {
-  const cover = item.images[cardPicture - 1]
-  if (!cover) throw new Error(`Eidōla "${item.title}" (${item.folder}) has ${item.images.length} pictures, so it has no picture ${cardPicture} for its card.`)
+  const cardIndex = item.cardImageIndex ?? defaultCardImageIndex
+  const cover = item.images[cardIndex]
+  if (!cover) throw new Error(`Eidōla "${item.title}" (${item.folder}) has ${item.images.length} pictures, so it has no picture at cardImageIndex ${cardIndex} for its card.`)
   return {
     id: item.id,
     group: item.group || 'gif',

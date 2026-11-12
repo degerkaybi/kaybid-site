@@ -54,6 +54,7 @@
       "season": "S1",
       "folder": "KBD/Eidola/SEZON/S1/-Conscience",
       "title": "Conscience",
+      "cardImageIndex": 0,
       "gif": {
         "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978680/FAVOR_mqeb8x.gif",
         "width": 707,
@@ -1443,6 +1444,7 @@
       "season": "S2",
       "folder": "KBD/Eidola/SEZON/S2/Love_Heart_by_Kaybid",
       "title": "Love Heart",
+      "cardImageIndex": 0,
       "gif": {
         "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978732/Love_Heart_by_Kaybid_uelcyq.gif",
         "width": 707,
@@ -2067,6 +2069,7 @@
       "season": "S2",
       "folder": "KBD/Eidola/SEZON/S2/zz-Yeşil Surat",
       "title": "Yeşil Surat",
+      "cardImageIndex": 0,
       "gif": {
         "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978736/YE%C5%9E%C4%B0L-SURAT_k61xmm.gif",
         "width": 500,
@@ -2117,6 +2120,7 @@
       "season": "S3",
       "folder": "KBD/Eidola/SEZON/S3/HALLOWEN/H-ALLO",
       "title": "H-ALLO",
+      "cardImageIndex": 0,
       "gif": {
         "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978746/h5_g_grkk8y.gif",
         "width": 707,
@@ -2167,6 +2171,7 @@
       "season": "S3",
       "folder": "KBD/Eidola/SEZON/S3/HALLOWEN/H-EEN",
       "title": "H-EEN",
+      "cardImageIndex": 0,
       "gif": {
         "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978744/h1-01_ccggor.gif",
         "width": 707,
@@ -2217,6 +2222,7 @@
       "season": "S3",
       "folder": "KBD/Eidola/SEZON/S3/HALLOWEN/H-HA",
       "title": "H-HA",
+      "cardImageIndex": 0,
       "gif": {
         "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978730/h3_g_cz1i7z.gif",
         "width": 637,
@@ -2267,6 +2273,7 @@
       "season": "S3",
       "folder": "KBD/Eidola/SEZON/S3/HALLOWEN/H-LLOW",
       "title": "H-LLOW",
+      "cardImageIndex": 0,
       "gif": {
         "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978744/h2_g_gjocnj.gif",
         "width": 707,
@@ -2317,6 +2324,7 @@
       "season": "S3",
       "folder": "KBD/Eidola/SEZON/S3/HALLOWEN/H-OWEE",
       "title": "H-OWEE",
+      "cardImageIndex": 0,
       "gif": {
         "url": "https://res.cloudinary.com/dlyp8lb1b/image/upload/v1793978742/h4_g_klpah0.gif",
         "width": 707,
