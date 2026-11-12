@@ -42,7 +42,7 @@ export default async function ArchivePage({ params }: Props) {
   let top: PortfolioPage | null = parent
   while (top?.parentId) top = getPage(top.parentId)
   const inEditions = !!top && top.id === getSection('art-ideas')?.id
-  // The Eidōla GIF pages: the GIF, then a slider with the pictures of its folder.
+  // The Eidōla GIF / Halloween pages: a slider with the pictures of the work's folder.
   const gif = getEidolaGif(page.id)
   if (gif) {
     return (
