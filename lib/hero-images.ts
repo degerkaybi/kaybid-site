@@ -18,6 +18,10 @@ export const heroImages: HeroImage[] = [
   { id: 'h10', widths: [900, 1600] },
   { id: 'h11', widths: [900, 1600] },
   { id: 'h12', widths: [900, 1600] },
+  { id: 'h13', widths: [900, 1440] },
+  { id: 'h14', widths: [900, 1600] },
+  { id: 'h15', widths: [900, 1600] },
+  { id: 'h16', widths: [900, 1600] },
 ]
 
 const file = (image: HeroImage, width: number) => `/hero/${image.id}-${width}.webp`
