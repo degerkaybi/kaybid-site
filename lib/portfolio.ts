@@ -207,7 +207,8 @@ export function getMediaUrl(mediaId?: string | null): string | null {
   if (!item) return null
   if (item.error) return null
   if (item.localPath) {
-    return (mediaUrls as Record<string, string>)[item.localPath] || item.localPath
+    // No entry in data/media-urls.json means the file is not on Cloudinary (the local copy is not deployed), so there is nothing to show.
+    return (mediaUrls as Record<string, string>)[item.localPath] || null
   }
   return item.url?.startsWith('https://') && item.url.includes('amazonaws.com') ? null : item.url || null
 }
