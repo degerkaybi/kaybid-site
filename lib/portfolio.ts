@@ -192,7 +192,6 @@ export function getSection(slug: string): PortfolioPage | null {
 const cloudinaryFilm = (version: string, name: string, hash: string) => `https://res.cloudinary.com/dlyp8lb1b/video/upload/v${version}/${name}_By_Kaybid_${hash}.mp4`
 const filmOverrides: Record<string, string> = {
   '879447d2e24ab2593ae7': cloudinaryFilm('1793963550', 'Evil', 'soawwp'),
-  '96fd4c835dd238183fbb': cloudinaryFilm('1793963548', 'Contact', 'epgyc2'),
   'e3416782fddcd7431931': cloudinaryFilm('1793963545', 'Rest', 'p85e6g'),
   '507a2baf216867069f73': cloudinaryFilm('1793963544', 'Insomnia', 'hzwgl9'),
   'f36b2c177e0785128190': cloudinaryFilm('1793963542', 'Fire', 'evyrqk'),
@@ -438,6 +437,9 @@ function yearFrom(page: PortfolioPage): string | null {
 // The Eidōla on the "Browse All Eidōla" page, each with its own page and the picture shown on that page.
 export const browseEidolaId ='22a39248-8fe5-805a-9be0-daa6cad580cf'
 addExtraEidola(data, browseEidolaId)
+// The Contact page no longer opens on a film: only its text, links and pictures remain.
+const contactPage = data.pages[data.roots.contact]
+if (contactPage) contactPage.blocks = contactPage.blocks.filter(block => block.type !== 'video')
 addEidolaGifs(data, browseEidolaId)
 let eidolonWorks: Work[] | null = null
 
