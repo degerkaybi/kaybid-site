@@ -60,9 +60,11 @@ type Props = {
   /** Fill the parent (which must be positioned) instead of sizing itself. */
   fill?: boolean
   loop?: boolean
+  /** Start loading and playing on mount instead of waiting for a click. Only for players the visitor just opened. */
+  autoStart?: boolean
 }
 
-export default function YouTubePlayer({ videoId, title, aspect = '16 / 9', portrait = false, startAt = 0, active = true, fill = false, loop = false }: Props) {
+export default function YouTubePlayer({ videoId, title, aspect = '16 / 9', portrait = false, startAt = 0, active = true, fill = false, loop = false, autoStart = false }: Props) {
   const root = useRef<HTMLDivElement>(null)
   const mount = useRef<HTMLDivElement>(null)
   const player = useRef<YTPlayer | null>(null)
@@ -71,7 +73,7 @@ export default function YouTubePlayer({ videoId, title, aspect = '16 / 9', portr
   const soundPending = useRef(false)
   const releaseSound = useRef<() => void>(() => {})
   const activeNow = useRef(active)
-  const [armed, setArmed] = useState(false)
+  const [armed, setArmed] = useState(autoStart)
   const [status, setStatus] = useState<Status>('idle')
   // Counts every start of playback; YouTube shows its buttons for a few seconds each time.
   const [plays, setPlays] = useState(0)

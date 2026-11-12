@@ -1,5 +1,6 @@
 import { ChevronDown } from 'lucide-react'
 import Link from 'next/link'
+import DocumentaryButton from '@/components/DocumentaryButton'
 import HeroImage from '@/components/HeroImage'
 
 export default function HomeHero() {
@@ -15,6 +16,7 @@ export default function HomeHero() {
         </p>
         <div className="pf-home-hero-actions">
           <Link href="/works" className="pf-home-hero-works">Explore All Works <span aria-hidden="true">→</span></Link>
+          <DocumentaryButton />
         </div>
       </div>
 
