@@ -1,9 +1,12 @@
 import { ChevronDown } from 'lucide-react'
 import Link from 'next/link'
+import HeroImage from '@/components/HeroImage'
 
 export default function HomeHero() {
   return (
     <section className="pf-home-hero" aria-labelledby="home-hero-title">
+      <HeroImage />
+      <div className="pf-home-hero-shade" aria-hidden="true" />
       <div className="pf-home-hero-content">
         <h1 id="home-hero-title">KAYBID</h1>
         <p className="pf-home-hero-subtitle">Street Art | Animation | Traditional Collage</p>
