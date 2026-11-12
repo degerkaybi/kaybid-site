@@ -51,7 +51,8 @@ export const addedWorks: AddedWork[] = [
       '🗓 12 Eylül 2026 — yalnızca bir gün 14:00, 19:00 saatleri arasında gerçekleşti.',
     ],
     videos: [
-      'https://res.cloudinary.com/epzod3uc/video/upload/v1793890050/YIKIM_EK%C4%B0B%C4%B0v2_c10p6c.mp4',
+      // TODO: YIKIM v2 yeni hesaba yüklenince geri ekle (public_id YIKIM_EKİBİv2_c10p6c, klasör KBD/YikimEkibi):
+      // 'https://res.cloudinary.com/epzod3uc/video/upload/v1793890050/YIKIM_EK%C4%B0B%C4%B0v2_c10p6c.mp4',
       // Three small films side by side, left to right: the sketch, the coloured paper, the wall.
       [
         'https://res.cloudinary.com/epzod3uc/video/upload/v1793887176/YIKIM_EK%C4%B0B%C4%B0v3-a_vqvovy.mp4',
