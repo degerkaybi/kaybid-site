@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import WorkCard from '@/components/WorkCard'
-import HomeHeroVideo from '@/components/HomeHeroVideo'
+import HomeHero from '@/components/HomeHero'
 import { getFeaturedWorks, getMainWorks, getPage, getPageImages, getStillImage, hasWorkSubPages, silentStepsId, voltaId } from '@/lib/portfolio'
 import { getSilentSteps } from '@/lib/silent-steps'
 
@@ -22,7 +22,7 @@ export default function HomePage() {
 
   return (
     <>
-      <HomeHeroVideo />
+      <HomeHero />
 
       <section id="featured-work" className="pf-featured-section" aria-labelledby="featured-heading">
         <div className="pf-section-intro">
