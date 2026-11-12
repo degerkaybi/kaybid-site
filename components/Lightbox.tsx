@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { videoPoster } from '@/lib/video-poster'
 
 type Slide = { src: string; alt: string; caption: string; video?: boolean }
 
@@ -104,7 +105,7 @@ export default function Lightbox({ children }: { children: React.ReactNode }) {
             <button type="button" data-close onClick={close} aria-label="Close image viewer">CLOSE ✕</button>
           </div>
           <div className="pf-lightbox-stage">
-            {slide.video ? <video key={slide.src} src={slide.src} controls autoPlay playsInline /> : <img key={slide.src} src={slide.src} alt={slide.alt} />}
+            {slide.video ? <video key={slide.src} src={slide.src} controls preload="none" poster={videoPoster(slide.src)} playsInline /> : <img key={slide.src} src={slide.src} alt={slide.alt} />}
           </div>
           {slide.caption && <p className="pf-lightbox-caption">{slide.caption}</p>}
           {count > 1 && (

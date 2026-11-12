@@ -1,3 +1,4 @@
+import { videoPoster } from '@/lib/video-poster'
 import { getMediaUrl, type ContentBlock } from '@/lib/portfolio'
 
 type Item = { id: string; kind: 'image' | 'video'; src: string }
@@ -23,7 +24,7 @@ export default function PressGallery({ blocks }: { blocks: ContentBlock[] }) {
         </button>
       ) : (
         <button key={item.id} type="button" className="pf-press-thumb is-video" data-lightbox={item.src} data-kind="video" data-alt="" aria-label="Play press video">
-          <video src={`${item.src}#t=0.1`} muted playsInline preload="metadata" />
+          <video src={item.src} poster={videoPoster(item.src)} muted playsInline preload="none" />
           <span className="pf-press-play" aria-hidden="true">▶</span>
         </button>
       ))}

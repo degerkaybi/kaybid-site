@@ -89,7 +89,7 @@ export default function HomeHeroVideo() {
         <div className="pf-video-modal" role="dialog" aria-modal="true" aria-label="Kaybid full documentary" onClick={() => setIsOpen(false)}>
           <div className="pf-video-modal-content" onClick={event => event.stopPropagation()}>
             <button type="button" className="pf-video-modal-close" onClick={() => setIsOpen(false)} aria-label="Close video"><X size={28} aria-hidden="true" /></button>
-            <YouTubePlayer videoId={videoId} startAt={startTime} title="Kaybid full documentary" autoplay autoFocus fill />
+            <YouTubePlayer videoId={videoId} startAt={startTime} title="Kaybid full documentary"fill />
           </div>
         </div>
       )}

@@ -55,18 +55,14 @@ type Props = {
   /** Vertical film: the picture is cropped out of a 9:16 frame so the player's top and bottom chrome stays outside it. */
   portrait?: boolean
   startAt?: number
-  /** Start as soon as the player is shown. Otherwise the poster waits for a click. */
-  autoplay?: boolean
   /** Inside a slider only the front card plays. */
   active?: boolean
   /** Fill the parent (which must be positioned) instead of sizing itself. */
   fill?: boolean
-  /** Take keyboard focus on mount, so the arrow keys work straight away. */
-  autoFocus?: boolean
   loop?: boolean
 }
 
-export default function YouTubePlayer({ videoId, title, aspect = '16 / 9', portrait = false, startAt = 0, autoplay = false, active = true, fill = false, autoFocus = false, loop = false }: Props) {
+export default function YouTubePlayer({ videoId, title, aspect = '16 / 9', portrait = false, startAt = 0, active = true, fill = false, loop = false }: Props) {
   const root = useRef<HTMLDivElement>(null)
   const mount = useRef<HTMLDivElement>(null)
   const player = useRef<YTPlayer | null>(null)
@@ -75,17 +71,15 @@ export default function YouTubePlayer({ videoId, title, aspect = '16 / 9', portr
   const soundPending = useRef(false)
   const releaseSound = useRef<() => void>(() => {})
   const activeNow = useRef(active)
-  const [armed, setArmed] = useState(autoplay && active)
-  const [status, setStatus] = useState<Status>(autoplay && active ? 'loading' : 'idle')
+  const [armed, setArmed] = useState(false)
+  const [status, setStatus] = useState<Status>('idle')
   // Counts every start of playback; YouTube shows its buttons for a few seconds each time.
   const [plays, setPlays] = useState(0)
   const [settled, setSettled] = useState(false)
   const [poster, setPoster] = useState(`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`)
 
   useEffect(() => { activeNow.current = active }, [active])
-  useEffect(() => { if (autoplay && active) setArmed(true) }, [autoplay, active])
   useEffect(() => { setPoster(`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`) }, [videoId])
-  useEffect(() => { if (autoFocus) root.current?.focus({ preventScroll: true }) }, [autoFocus])
 
   useEffect(() => {
     if (!armed) return
@@ -226,7 +220,7 @@ export default function YouTubePlayer({ videoId, title, aspect = '16 / 9', portr
       <div className="pf-yt-frame" ref={mount} />
       {covered && (
         <div className="pf-yt-cover" aria-hidden="true">
-          <img src={poster} alt="" loading={autoplay ? 'eager' : 'lazy'} decoding="async" draggable={false} onError={() => setPoster(`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`)} />
+          <img src={poster} alt="" loading="lazy" decoding="async" draggable={false} onError={() => setPoster(`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`)} />
         </div>
       )}
       <div className="pf-yt-edge is-top" aria-hidden="true" />

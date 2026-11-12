@@ -4,6 +4,7 @@ import YouTubePlayer from './YouTubePlayer'
 import FilePlayer from './FilePlayer'
 import WorkCard from './WorkCard'
 import InstagramPostEmbed from './InstagramPostEmbed'
+import { videoPoster } from '@/lib/video-poster'
 import { getMediaUrl, getPage, getPageHref, getPageImage, resolveInternalLink, type ContentBlock } from '@/lib/portfolio'
 
 type RichPart = {
@@ -62,7 +63,7 @@ function Media({ value, kind, caption, zoomable = false }: { value: { mediaId?: 
   }
   if (kind === 'video') {
     const film = youtubeId(url)
-    return <figure className="pf-figure pf-video">{film ? <YouTubeFilm url={url} title={label || 'Artwork video'} /> : <video src={url} controls preload="metadata" />}{label && <figcaption>{richText(caption)}</figcaption>}</figure>
+    return <figure className="pf-figure pf-video">{film ? <YouTubeFilm url={url} title={label || 'Artwork video'} /> : <video src={url} controls preload="none" poster={videoPoster(url)} playsInline />}{label && <figcaption>{richText(caption)}</figcaption>}</figure>
   }
   if (kind === 'audio') return <figure className="pf-audio"><audio src={url} controls preload="none" />{label && <figcaption>{richText(caption)}</figcaption>}</figure>
   return <a className="pf-file" href={url} target="_blank" rel="noopener noreferrer">{label || 'Open file'} ↗</a>
@@ -354,7 +355,7 @@ export default function RichContent({ blocks: source, inColumn = false, zoomable
       if (credit) content.push(<p className="pf-credit" key={`${block.id}-credit`}>{richText((credit.paragraph as { rich_text?: RichPart[] }).rich_text)}</p>)
       content.push(useStack
         ? <ImageStack key={`${block.id}-stack`} items={slides} />
-        : <figure className="pf-figure pf-video-portrait" key={block.id}>{videoSlide.src ? <FilePlayer src={videoSlide.src} title={videoSlide.title} aspect={aspect} autoplay loop /> : <YouTubePlayer videoId={videoSlide.id} title={videoSlide.title} aspect={aspect} portrait autoplay loop />}</figure>)
+        : <figure className="pf-figure pf-video-portrait" key={block.id}>{videoSlide.src ? <FilePlayer src={videoSlide.src} title={videoSlide.title} aspect={aspect} loop /> : <YouTubePlayer videoId={videoSlide.id} title={videoSlide.title} aspect={aspect} portrait loop />}</figure>)
       index++
       continue
     }

@@ -70,8 +70,8 @@ export default function ImageStack({ items }: { items: Slide[] }) {
             >
               {item.kind === 'video'
                 ? item.src
-                  ? <FilePlayer src={item.src} title={item.title} aspect={item.aspect} autoplay loop active={active} />
-                  : <YouTubePlayer videoId={item.id} title={item.title} aspect={item.aspect} portrait autoplay loop active={active} />
+                  ? <FilePlayer src={item.src} title={item.title} aspect={item.aspect} loop active={active} />
+                  : <YouTubePlayer videoId={item.id} title={item.title} aspect={item.aspect} portrait loop active={active} />
                 : <img src={item.src} alt={item.alt} loading={Math.abs(offset) > 1 ? 'lazy' : 'eager'} decoding="async" draggable={false} />}
             </div>
           )

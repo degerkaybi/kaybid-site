@@ -2,14 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react'
 import FullscreenButton from './FullscreenButton'
-
-const interactions = ['pointerdown', 'keydown', 'touchstart'] as const
+import { videoPoster } from '@/lib/video-poster'
 
 type Props = {
   src: string
   title: string
   aspect?: string
-  autoplay?: boolean
   loop?: boolean
   /** Inside a slider only the front card plays. */
   active?: boolean
@@ -17,47 +15,24 @@ type Props = {
 
 // A film hosted as a file, in the same portrait frame and with the same few controls as the YouTube player:
 // click, tap or Space pauses and plays; the arrow keys skip 5 s.
-export default function FilePlayer({ src, title, aspect = '1360 / 1920', autoplay = false, loop = false, active = true }: Props) {
+export default function FilePlayer({ src, title, aspect = '1360 / 1920', loop = false, active = true }: Props) {
   const video = useRef<HTMLVideoElement>(null)
   const root = useRef<HTMLDivElement>(null)
-  const userPaused = useRef(false)
-  const soundPending = useRef(false)
-  const [paused, setPaused] = useState(!autoplay)
+  const [paused, setPaused] = useState(true)
 
-  // Sound is on by default. Browsers refuse unmuted autoplay until the visitor has interacted with the page,
-  // so when that happens start muted and switch the sound on at the first interaction.
-  const start = () => {
-    const element = video.current
-    if (!element || userPaused.current) return
-    element.play().catch(() => {
-      element.muted = true
-      soundPending.current = true
-      element.play().catch(() => {})
-    })
-  }
+  // Nothing loads or plays until the visitor presses play (preload="none", a still poster in the meantime).
+  const start = () => { video.current?.play().catch(() => {}) }
 
+  // Inside a slider only the front card may play.
   useEffect(() => {
-    const element = video.current
-    if (!element) return
-    if (active) { if (autoplay || !element.paused) start() } else element.pause()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [active, autoplay])
-
-  useEffect(() => {
-    const restore = (event: Event) => {
-      if (!soundPending.current || root.current?.contains(event.target as Node)) return
-      soundPending.current = false
-      if (video.current) video.current.muted = false
-    }
-    for (const name of interactions) document.addEventListener(name, restore)
-    return () => { for (const name of interactions) document.removeEventListener(name, restore) }
-  }, [])
+    if (!active) video.current?.pause()
+  }, [active])
 
   const toggle = () => {
     const element = video.current
     if (!element) return
-    if (soundPending.current) { soundPending.current = false; element.muted = false; return }
-    if (element.paused) { userPaused.current = false; start() } else { userPaused.current = true; element.pause() }
+    if (element.paused) start()
+    else element.pause()
   }
 
   const skip = (seconds: number) => {
@@ -89,10 +64,10 @@ export default function FilePlayer({ src, title, aspect = '1360 / 1920', autopla
       <video
         ref={video}
         src={src}
-        autoPlay={autoplay && active}
         loop={loop}
         playsInline
-        preload="auto"
+        preload="none"
+        poster={videoPoster(src)}
         onPlay={() => setPaused(false)}
         onPause={() => setPaused(true)}
       />
